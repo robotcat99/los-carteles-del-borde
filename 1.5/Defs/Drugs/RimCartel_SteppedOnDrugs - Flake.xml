@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--  ===============================  Flake  ======================================  -->
+
+  <ThingDef ParentName="DrugBase">
+    <defName>FlakeLaced</defName>
+    <label>flake</label>
+    <description>A flaky white preparation of psychite that can be smoked to induce a short but powerful euphoric state. While it is cheap to produce and extremely pleasurable to use, it is exceptionally addictive. Flake is known for destroying lives, communities, and entire societies.</description>
+    <descriptionHyperlinks>
+      <HediffDef>FlakeHigh</HediffDef>
+      <HediffDef>PsychiteTolerance</HediffDef>
+      <HediffDef>PsychiteAddiction</HediffDef>
+      <HediffDef>ChemicalDamageSevere</HediffDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Materials/DrugPipe</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <color>(150,170,150)</color>
+      <drawSize>0.65</drawSize>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>250</WorkToMake>
+      <MarketValue>14</MarketValue>
+      <Mass>0.05</Mass>
+    </statBases>
+    <techLevel>Industrial</techLevel>
+    <minRewardCount>10</minRewardCount>
+    <ingestible>
+      <foodType>Processed</foodType>
+      <joyKind>Chemical</joyKind>
+      <joy>0.70</joy>
+      <baseIngestTicks>650</baseIngestTicks>
+      <nurseable>true</nurseable>
+      <drugCategory>Hard</drugCategory>
+      <ingestSound>Ingest_Smoke</ingestSound>
+      <ingestEffect>Smoke_Flake</ingestEffect>
+	   <ingestHoldOffsetStanding>
+	     <northDefault>
+		<offset>(0.27,0,0.08)</offset>
+		<behind>true</behind>
+	     </northDefault>
+	     <east>
+		<offset>(0.45,0,0.08)</offset>
+	     </east>
+	     <south>
+		<offset>(0.27,0,0.08)</offset>
+	     </south>
+	     <west>
+		<offset>(-0.50,0,0.08)</offset>
+		<flip>true</flip>
+	     </west>
+      </ingestHoldOffsetStanding>
+      <ingestHoldUsesTable>false</ingestHoldUsesTable>
+      <ingestCommandString>Smoke {0}</ingestCommandString>
+      <ingestReportString>Smoking {0}.</ingestReportString>
+      <useEatingSpeedStat>false</useEatingSpeedStat>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>FlakeLacedHigh</hediffDef>
+          <severity>0.5</severity>
+          <toleranceChemical>Psychite</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>PsychiteTolerance</hediffDef>
+          <toleranceChemical>Psychite</toleranceChemical>
+          <severity>0.020</severity>
+          <divideByBodySize>true</divideByBodySize>
+          <multiplyByGeneToleranceFactors>true</multiplyByGeneToleranceFactors>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+<!--    <recipeMaker>
+      <researchPrerequisite>PsychiteRefining</researchPrerequisite>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <soundWorking>Recipe_Drug</soundWorking>
+      <displayPriority>1600</displayPriority>
+    </recipeMaker>
+    <costList>
+      <PsychoidLeaves>4</PsychoidLeaves>
+    </costList> -->
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>FlakeLaced</chemical>
+        <addictiveness>0.074</addictiveness>
+	<isCombatEnhancingDrug>false</isCombatEnhancingDrug>
+        <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
+        <needLevelOffset>0.6</needLevelOffset>
+        <overdoseSeverityOffset>0.32~0.55</overdoseSeverityOffset>
+        <largeOverdoseChance>0.074</largeOverdoseChance>
+        <listOrder>102</listOrder>
+      </li>
+      <li Class="CompProperties_Drug">
+        <chemical>Psychite</chemical>
+        <addictiveness>0.005</addictiveness>
+        <existingAddictionSeverityOffset>0.10</existingAddictionSeverityOffset>
+        <needLevelOffset>0.4</needLevelOffset>
+        <isCombatEnhancingDrug>false</isCombatEnhancingDrug>
+        <listOrder>100</listOrder>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>FlakeLacedHigh</defName>
+    <label>high on laced flake</label>
+    <labelNoun>contaminated flake high</labelNoun>
+    <description>Flake's active chemical in the bloodstream, diluted and laced with another substance to make up the difference. The added effects either amplify or conflict with the  depressant qualities already found in flake. This combined with the lesser euphoric effects of other drugs results in a more debilitating high compared to pure flake.</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-3.50</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+      <stages>						<!--Stage One -->
+      <li>
+        <label>high on laced flake</label>
+	<vomitMtbDays>4.00</vomitMtbDays>
+        <painFactor>0.7</painFactor>
+	<painOffset>0.14</painOffset>
+	<statFactors>	<!--There's 3 methods like this. restFallFactor goes above this and doesn't have to be in statFactor/Offset. Turns out, RestFallRateFactor does go in either one -->
+	 <RestFallRateFactor>0.85</RestFallRateFactor> <!-- based on whether it's an addiction Hediff or not, judging from the PsychiteYayo core file. Make sure it's the right one. -->
+	</statFactors>
+	<statOffsets>
+	 <GlobalLearningFactor>-0.10</GlobalLearningFactor>
+	 <MaxNutrition>-0.15</MaxNutrition>
+	</statOffsets>
+	<capMods>
+        <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.08</offset>
+        </li>
+        <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.35</offset>
+        </li>
+        <li>
+            <capacity>Moving</capacity>
+            <offset>-0.05</offset>
+        </li>
+        <li>
+            <capacity>Talking</capacity>
+            <offset>-0.25</offset>
+        </li>		  
+        </capMods>
+	<mentalStateGivers>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>1</mtbDays>
+          </li>
+          <li>
+            <mentalState>TargetedInsultingSpree</mentalState>
+            <mtbDays>6</mtbDays>
+          </li>
+	  <li>
+             <mentalState>SocialFighting</mentalState>
+            <mtbDays>8</mtbDays>
+          </li>	
+	  <li>
+            <mentalState>Berserk</mentalState>
+            <mtbDays>8</mtbDays>
+          </li>	
+        </mentalStateGivers>
+	<hediffGivers>
+          <li Class="HediffGiver_Random">
+            <hediff>Asthma</hediff>
+            <mtbDays>160</mtbDays>
+            <partsToAffect>
+              <li>Lung</li>
+            </partsToAffect>
+          </li>
+	</hediffGivers>
+      </li>
+      <li>						<!--Stage Two -->
+        <label>high on laced flake</label>
+	<minSeverity>0.65</minSeverity>
+	<vomitMtbDays>2.50</vomitMtbDays>
+	<painOffset>0.15</painOffset>
+        <painFactor>0.64</painFactor>
+        <restFallFactor>0.66</restFallFactor>
+	<statOffsets>
+	 <GlobalLearningFactor>-0.10</GlobalLearningFactor>
+	 <MentalBreakThreshold>0.18</MentalBreakThreshold>
+	 <MaxNutrition>-0.33</MaxNutrition>  
+	</statOffsets>
+        <statFactors>
+	 <MeleeDamageFactor>1.25</MeleeDamageFactor>
+        </statFactors>
+	<capMods>
+        <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.18</offset>
+        </li>
+        <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.35</offset>
+        </li>
+        <li>
+            <capacity>Moving</capacity>
+            <offset>-0.08</offset>
+        </li>
+        <li>
+            <capacity>Talking</capacity>
+            <offset>-0.35</offset>
+        </li>	   
+        </capMods>
+	   <hediffGivers>
+             <li Class="HediffGiver_Random">
+              <hediff>Asthma</hediff>
+              <mtbDays>100</mtbDays>
+              <partsToAffect>
+               <li>Lung</li>
+              </partsToAffect>
+             </li>
+             <li Class="HediffGiver_Random">
+              <hediff>Frail</hediff>
+              <mtbDays>150</mtbDays>
+              <partsToAffect>
+               <li>Torso</li>
+              </partsToAffect>
+             </li>
+             <li Class="HediffGiver_Random">
+              <hediff>ChemicalDamageModerate</hediff>
+              <mtbDays>160</mtbDays>
+              <partsToAffect>
+                <li>Lung</li>
+              </partsToAffect>
+             </li>
+             <li Class="HediffGiver_RandomDrugEffect">
+              <hediff>ChemicalDamageModerate</hediff>
+              <severityToMtbDaysCurve>
+              <points>
+                <li>(0.45, 99999)</li>
+                <li>(0.5, 300)</li>
+                <li>(1, 75)</li>
+              </points>
+              </severityToMtbDaysCurve>
+              <partsToAffect>
+                <li>Brain</li>		
+              </partsToAffect>
+             </li>
+	   </hediffGivers>
+      </li>	
+    </stages>      
+  </HediffDef>
+
+  <ChemicalDef>
+    <defName>FlakeLaced</defName>
+    <label>laced flake</label>
+    <addictionHediff>FlakeLacedAddiction</addictionHediff>
+    <toleranceHediff>FlakeLacedTolerance</toleranceHediff>
+    <onGeneratedAddictedToleranceChance>0.6</onGeneratedAddictedToleranceChance>
+    <geneOverdoseChanceFactorResist>0.5</geneOverdoseChanceFactorResist>
+    <geneOverdoseChanceFactorImmune>0</geneOverdoseChanceFactorImmune>
+  </ChemicalDef>
+  
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>NeedFlakeLaced</defName>
+    <needClass>Need_Chemical</needClass>
+    <label>laced flake</label>
+    <description>Because of an addiction to laced flake, this person needs to regularly consume more to avoid withdrawal symptoms.</description>
+    <listPriority>20</listPriority>
+  </NeedDef>
+
+  <HediffDef ParentName="DrugToleranceBase">
+    <defName>FlakeLacedTolerance</defName>
+    <label>tolerance to laced flake</label>
+    <description>A built-up tolerance to laced flake. The more severe this tolerance is, the more it takes to get the same effect.\n\nContaminated drugs are infamous for the long-term health risks they pose, which only increase as usage continues.</description>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.012</severityPerDay>		
+      </li>
+      <li Class="HediffCompProperties_DrugEffectFactor">
+        <chemical>FlakeLaced</chemical>
+      </li>
+    </comps>
+    <hediffGivers>			<!-- Smoking random drugs will literally kill your teeth. It goes down to your jaw too -->
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>ChemicalDamageModerate</hediff>
+        <baseMtbDays>16.00</baseMtbDays>
+        <partsToAffect>
+          <li>Jaw</li>
+        </partsToAffect>
+      </li>				<!-- First it dies at the nerve, then the dead tooth starts to rot, eventually it goes down to your jaw too. And that's how it really works. -->
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>OrganDecay</hediff>
+        <minSeverity>0.01</minSeverity>
+        <baseMtbDays>60.00</baseMtbDays>
+        <partsToAffect>
+          <li>Jaw</li>
+        </partsToAffect>
+      </li>
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>ChemicalDamageModerate</hediff>
+        <severityToMtbDaysCurve>
+          <points>
+            <li>(0.05, 99999)</li>
+            <li>(0.3, 220)</li>
+            <li>(1.0, 45)</li>
+          </points>
+        </severityToMtbDaysCurve>
+        <partsToAffect>
+          <li>Kidney</li>
+        </partsToAffect>
+      </li>
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>ChemicalDamageSevere</hediff>
+        <severityToMtbDaysCurve>
+          <points>
+            <li>(0.05, 99999)</li>
+            <li>(0.10, 380)</li>
+            <li>(0.40, 260)</li>
+            <li>(0.6, 170)</li>
+            <li>(1.0, 90)</li>
+          </points>
+        </severityToMtbDaysCurve>
+        <partsToAffect>
+          <li>Heart</li>
+          <li>Brain</li>
+        </partsToAffect>
+      </li>
+    </hediffGivers>    
+  </HediffDef>
+  
+  <HediffDef ParentName="AddictionBase">
+    <defName>FlakeLacedAddiction</defName>
+    <label>addiction to laced flake</label>
+    <description>A chemical addiction to laced flake. Consumption of adulterated drugs has caused neurological adaptations at the cellular level, so the brain can no longer function properly without them.\n\nWithout regular doses of laced flake, excruciating withdrawal symptoms will begin. However, extended abstinence will eventually force the brain to adapt back to its normal state, resolving the addiction.</description>
+    <hediffClass>Hediff_Addiction</hediffClass>
+    <causesNeed>NeedFlakeLaced</causesNeed>
+    <comps>     
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.0777</severityPerDay>		<!-- The higher this number the faster the addiction becomes unsatisfied -->
+	<showDaysToRecover>true</showDaysToRecover>
+      </li>	  
+    </comps>
+    <stages>
+      <li>	    
+      </li>
+      <li>
+	<label>desperately craving laced flake</label>
+	<vomitMtbDays>0.40</vomitMtbDays>
+        <painOffset>0.18</painOffset>
+        <painFactor>1.5</painFactor>
+	<minSeverity>0.30</minSeverity>
+	<statOffsets>		 
+	 <GlobalLearningFactor>-0.30</GlobalLearningFactor>
+	 <WorkSpeedGlobal>-0.60</WorkSpeedGlobal>
+	</statOffsets>
+	<capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.7</postFactor>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.64</postFactor>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.8</postFactor>
+          </li>          
+        </capMods>		
+	<mentalStateGivers>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>1</mtbDays>
+          </li>
+          <li>
+            <mentalState>TargetedInsultingSpree</mentalState>
+            <mtbDays>6</mtbDays>
+          </li>
+	  <li>
+             <mentalState>SocialFighting</mentalState>
+            <mtbDays>8</mtbDays>
+          </li>	
+	  <li>
+            <mentalState>Berserk</mentalState>
+            <mtbDays>8</mtbDays>
+          </li>	
+        </mentalStateGivers>
+	<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+              <hediff>LCB_Itchy</hediff>
+              <baseMtbDays>0.1</baseMtbDays> <!-- regular mtbDays exists too, but does not work on RandomDrugEffect or as a decimal, by the way. -->
+              <partsToAffect>
+		<li>Brain</li>
+              </partsToAffect>
+          </li>	
+	</hediffGivers>
+      </li>
+      <li>
+        <label>withdrawal</label>
+	<vomitMtbDays>0.66</vomitMtbDays>
+        <painOffset>0.05</painOffset>
+        <painFactor>4</painFactor>
+	<minSeverity>0.45</minSeverity>
+        <hungerRateFactorOffset>0.5</hungerRateFactorOffset>
+        <socialFightChanceFactor>8.0</socialFightChanceFactor>
+        <restFallFactor>1.5</restFallFactor>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.20</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.20</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.20</offset>
+          </li>
+        </capMods>
+        <mentalStateGivers>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>10</mtbDays>
+          </li>
+          <li>
+            <mentalState>Wander_Psychotic</mentalState>
+            <mtbDays>7</mtbDays>
+          </li>
+          <li>
+            <mentalState>Binging_DrugMajor</mentalState>
+            <mtbDays>4</mtbDays>
+          </li>
+	  <li>
+            <mentalState>Wander_Sad</mentalState>
+            <mtbDays>2</mtbDays>
+          </li>
+        </mentalStateGivers>
+	<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+              <hediff>LCB_Itchy</hediff>
+              <minSeverity>0.33</minSeverity>
+              <baseMtbDays>0.66</baseMtbDays>
+              <partsToAffect>
+		<li>Brain</li>
+              </partsToAffect>
+          </li>	
+          <li Class="HediffGiver_RandomDrugEffect">
+            <hediff>Carcinoma</hediff>
+            <severityToMtbDaysCurve>
+              <points>
+		<li>(0.36, 99999)</li>
+		<li>(0.4, 180)</li>
+		<li>(1, 135)</li>
+              </points>
+            </severityToMtbDaysCurve>
+            <partsToAffect>
+              <li>Nose</li>
+            </partsToAffect>
+          </li>
+          <li Class="HediffGiver_RandomDrugEffect">
+            <hediff>Carcinoma</hediff>
+            <severityToMtbDaysCurve>
+              <points>
+		<li>(0.36, 99999)</li>
+		<li>(0.4, 180)</li>
+		<li>(1, 135)</li>
+              </points>
+            </severityToMtbDaysCurve>
+            <partsToAffect>
+              <li>Lung</li>
+            </partsToAffect>
+          </li>
+            <li Class="HediffGiver_RandomDrugEffect">
+              <hediff>ChemicalDamageModerate</hediff>
+              <severityToMtbDaysCurve>
+              <points>
+		<li>(0.45, 99999)</li>
+		<li>(0.5, 120)</li>
+		<li>(1, 90)</li>
+              </points>
+              </severityToMtbDaysCurve>
+              <partsToAffect>
+		<li>Kidney</li>
+              </partsToAffect>
+            </li>
+            <li Class="HediffGiver_RandomDrugEffect">
+              <hediff>ChemicalDamageModerate</hediff>
+              <severityToMtbDaysCurve>
+              <points>
+		<li>(0.45, 99999)</li>
+		<li>(0.5, 160)</li>
+		<li>(1, 140)</li>
+              </points>
+              </severityToMtbDaysCurve>
+              <partsToAffect>
+		<li>Brain</li>
+              </partsToAffect>
+            </li>
+	</hediffGivers>
+      </li>
+    </stages>      
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>FlakeLacedHigh_Bad</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>FlakeLacedHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+    <stackLimit>3</stackLimit>
+    <nullifyingTraits>
+      <li>DrugDesire</li>
+    </nullifyingTraits>
+    <stages>
+      <li>
+        <label>high on laced flake</label>
+        <description>This just makes me wish I smoked flake.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+      <li>
+        <label>high on laced flake</label>
+        <description>It might not be flake...but it's alright.</description>
+        <baseMoodEffect>22</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>FlakeLacedHigh</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>FlakeLacedHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+    <stackLimit>3</stackLimit>
+    <requiredTraits>
+      <li>DrugDesire</li>
+    </requiredTraits>
+    <stages>
+      <li>
+        <label>high on laced flake</label>
+        <description>It's still good stuff.</description>
+        <baseMoodEffect>26</baseMoodEffect>
+      </li>
+      <li>
+        <label>high on laced flake</label>
+        <description>Whatever this is, it hits the SPOT!</description>
+        <baseMoodEffect>30</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>FlakeLacedWithdrawal</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>FlakeLacedAddiction</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+    <stackLimit>3</stackLimit>
+    <nullifyingHediffs>
+      <li>FlakeLacedHigh</li>
+    </nullifyingHediffs>
+    <stages>
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <label>laced flake withdrawal</label>
+        <description>My insides feel crazy, I can't think straight, and I'm just so angry all the time. I don't care if it's killing me, I just need one more smoke.</description>
+        <baseMoodEffect>-22</baseMoodEffect>
+      </li>
+      <li>
+        <label>desperation for laced flake</label>
+        <description>Been so long since my last smoke. I just...can't stop...SCRATCHING!</description>
+        <baseMoodEffect>-40</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

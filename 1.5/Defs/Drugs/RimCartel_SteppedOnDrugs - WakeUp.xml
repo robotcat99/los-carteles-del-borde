@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--  ===============================  Wake Up  ======================================  -->
+
+  <ThingDef ParentName="DrugBase">
+    <defName>WakeUpLaced</defName>
+    <label>wake-up</label>
+    <description>A synthetic stimulant. Wake-up fills the user's need for rest, allowing them to work for extended periods without getting tired. However, taking wake-up runs the risk of developing an addiction.\n\nIn the most competitive universities and companies of many worlds, high-achievers are sometimes called 'wake-ups' because of the association with this drug.</description>
+    <descriptionHyperlinks>
+      <HediffDef>WakeUpHigh</HediffDef>
+      <HediffDef>WakeUpAddiction</HediffDef>
+      <HediffDef>HeartAttack</HediffDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Drug/WakeUp</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>900</WorkToMake>
+      <MarketValue>35</MarketValue>
+      <Mass>0.005</Mass>
+    </statBases>
+    <techLevel>Industrial</techLevel>
+    <ingestible>
+      <foodType>Processed</foodType>
+      <joyKind>Chemical</joyKind>
+      <joy>0.40</joy>
+      <drugCategory>Hard</drugCategory>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>WakeUpLacedHigh</hediffDef>
+          <severity>0.5</severity>
+          <toleranceChemical>WakeUp</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Rest</need>
+          <offset>0.35</offset>
+          <toleranceChemical>WakeUp</toleranceChemical>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+<!--    <recipeMaker>
+      <researchPrerequisite>WakeUpProduction</researchPrerequisite>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <displayPriority>1800</displayPriority>
+    </recipeMaker>
+    <costList>
+      <Neutroamine>1</Neutroamine>
+    </costList> -->
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>WakeUpLaced</chemical>
+        <addictiveness>0.074</addictiveness>
+	<isCombatEnhancingDrug>false</isCombatEnhancingDrug>
+        <existingAddictionSeverityOffset>0.25</existingAddictionSeverityOffset>
+        <needLevelOffset>0.6</needLevelOffset>
+        <overdoseSeverityOffset>0.32~0.55</overdoseSeverityOffset>
+        <largeOverdoseChance>0.074</largeOverdoseChance>
+        <listOrder>210</listOrder>
+      </li>
+      <li Class="CompProperties_Drug">
+        <chemical>WakeUp</chemical>
+        <addictiveness>0.010</addictiveness>
+	<isCombatEnhancingDrug>false</isCombatEnhancingDrug>
+        <existingAddictionSeverityOffset>0.10</existingAddictionSeverityOffset>
+        <needLevelOffset>0.4</needLevelOffset>
+        <listOrder>212</listOrder>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>WakeUpLacedHigh</defName>
+    <label>high on laced wake-up</label>
+    <labelNoun>contaminated wake-up high</labelNoun>
+    <description>Wake-up's active chemical in the bloodstream, diluted and laced with another substance to make up the difference. The added contaminants0 either fail to fully make up for the dilution or conflict with the stimulant qualities already found in wake-up, leading to a debilitating high compared to the pure drug.</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-2.25</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+      <stages>						<!--Stage One -->
+      <li>
+        <label>high on laced wake-up</label>
+	<vomitMtbDays>4.00</vomitMtbDays>
+        <restFallFactor>0.92</restFallFactor>
+	<painOffset>0.12</painOffset>
+	<statOffsets>		 
+	 <GlobalLearningFactor>-0.10</GlobalLearningFactor>
+	</statOffsets>
+	<capMods>
+        <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.12</offset>
+        </li>
+        <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.15</offset>
+        </li>
+        <li>
+            <capacity>Talking</capacity>
+            <offset>-0.15</offset>
+        </li>	  
+        </capMods>
+      </li>
+      <li>						<!--Stage Two -->
+        <label>high on laced wake-up</label>
+	<minSeverity>0.65</minSeverity>
+	<vomitMtbDays>2.50</vomitMtbDays>
+	<painOffset>0.17</painOffset>
+        <painFactor>0.80</painFactor>
+        <restFallFactor>0.84</restFallFactor>
+	<statOffsets>
+	  <MentalBreakThreshold>0.06</MentalBreakThreshold>  
+	</statOffsets>
+        <statFactors>
+	 <MeleeDamageFactor>1.25</MeleeDamageFactor>
+        </statFactors>
+	<capMods>
+        <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.06</offset>
+        </li>
+        <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.35</offset>
+        </li>
+        <li>
+            <capacity>Moving</capacity>
+            <offset>-0.20</offset>
+        </li>
+        <li>
+            <capacity>Talking</capacity>
+            <offset>-0.25</offset>
+        </li>	  
+        </capMods>
+	<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+            <hediff>ChemicalDamageModerate</hediff>
+            <severityToMtbDaysCurve>
+             <points>
+              <li>(0.25, 99999)</li>
+              <li>(0.45, 100)</li>
+              <li>(1, 65)</li>
+             </points>
+            </severityToMtbDaysCurve>
+            <partsToAffect>
+              <li>Stomach</li>		
+            </partsToAffect>
+          </li>
+          <li Class="HediffGiver_RandomDrugEffect">
+            <hediff>Carcinoma</hediff>
+            <severityToMtbDaysCurve>
+              <points>
+		<li>(0.36, 99999)</li>
+		<li>(0.4, 180)</li>
+		<li>(1, 135)</li>
+              </points>
+            </severityToMtbDaysCurve>
+            <partsToAffect>
+              <li>Stomach</li>
+            </partsToAffect>
+          </li>
+          <li Class="HediffGiver_RandomDrugEffect">
+            <hediff>Carcinoma</hediff>
+            <severityToMtbDaysCurve>
+              <points>
+		<li>(0.36, 99999)</li>
+		<li>(0.4, 180)</li>
+		<li>(1, 135)</li>
+              </points>
+            </severityToMtbDaysCurve>
+            <partsToAffect>
+              <li>Kidney</li>
+            </partsToAffect>
+            <countToAffect>1</countToAffect>
+          </li>
+	</hediffGivers>  
+      </li>
+    </stages>      
+  </HediffDef>
+
+  <ChemicalDef>
+    <defName>WakeUpLaced</defName>
+    <label>laced wake-up</label>
+    <addictionHediff>WakeUpLacedAddiction</addictionHediff>
+    <toleranceHediff>WakeUpLacedTolerance</toleranceHediff>
+    <onGeneratedAddictedToleranceChance>0.6</onGeneratedAddictedToleranceChance>
+    <geneOverdoseChanceFactorResist>0.5</geneOverdoseChanceFactorResist>
+    <geneOverdoseChanceFactorImmune>0</geneOverdoseChanceFactorImmune>
+  </ChemicalDef>
+  
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>NeedWakeUpLaced</defName>
+    <needClass>Need_Chemical</needClass>
+    <label>laced wake-up</label>
+    <description>Because of an addiction to laced wake-up, this person needs to regularly consume more to avoid withdrawal symptoms.</description>
+    <listPriority>20</listPriority>
+  </NeedDef>
+
+  <HediffDef ParentName="DrugToleranceBase">
+    <defName>WakeUpLacedTolerance</defName>
+    <label>tolerance to laced wake-up</label>
+    <description>A built-up tolerance to laced wake-up. The more severe this tolerance is, the more it takes to get the same effect.\n\nContaminated drugs are infamous for the long-term health risks they pose, which only increase as usage continues.</description>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.09</severityPerDay>		
+      </li>
+      <li Class="HediffCompProperties_DrugEffectFactor">
+        <chemical>WakeUpLaced</chemical>
+      </li>
+    </comps>
+    <hediffGivers>
+      <li Class="HediffGiver_Random">
+        <hediff>Carcinoma</hediff>
+        <mtbDays>120</mtbDays>
+        <partsToAffect>
+          <li>Heart</li>
+        </partsToAffect>
+      </li>
+      <li Class="HediffGiver_Random">
+        <hediff>HeartAttack</hediff>
+        <mtbDays>120</mtbDays>
+        <partsToAffect>
+          <li>Heart</li>
+        </partsToAffect>
+      </li>
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>ChemicalDamageSevere</hediff>
+        <severityToMtbDaysCurve>
+          <points>
+            <li>(0.45, 99999)</li>
+            <li>(0.50, 120)</li>
+            <li>(1.0, 90)</li>
+          </points>
+        </severityToMtbDaysCurve>
+        <partsToAffect>
+          <li>Kidney</li>
+        </partsToAffect>
+      </li>			<!-- Popping random pills is not a good idea for keeping healthy organs. Who'd've thought? -->
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>ChemicalDamageSevere</hediff>
+        <severityToMtbDaysCurve>
+          <points>
+            <li>(0.05, 99999)</li>
+            <li>(0.10, 380)</li>
+            <li>(0.40, 260)</li>
+            <li>(0.6, 170)</li>
+            <li>(1.0, 90)</li>
+          </points>
+        </severityToMtbDaysCurve>
+        <partsToAffect>
+          <li>Heart</li>
+          <li>Brain</li>
+        </partsToAffect>
+      </li>
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>ChemicalDamageSevere</hediff>
+        <severityToMtbDaysCurve>
+          <points>
+            <li>(0.05, 99999)</li>
+            <li>(0.3, 220)</li>
+            <li>(1.0, 45)</li>
+          </points>
+        </severityToMtbDaysCurve>
+        <partsToAffect>
+          <li>Kidney</li>
+        </partsToAffect>
+      </li>
+    </hediffGivers>    
+  </HediffDef>
+  
+  <HediffDef ParentName="AddictionBase">
+    <defName>WakeUpLacedAddiction</defName>
+    <label>addiction to laced wake-up</label>
+    <description>A chemical addiction to laced wake-up. Consumption of adulterated drugs has caused neurological adaptations at the cellular level, so the brain can no longer function properly without them.\n\nWithout regular doses of laced wake-up, excruciating withdrawal symptoms will begin. However, extended abstinence will eventually force the brain to adapt back to its normal state, resolving the addiction.</description>
+    <hediffClass>Hediff_Addiction</hediffClass>
+    <causesNeed>NeedWakeUpLaced</causesNeed>
+    <comps>     
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.0777</severityPerDay>		<!-- The higher this number the faster the addiction becomes unsatisfied -->
+	<showDaysToRecover>true</showDaysToRecover>
+      </li>	  
+    </comps>
+    <stages>
+      <li>	    
+      </li>
+      <li>
+	<label>desperately craving laced wake-up</label>
+	<vomitMtbDays>0.40</vomitMtbDays>
+        <painOffset>0.12</painOffset>
+        <painFactor>1.5</painFactor>
+	<minSeverity>0.30</minSeverity>
+	<statOffsets>		 
+	 <GlobalLearningFactor>-0.80</GlobalLearningFactor>
+	 <WorkSpeedGlobal>-0.60</WorkSpeedGlobal>
+	</statOffsets>
+	<capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.7</postFactor>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.64</postFactor>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.8</postFactor>
+          </li>          
+        </capMods>		
+	<mentalStateGivers>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>1</mtbDays>
+          </li>
+          <li>
+            <mentalState>TargetedInsultingSpree</mentalState>
+            <mtbDays>6</mtbDays>
+          </li>
+	  <li>
+             <mentalState>SocialFighting</mentalState>
+            <mtbDays>8</mtbDays>
+          </li>	
+	  <li>
+            <mentalState>Berserk</mentalState>
+            <mtbDays>8</mtbDays>
+          </li>	
+        </mentalStateGivers>
+      </li>
+      <li>
+        <label>withdrawal</label>
+	<vomitMtbDays>0.66</vomitMtbDays>
+        <painOffset>0.05</painOffset>
+        <painFactor>4</painFactor>
+	<minSeverity>0.45</minSeverity>
+        <hungerRateFactorOffset>0.5</hungerRateFactorOffset>
+        <restFallFactor>1.3</restFallFactor>
+        <socialFightChanceFactor>8.0</socialFightChanceFactor>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.88</postFactor>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.14</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.20</offset>
+          </li>
+        </capMods>
+        <mentalStateGivers>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>10</mtbDays>
+          </li>
+          <li>
+            <mentalState>Wander_Psychotic</mentalState>
+            <mtbDays>7</mtbDays>
+          </li>
+          <li>
+            <mentalState>Binging_DrugMajor</mentalState>
+            <mtbDays>4</mtbDays>
+          </li>
+	  <li>
+            <mentalState>Wander_Sad</mentalState>
+            <mtbDays>2</mtbDays>
+          </li>
+        </mentalStateGivers>
+      </li>
+    </stages>      
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>WakeUpLacedHigh_Angry</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>WakeUpLacedHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+    <stackLimit>3</stackLimit>
+    <nullifyingTraits>
+      <li>DrugDesire</li>
+    </nullifyingTraits>
+    <stages>
+      <li>
+        <label>high on laced wake-up</label>
+        <description>It's not working.</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+      <li>
+        <label>high on laced wake-up</label>
+        <description>Urghh, my head! Hey, what's with this pill?!</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>WakeUpLacedHigh_Good</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>WakeUpLacedHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <requiredTraits>
+      <li>DrugDesire</li>
+    </requiredTraits>
+    <stages>
+      <li>
+        <label>high on laced wake-up</label>
+        <description>It's not the high I wanted, but I'm just, so messed up right now.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+
+  <ThoughtDef>
+    <defName>WakeUpLacedWithdrawal</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>WakeUpLacedAddiction</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+    <stackLimit>3</stackLimit>
+    <nullifyingHediffs>
+      <li>WakeUpLacedHigh</li>
+    </nullifyingHediffs>
+    <stages>
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <label>laced wake-up withdrawal</label>
+        <description>My insides feel crazy, I can't think straight, and I'm just so angry all the time. I don't care if it's killing me, I just need one more pill.</description>
+        <baseMoodEffect>-22</baseMoodEffect>
+      </li>
+      <li>
+        <label>desperation for laced wake-up</label>
+        <description>So long since my last pill. Can't think. Can't stop shaking. I...think I'm dying...</description>
+        <baseMoodEffect>-40</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

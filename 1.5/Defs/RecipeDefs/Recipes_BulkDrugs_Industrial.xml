@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    
+	<RecipeDef>
+		<defName>MakeLCB_Fent</defName>
+		<label>cook some fent</label>
+		<description>Cooks a batch of fent from neutroamine.</description>
+		<jobString>Cooking fent.</jobString>
+		<workAmount>1000</workAmount>
+		<workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+      		<soundWorking>Recipe_Drug</soundWorking>
+		<researchPrerequisite>LCB_SinProduction</researchPrerequisite>
+		<requiredGiverWorkType>Research</requiredGiverWorkType>
+		<effectWorking>Cook</effectWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Neutroamine</li>
+					</thingDefs>
+				</filter>
+				<count>6</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Neutroamine</li>
+			</thingDefs>
+		   <categories>
+				
+		   </categories>
+		</fixedIngredientFilter>
+		<products>
+			<LCB_Fent>30</LCB_Fent>
+		</products>
+		<recipeUsers>
+			<li>DrugLab</li>
+		</recipeUsers>
+		<skillRequirements>
+			<Intellectual>4</Intellectual>
+		</skillRequirements>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>MakeLCB_Fent_Bulk</defName>
+		<label>cook industrial size batch of fent</label>
+		<description>Cooks an industrial size batch of fent from neutroamine.</description>
+		<jobString>Cooking fent in bulk.</jobString>
+		<workAmount>1000</workAmount>
+		<workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+      		<soundWorking>Recipe_Drug</soundWorking>
+		<researchPrerequisite>LCB_SinProduction</researchPrerequisite>
+		<requiredGiverWorkType>Research</requiredGiverWorkType>
+		<effectWorking>Cook</effectWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Neutroamine</li>
+					</thingDefs>
+				</filter>
+				<count>30</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Neutroamine</li>
+			</thingDefs>
+		   <categories>
+				
+		   </categories>
+		</fixedIngredientFilter>
+		<products>
+			<LCB_Fent>150</LCB_Fent>
+		</products>
+		<recipeUsers>
+			<li>DrugLab</li>
+		</recipeUsers>
+		<skillRequirements>
+			<Intellectual>4</Intellectual>
+		</skillRequirements>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>MakeLCB_Zoom</defName>
+		<label>cook some zoom</label>
+		<description>Cooks a batch of zoom from go-juice.</description>
+		<jobString>Cooking zoom.</jobString>
+		<workAmount>1000</workAmount>
+		<workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+      		<soundWorking>Recipe_Drug</soundWorking>
+		<researchPrerequisite>GoJuiceProduction</researchPrerequisite>
+		<requiredGiverWorkType>Research</requiredGiverWorkType>
+		<effectWorking>Cook</effectWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>GoJuice</li>
+					</thingDefs>
+				</filter>
+				<count>6</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>GoJuice</li>
+			</thingDefs>
+		   <categories>
+				
+		   </categories>
+		</fixedIngredientFilter>
+		<products>
+			<LCB_Zoom>30</LCB_Zoom>
+		</products>
+		<recipeUsers>
+			<li>DrugLab</li>
+		</recipeUsers>
+		<skillRequirements>
+			<Intellectual>4</Intellectual>
+		</skillRequirements>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>MakeLCB_Zoom_Bulk</defName>
+		<label>cook industrial size batch of zoom</label>
+		<description>Cooks an industrial size batch of zoom from go-juice.</description>
+		<jobString>Cooking zoom in bulk.</jobString>
+		<workAmount>1000</workAmount>
+		<workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+      		<soundWorking>Recipe_Drug</soundWorking>
+		<researchPrerequisite>GoJuiceProduction</researchPrerequisite>
+		<requiredGiverWorkType>Research</requiredGiverWorkType>
+		<effectWorking>Cook</effectWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>GoJuice</li>
+					</thingDefs>
+				</filter>
+				<count>30</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>GoJuice</li>
+			</thingDefs>
+		   <categories>
+				
+		   </categories>
+		</fixedIngredientFilter>
+		<products>
+			<LCB_Zoom>150</LCB_Zoom>
+		</products>
+		<recipeUsers>
+			<li>DrugLab</li>
+		</recipeUsers>
+		<skillRequirements>
+			<Intellectual>4</Intellectual>
+		</skillRequirements>
+	</RecipeDef>
+
+</Defs>

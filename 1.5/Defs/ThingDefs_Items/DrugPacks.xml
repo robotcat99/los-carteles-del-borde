@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--  ===============================  Warning! Make sure you copy every step of the drug pack information or Rimworld will crash! ======================================  -->
+  
+  <ThingDef Name="LCB_BodyPartDrugMuleBase" ParentName="BodyPartBase" Abstract="True">
+    <techLevel>Industrial</techLevel>
+    <thingCategories>
+      <li>BodyPartsProsthetic</li>
+    </thingCategories>	
+    <graphicData>
+      <texPath>Things/Item/Health/LCB_DrugPack</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+    </graphicData>	
+    <statBases>
+      <WorkToMake>1500</WorkToMake>
+    </statBases>
+	<techHediffsTags Inherit="False">
+      <li>DrugMule</li>
+    </techHediffsTags>
+	<recipeMaker>
+	  <recipeUsers>
+		<li>CraftingSpot</li>
+        <li>DrugLab</li>
+	  </recipeUsers>
+	</recipeMaker>
+  </ThingDef>
+  
+  <ThingDef ParentName="LCB_BodyPartDrugMuleBase">
+    <defName>LCB_DrugPackWU</defName>
+    <label>wake-up drug pack</label>
+    <description>Cloth bags filled with drugs.</description>
+    <descriptionHyperlinks><RecipeDef>LCB_DrugMuleWakeUp</RecipeDef></descriptionHyperlinks>    
+    <graphicData>
+      <color>(255,128,0)</color>
+    </graphicData>	
+	<costList>
+      <WakeUp>200</WakeUp>
+      <Cloth>10</Cloth>
+    </costList>    
+	<statBases>
+      <MarketValue>5500</MarketValue>
+	  <Mass>1</Mass>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="LCB_BodyPartDrugMuleBase">
+    <defName>LCB_DrugPackSL</defName>
+    <label>smokeleaf drug pack</label>
+    <description>Cloth bags filled with drugs.</description>
+    <descriptionHyperlinks><RecipeDef>LCB_DrugMuleSmokeleaf</RecipeDef></descriptionHyperlinks>    <!--  Here  -->
+    <graphicData>
+      <color>(51,102,0)</color>
+    </graphicData>
+	<costList>
+      <SmokeleafJoint>60</SmokeleafJoint>
+      <Cloth>10</Cloth>
+    </costList>    
+	<statBases>
+      <MarketValue>500</MarketValue>
+	  <Mass>3</Mass>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="LCB_BodyPartDrugMuleBase">
+    <defName>LCB_DrugPackYY</defName>
+    <label>yayo drug pack</label>
+    <description>Cloth bags filled with drugs.</description>
+    <descriptionHyperlinks><RecipeDef>LCB_DrugMuleYayo</RecipeDef></descriptionHyperlinks>    <!--  Here  -->
+    <costList>
+      <Yayo>60</Yayo>
+      <Cloth>10</Cloth>
+    </costList>
+	<graphicData>
+      <color>(255,255,255)</color>
+    </graphicData>
+	<statBases>
+      <MarketValue>1000</MarketValue>
+	  <Mass>3</Mass>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="LCB_BodyPartDrugMuleBase">
+    <defName>LCB_DrugPackFlake</defName>
+    <label>flake drug pack</label>
+    <description>Cloth bags filled with drugs.</description>
+    <descriptionHyperlinks><RecipeDef>LCB_DrugMuleFlake</RecipeDef></descriptionHyperlinks>    <!--  Here  -->
+    <graphicData>
+      <color>(224,224,224)</color>
+    </graphicData>
+	<costList>
+      <Flake>60</Flake>
+      <Cloth>10</Cloth>
+    </costList>    
+	<statBases>
+      <MarketValue>650</MarketValue>
+	  <Mass>3</Mass>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="LCB_BodyPartDrugMuleBase">
+    <defName>LCB_DrugPackLuci</defName>
+    <label>luciferium drug pack</label>
+    <description>Cloth bags filled with drugs.</description>
+    <descriptionHyperlinks><RecipeDef>LCB_DrugMuleLuci</RecipeDef></descriptionHyperlinks>    <!--  Here  -->
+    <graphicData>
+      <color>(255,0,0)</color>
+    </graphicData>
+	<costList>
+      <Luciferium>100</Luciferium>
+      <Cloth>10</Cloth>
+    </costList>    
+	<statBases>
+      <MarketValue>5500</MarketValue>
+	  <Mass>1</Mass>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="LCB_BodyPartDrugMuleBase">
+    <defName>LCB_DrugPackSalvia</defName>
+    <label>salvia drug pack</label>
+    <description>Cloth bags filled with drugs.</description>
+    <descriptionHyperlinks><RecipeDef>LCB_DrugMuleSalvia</RecipeDef></descriptionHyperlinks>    <!--  Here  -->
+    <graphicData>
+      <color>(255,255,0)</color>
+    </graphicData>
+	<costList>
+      <LCB_SalviaRC>100</LCB_SalviaRC>
+      <Cloth>10</Cloth>
+    </costList>    
+	<statBases>
+      <MarketValue>550</MarketValue>
+	  <Mass>3</Mass>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="LCB_BodyPartDrugMuleBase">
+    <defName>LCB_DrugPackRodeo</defName>
+    <label>rodeo drug pack</label>
+    <description>Cloth bags filled with drugs.</description>
+    <descriptionHyperlinks><RecipeDef>LCB_DrugMuleRodeo</RecipeDef></descriptionHyperlinks>    <!--  Here  -->
+    <graphicData>
+      <color>(0,204,0)</color>
+    </graphicData>
+	<costList>
+      <LCB_MorningGlory>100</LCB_MorningGlory>
+      <Cloth>10</Cloth>
+    </costList>    
+	<statBases>
+      <MarketValue>950</MarketValue>
+	  <Mass>3</Mass>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="LCB_BodyPartDrugMuleBase">
+    <defName>LCB_DrugPackSin</defName>
+    <label>sin drug pack</label>
+    <description>Cloth bags filled with drugs.</description>
+    <descriptionHyperlinks><RecipeDef>LCB_DrugMuleSin</RecipeDef></descriptionHyperlinks>    <!--  Here  -->
+    <graphicData>
+      <color>(0,128,255)</color>
+    </graphicData>
+	<costList>
+      <LCB_SinicuicheRC>100</LCB_SinicuicheRC>
+      <Cloth>10</Cloth>
+    </costList>    
+	<statBases>
+      <MarketValue>1400</MarketValue>
+	  <Mass>3</Mass>
+    </statBases>
+  </ThingDef>
+
+  <ThingDef ParentName="LCB_BodyPartDrugMuleBase">
+    <defName>LCB_DrugPackFent</defName>
+    <label>fent drug pack</label>
+    <description>Cloth bags filled with drugs.</description>
+    <descriptionHyperlinks><RecipeDef>LCB_DrugMuleFent</RecipeDef></descriptionHyperlinks>    <!--  Here  -->
+    <graphicData>
+      <color>(255,255,206)</color>
+    </graphicData>
+	<costList>
+      <LCB_Fent>150</LCB_Fent>
+      <Cloth>10</Cloth>
+    </costList>    
+	<statBases>
+      <MarketValue>360</MarketValue>
+	  <Mass>1.6</Mass>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="LCB_BodyPartDrugMuleBase">
+    <defName>LCB_DrugPackGJ</defName>
+    <label>go-juice drug pack</label>
+    <description>Cloth bags filled with drugs.</description>
+    <descriptionHyperlinks><RecipeDef>LCB_DrugMuleGoJuice</RecipeDef></descriptionHyperlinks>    <!--  Here  -->
+    <graphicData>
+      <color>(0,204,102)</color>
+    </graphicData>
+	<costList>
+      <GoJuice>100</GoJuice>
+      <Cloth>10</Cloth>
+    </costList>    
+	<statBases>
+      <MarketValue>5500</MarketValue>
+	  <Mass>3</Mass>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="LCB_BodyPartDrugMuleBase">
+    <defName>LCB_DrugPackZoom</defName>
+    <label>zoom drug pack</label>
+    <description>Cloth bags filled with drugs.</description>
+    <descriptionHyperlinks><RecipeDef>LCB_DrugMuleZoom</RecipeDef></descriptionHyperlinks>    <!--  Here  -->
+    <graphicData>
+      <color>(137,196,136)</color>
+    </graphicData>
+	<costList>
+      <LCB_Zoom>60</LCB_Zoom>
+      <Cloth>10</Cloth>
+    </costList>    
+	<statBases>
+      <MarketValue>768</MarketValue>     <!--  960 w/20% discount  -->
+	  <Mass>3</Mass>
+    </statBases>
+  </ThingDef>
+  
+</Defs>  

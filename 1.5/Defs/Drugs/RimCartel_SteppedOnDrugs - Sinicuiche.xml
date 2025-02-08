@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--  ===============================  Sinicuiche  ======================================  -->
+
+   <ThingDef ParentName="DrugBase">
+    <defName>SinicuicheLaced</defName>
+    <label>Sin</label>
+    <description>Narcotic made from the Sinicuiche plant. Goes by the street name Sin.</description>
+    <tradeability>Sellable</tradeability>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <tickerType>Rare</tickerType>
+    <descriptionHyperlinks>
+      <HediffDef>LCB_SinicuicheHigh</HediffDef>
+      <HediffDef>LCB_SinicuicheTolerance</HediffDef>
+      <HediffDef>LCB_SinicuicheAddiction</HediffDef>	  
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Materials/HamamelisAcid</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <MarketValue>18</MarketValue>
+      <Flammability>1.0</Flammability>
+      <Mass>0.03</Mass>
+    </statBases>
+    <techLevel>Industrial</techLevel>
+    <ingestible>
+      <ingestHoldUsesTable>false</ingestHoldUsesTable>
+      <ingestCommandString>Use {0}</ingestCommandString>
+      <ingestReportString>Using {0}.</ingestReportString>
+      <useEatingSpeedStat>false</useEatingSpeedStat>
+      <ingestSound>Ingest_Inject</ingestSound>
+      <foodType>Processed</foodType>
+      <joyKind>Chemical</joyKind>
+      <joy>0.40</joy>
+      <drugCategory>Hard</drugCategory>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>SinicuicheLacedHigh</hediffDef>
+          <severity>0.5</severity>
+          <toleranceChemical>SinicuicheLaced</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Rest</need>
+          <offset>-0.2</offset>
+          <toleranceChemical>SinicuicheLaced</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Comfort</need>
+          <offset>0.2</offset>
+          <toleranceChemical>SinicuicheLaced</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>LCB_SinicuicheTolerance</hediffDef>
+          <severity>0.042</severity>
+          <divideByBodySize>true</divideByBodySize>	  
+        </li>
+      </outcomeDoers>
+    </ingestible>
+<!--	<recipeMaker>
+      <recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+	  <researchPrerequisite>LCB_SinProduction</researchPrerequisite>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <LCB_SinicuicheTar>4</LCB_SinicuicheTar>
+    </costList> -->
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>13</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+      <li Class="CompProperties_Drug">
+          <chemical>SinicuicheLaced</chemical>
+          <addictiveness>0.074</addictiveness>
+          <isCombatEnhancingDrug>false</isCombatEnhancingDrug>          
+          <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
+          <needLevelOffset>0.9</needLevelOffset>
+          <overdoseSeverityOffset>0.32~0.55</overdoseSeverityOffset>
+          <largeOverdoseChance>0.074</largeOverdoseChance>          
+      </li>
+      <li Class="CompProperties_Drug">
+          <chemical>SinicuicheLaced</chemical>
+          <addictiveness>0.032</addictiveness>
+          <isCombatEnhancingDrug>false</isCombatEnhancingDrug>          
+          <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
+          <needLevelOffset>0.4</needLevelOffset>         
+      </li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>SinicuicheLacedHigh</defName>
+    <label>high on laced sin</label>
+    <labelNoun>contaminated sin high</labelNoun>
+    <description>Sin's active chemical in the bloodstream, diluted and laced with another substance to make up the difference. The added effects either fail to fully make up for the dilution or conflict with the stimulant qualities already found in sin, leading to a debilitating high compared to the pure drug.</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-2.25</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+      <stages>						<!--Stage One -->
+      <li>
+        <label>high on laced sin</label>
+	<vomitMtbDays>4.00</vomitMtbDays>
+        <painFactor>0.7</painFactor>
+	<painOffset>0.2</painOffset>
+        <restFallFactor>1.15</restFallFactor>
+	<statOffsets>		 
+	 <GlobalLearningFactor>-0.15</GlobalLearningFactor>
+	</statOffsets>
+	<capMods>
+        <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.18</offset>
+        </li>
+        <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.25</offset>
+        </li>
+        <li>
+            <capacity>Moving</capacity>
+            <offset>-0.08</offset>
+        </li>
+        <li>
+            <capacity>Talking</capacity>
+            <offset>-0.15</offset>
+        </li>	  
+        </capMods>
+      </li>
+      <li>						<!--Stage Two -->
+        <label>high on laced sin</label>
+	<minSeverity>0.65</minSeverity>
+	<vomitMtbDays>2.50</vomitMtbDays>
+	<painOffset>0.15</painOffset>
+        <painFactor>0.56</painFactor>
+        <restFallFactor>1.4</restFallFactor>
+	<statOffsets>
+	 <GlobalLearningFactor>-0.18</GlobalLearningFactor>
+	</statOffsets>
+        <statFactors>
+	 <MeleeDamageFactor>0.92</MeleeDamageFactor>
+        </statFactors>
+	<capMods>
+        <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.26</offset>
+        </li>
+        <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.35</offset>
+        </li>
+        <li>
+            <capacity>Moving</capacity>
+            <offset>-0.15</offset>
+        </li>
+        <li>
+            <capacity>Talking</capacity>
+            <offset>-0.25</offset>
+        </li>	  
+        </capMods>
+	<hediffGivers>
+          <li Class="HediffGiver_Random">
+            <hediff>Carcinoma</hediff>
+            <mtbDays>180</mtbDays>
+            <partsToAffect>
+              <li>Arm</li>
+            </partsToAffect>
+          </li>
+          <li Class="HediffGiver_Random">
+            <hediff>Carcinoma</hediff>
+            <mtbDays>220</mtbDays>
+            <partsToAffect>
+              <li>Kidney</li>
+            </partsToAffect>
+          </li>
+          <li Class="HediffGiver_Random">
+            <hediff>ChemicalDamageModerate</hediff>
+            <mtbDays>220</mtbDays>
+            <partsToAffect>
+              <li>Kidney</li>
+            </partsToAffect>
+          </li>
+	</hediffGivers> 
+      </li>
+    </stages>      
+  </HediffDef>
+
+  <ChemicalDef>
+    <defName>SinicuicheLaced</defName>
+    <label>laced sin</label>
+    <addictionHediff>SinicuicheLacedAddiction</addictionHediff>
+    <toleranceHediff>SinicuicheLacedTolerance</toleranceHediff>
+    <onGeneratedAddictedToleranceChance>0.6</onGeneratedAddictedToleranceChance>
+    <geneOverdoseChanceFactorResist>0.5</geneOverdoseChanceFactorResist>
+    <geneOverdoseChanceFactorImmune>0</geneOverdoseChanceFactorImmune>
+  </ChemicalDef>
+  
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>NeedSinicuicheLaced</defName>
+    <needClass>Need_Chemical</needClass>
+    <label>laced sin</label>
+    <description>Because of an addiction to laced sin, this person needs to regularly consume more to avoid withdrawal symptoms.</description>
+    <listPriority>20</listPriority>
+  </NeedDef>
+
+  <HediffDef ParentName="DrugToleranceBase">
+    <defName>SinicuicheLacedTolerance</defName>
+    <label>tolerance to laced sin</label>
+    <description>A built-up tolerance to laced sin. The more severe this tolerance is, the more it takes to get the same effect.\n\nContaminated drugs are infamous for the long-term health risks they pose, which only increase as usage continues.</description>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.09</severityPerDay>		
+      </li>
+      <li Class="HediffCompProperties_DrugEffectFactor">
+        <chemical>SinicuicheLaced</chemical>
+      </li>
+    </comps>
+	<hediffGivers>			<!-- Injecting random drugs is incredibly bad for your long term well-being. I'm thinking this would simulate a chemically induced neuropathy -->
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>ChemicalDamageModerate</hediff>
+        <severityToMtbDaysCurve>
+          <points>
+            <li>(0.15, 99999)</li>
+            <li>(0.3, 240)</li>
+            <li>(0.6, 90)</li>
+            <li>(1.0, 25)</li>
+          </points>
+        </severityToMtbDaysCurve>
+        <partsToAffect>
+          <li>Arm</li>
+          <li>Hand</li>
+        </partsToAffect>
+      </li>		<!-- And this here would be necrosis of the arm, since intravenous drug use can cause abcesses to develop in cases of improper use or contamination -->
+      <li Class="HediffGiver_Random">
+        <hediff>OrganDecay</hediff>
+        <mtbDays>80</mtbDays>
+        <partsToAffect>
+          <li>Arm</li>
+          <li>Hand</li>
+        </partsToAffect>
+        <countToAffect>1</countToAffect> <!-- Most addicts use the same arm, some even to the point of shooting up into an abcess, so I found this method that narrows it down to one -->
+      </li>
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>ChemicalDamageModerate</hediff>
+        <severityToMtbDaysCurve>
+          <points>
+            <li>(0.05, 99999)</li>
+            <li>(0.3, 220)</li>
+            <li>(1.0, 45)</li>
+          </points>
+        </severityToMtbDaysCurve>
+        <partsToAffect>
+          <li>Kidney</li>
+        </partsToAffect>
+      </li>
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>ChemicalDamageSevere</hediff>
+        <severityToMtbDaysCurve>
+          <points>
+            <li>(0.05, 99999)</li>
+            <li>(0.10, 380)</li>
+            <li>(0.40, 260)</li>
+            <li>(0.6, 170)</li>
+            <li>(1.0, 90)</li>
+          </points>
+        </severityToMtbDaysCurve>
+        <partsToAffect>
+          <li>Heart</li>
+          <li>Brain</li>
+        </partsToAffect>
+      </li>
+    </hediffGivers>   
+  </HediffDef>
+  
+  <HediffDef ParentName="AddictionBase">
+    <defName>SinicuicheLacedAddiction</defName>
+    <label>addiction to laced sin</label>
+    <description>A chemical addiction to laced sin. Consumption of adulterated drugs has caused neurological adaptations at the cellular level, so the brain can no longer function properly without them.\n\nWithout regular doses of laced sin, excruciating withdrawal symptoms will begin. However, extended abstinence will eventually force the brain to adapt back to its normal state, resolving the addiction.</description>
+    <hediffClass>Hediff_Addiction</hediffClass>
+    <causesNeed>NeedSinicuicheLaced</causesNeed>
+    <comps>     
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.0333</severityPerDay>
+	<showDaysToRecover>true</showDaysToRecover>
+      </li>	  
+    </comps>
+    <stages>
+      <li>	    
+      </li>
+      <li>
+	<label>desperately craving laced sin</label>
+	<vomitMtbDays>0.40</vomitMtbDays>
+        <painOffset>0.25</painOffset>
+        <painFactor>1.5</painFactor>
+	<minSeverity>0.30</minSeverity>		<!-- The higher this number the faster the addiction becomes unsatisfied -->
+        <hungerRateFactorOffset>-0.5</hungerRateFactorOffset>
+        <socialFightChanceFactor>8.0</socialFightChanceFactor>
+        <restFallFactor>1.50</restFallFactor>
+	<statOffsets>
+	  <MentalBreakThreshold>0.18</MentalBreakThreshold>
+	</statOffsets>
+	<capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.7</postFactor>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.64</postFactor>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.8</postFactor>
+          </li>          
+        </capMods>		
+	<mentalStateGivers>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>1</mtbDays>
+          </li>
+          <li>
+            <mentalState>TargetedInsultingSpree</mentalState>
+            <mtbDays>6</mtbDays>
+          </li>
+	  <li>
+             <mentalState>SocialFighting</mentalState>
+            <mtbDays>8</mtbDays>
+          </li>	
+        </mentalStateGivers>
+      </li>
+      <li>
+        <label>withdrawal</label>
+	<vomitMtbDays>0.66</vomitMtbDays>
+        <painOffset>0.05</painOffset>
+        <painFactor>4</painFactor>
+	<minSeverity>0.45</minSeverity>
+        <statOffsets>
+	 <GlobalLearningFactor>-0.10</GlobalLearningFactor>
+        </statOffsets>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.20</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.20</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.20</offset>
+          </li>
+        </capMods>
+        <mentalStateGivers>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>10</mtbDays>
+          </li>
+          <li>
+            <mentalState>Wander_Psychotic</mentalState>
+            <mtbDays>7</mtbDays>
+          </li>
+          <li>
+            <mentalState>Binging_DrugMajor</mentalState>
+            <mtbDays>4</mtbDays>
+          </li>
+	  <li>
+            <mentalState>Wander_Sad</mentalState>
+            <mtbDays>2</mtbDays>
+          </li>
+        </mentalStateGivers>
+	<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+              <hediff>LCB_Itchy</hediff>
+              <baseMtbDays>40</baseMtbDays> <!-- regular mtbDays exists too, but does not work on RandomDrugEffect or as a decimal, by the way. -->
+              <partsToAffect>
+		<li>Brain</li>
+              </partsToAffect>
+          </li>
+          <li Class="HediffGiver_RandomDrugEffect">
+            <hediff>Carcinoma</hediff>
+            <severityToMtbDaysCurve>
+              <points>
+		<li>(0.36, 99999)</li>
+		<li>(0.4, 180)</li>
+		<li>(1, 135)</li>
+              </points>
+            </severityToMtbDaysCurve>
+            <partsToAffect>
+              <li>Nose</li>
+            </partsToAffect>
+          </li>
+          <li Class="HediffGiver_RandomDrugEffect">
+            <hediff>Carcinoma</hediff>
+            <severityToMtbDaysCurve>
+              <points>
+		<li>(0.36, 99999)</li>
+		<li>(0.4, 180)</li>
+		<li>(1, 135)</li>
+              </points>
+            </severityToMtbDaysCurve>
+            <partsToAffect>
+              <li>Kidney</li>
+            </partsToAffect>
+          </li>
+	</hediffGivers>
+      </li>
+    </stages>      
+  </HediffDef>
+
+
+
+  <ThoughtDef>
+    <defName>LCB_SinicuicheLacedHigh_Bad</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>SinicuicheLacedHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+    <stackLimit>3</stackLimit>
+    <nullifyingTraits>
+      <li>DrugDesire</li>
+    </nullifyingTraits>
+    <stages>
+      <li>
+        <label>high on laced sin</label>
+        <description>There was definitely something else in that hit. Oh no, what did I just shoot up?!</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+      <li>
+        <label>high on laced sin</label>
+        <description>Wow, I feel WEIRD. Gimmeee...a rhhefuuund...</description>
+        <baseMoodEffect>-6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>SinicuicheLacedHighHigh_Good</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>SinicuicheLacedHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <requiredTraits>
+      <li>DrugDesire</li>
+    </requiredTraits>
+    <stages>
+      <li>
+        <label>high on laced sin</label>
+        <description>That hit has a nice kinda kick to it. This feels pretty good!</description>
+        <baseMoodEffect>14</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>SinicuicheLacedWithdrawal</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>SinicuicheLacedAddiction</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+    <stackLimit>3</stackLimit>
+    <nullifyingHediffs>
+      <li>SinicuicheLacedHigh</li>
+    </nullifyingHediffs>
+    <stages>
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <label>Sin withdrawal</label>
+        <description>I have to get another fix. It'll be the last one, once I get right. Just one more to get through the day.</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>Sin desperation</label>
+        <description>Sick. Can't stop...scratching. I NEED another hit.</description>
+        <baseMoodEffect>-40</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

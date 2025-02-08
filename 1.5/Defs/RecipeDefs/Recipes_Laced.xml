@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    
+	<RecipeDef>
+	   <defName>Recipe_SinicuicheLaced</defName>
+	   <label>lace sinicuiche</label>
+	   <description>Add powerful stimulants, narcotics, or hallucinogens to your drugs to stretch out your supply.</description>
+	   <jobString>lacing sinicuiche.</jobString>
+	   <workSkill>Cooking</workSkill>
+	   <workSpeedStat>CookSpeed</workSpeedStat>
+	   <workAmount>1500</workAmount>
+	   <targetCountAdjustment>10</targetCountAdjustment>
+	   <effectWorking>Cook</effectWorking>
+	   <soundWorking>Recipe_CookMeal</soundWorking>
+	   <allowMixingIngredients>false</allowMixingIngredients>
+	   <researchPrerequisite>DrugProduction</researchPrerequisite>
+	   <recipeUsers>
+	       <li>FueledStove</li>
+	       <li>ElectricStove</li>
+	       <li>DrugLab</li>		
+	   </recipeUsers>
+	   <ingredients>
+	       <li>
+	        <filter>
+	   	<thingDefs>
+	   	    <li>LCB_SinicuicheRC</li>
+	   	</thingDefs>
+	        </filter>
+	        <count>10</count>
+	       </li>
+	       <li>
+	        <filter>
+	   	<thingDefs>
+	   	    <li MayRequire="vanillaracesexpanded.android">LCB_RedIce</li>
+	   	    <li MayRequire="zal.meth">Methamphetamine</li>
+	   	    <li MayRequire="zal.meth">Smokeglass</li>
+	   	    <li>LCB_Fent</li>
+	   	    <li>LCB_MorningGlory</li>
+	   	    <li>LCB_SalviaRC</li>
+	   	    <li>LCB_Zoom</li>
+	   	    <li>Flake</li>
+	   	    <li>WakeUp</li>
+	   	</thingDefs>
+	        </filter>
+	        <count>2</count>
+	       </li>
+	   </ingredients>
+	      <fixedIngredientFilter>			
+	   	<thingDefs>
+	   	    <li MayRequire="vanillaracesexpanded.android">LCB_RedIce</li>
+	   	    <li MayRequire="zal.meth">Methamphetamine</li>
+	   	    <li MayRequire="zal.meth">Smokeglass</li>
+	   	    <li>LCB_Fent</li>
+	   	    <li>LCB_MorningGlory</li>
+	   	    <li>LCB_SalviaRC</li>
+	   	    <li>LCB_Zoom</li>
+	   	    <li>Flake</li>
+	   	    <li>WakeUp</li>
+	   	</thingDefs>
+	      <categories>
+
+	      </categories>
+	      </fixedIngredientFilter>
+	   <products>
+	   	<SinicuicheLaced>20</SinicuicheLaced>
+	   </products>
+	</RecipeDef>
+
+	<RecipeDef>
+	   <defName>Recipe_FlakeLaced</defName>
+	   <label>lace flake</label>
+	   <description>Add powerful stimulants, narcotics, or hallucinogens to flake to stretch out your supply.</description>
+	   <jobString>lacing flake.</jobString>
+	   <workSkill>Cooking</workSkill>
+	   <workSpeedStat>CookSpeed</workSpeedStat>
+	   <workAmount>1500</workAmount>
+	   <targetCountAdjustment>10</targetCountAdjustment>
+	   <effectWorking>Cook</effectWorking>
+	   <soundWorking>Recipe_CookMeal</soundWorking>
+	   <allowMixingIngredients>false</allowMixingIngredients>
+	   <researchPrerequisite>DrugProduction</researchPrerequisite>
+	   <recipeUsers>
+	       <li>FueledStove</li>
+	       <li>ElectricStove</li>
+	       <li>DrugLab</li>		
+	   </recipeUsers>
+	   <ingredients>
+	       <li>
+	        <filter>
+	   	<thingDefs>
+	   	    <li>Flake</li>
+	   	</thingDefs>
+	        </filter>
+	        <count>10</count>
+	       </li>
+	       <li>
+	        <filter>
+	   	<thingDefs>
+	   	    <li MayRequire="vanillaracesexpanded.android">LCB_RedIce</li>
+	   	    <li MayRequire="zal.meth">Methamphetamine</li>
+	   	    <li MayRequire="zal.meth">Smokeglass</li>
+	   	    <li MayRequire="Papito.MedicinesPlus.AT">Joy</li>
+	   	    <li>LCB_Fent</li>
+	   	    <li>LCB_MorningGlory</li>
+	   	    <li>LCB_SalviaRC</li>
+	   	    <li>LCB_SinicuicheRC</li>
+	   	    <li>LCB_Zoom</li>
+	   	    <li>GoJuice</li>
+	   	    <li>WakeUp</li>
+	   	</thingDefs>
+	        </filter>
+	        <count>2</count>
+	       </li>
+	   </ingredients>
+	      <fixedIngredientFilter>			
+	   	<thingDefs>
+	   	    <li MayRequire="vanillaracesexpanded.android">LCB_RedIce</li>
+	   	    <li MayRequire="zal.meth">Methamphetamine</li>
+	   	    <li MayRequire="zal.meth">Smokeglass</li>
+	   	    <li MayRequire="Papito.MedicinesPlus.AT">Joy</li>
+	   	    <li>LCB_Fent</li>
+	   	    <li>LCB_MorningGlory</li>
+	   	    <li>LCB_SalviaRC</li>
+	   	    <li>LCB_SinicuicheRC</li>
+	   	    <li>LCB_Zoom</li>
+	   	    <li>GoJuice</li>
+	   	    <li>WakeUp</li>
+	   	</thingDefs>
+	      <categories>
+
+	      </categories>
+	      </fixedIngredientFilter>
+	   <products>
+	   	<FlakeLaced>20</FlakeLaced>
+	   </products>
+	</RecipeDef>
+
+	<RecipeDef>
+	   <defName>Recipe_GoJuiceSpiked</defName>
+	   <label>spike go-juice</label>
+	   <description>Add powerful stimulants to go-juice to stretch out your supply.</description>
+	   <jobString>lacing go-juice.</jobString>
+	   <workSkill>Cooking</workSkill>
+	   <workSpeedStat>CookSpeed</workSpeedStat>
+	   <workAmount>1500</workAmount>
+	   <targetCountAdjustment>10</targetCountAdjustment>
+	   <effectWorking>Cook</effectWorking>
+	   <soundWorking>Recipe_CookMeal</soundWorking>
+	   <allowMixingIngredients>false</allowMixingIngredients>
+	   <researchPrerequisite>DrugProduction</researchPrerequisite>
+	   <recipeUsers>
+	       <li>FueledStove</li>
+	       <li>ElectricStove</li>
+	       <li>DrugLab</li>		
+	   </recipeUsers>
+	   <ingredients>
+	       <li>
+	        <filter>
+	   	<thingDefs>
+	   	    <li>GoJuice</li>
+	   	</thingDefs>
+	        </filter>
+	        <count>10</count>
+	       </li>
+	       <li>
+	        <filter>
+	   	<thingDefs>
+	   	    <li MayRequire="vanillaracesexpanded.android">LCB_RedIce</li>
+	   	    <li MayRequire="zal.meth">Methamphetamine</li>
+	   	    <li MayRequire="zal.meth">Smokeglass</li>
+	   	    <li>LCB_Zoom</li>
+	   	    <li>WakeUp</li>
+	   	    <li>Yayo</li>
+	   	</thingDefs>
+	        </filter>
+	        <count>2</count>
+	       </li>
+	   </ingredients>
+	      <fixedIngredientFilter>			
+	   	<thingDefs>
+	   	    <li MayRequire="vanillaracesexpanded.android">LCB_RedIce</li>
+	   	    <li MayRequire="zal.meth">Methamphetamine</li>
+	   	    <li MayRequire="zal.meth">Smokeglass</li>
+	   	    <li>LCB_Zoom</li>
+	   	    <li>WakeUp</li>
+	   	    <li>Yayo</li>
+	   	</thingDefs>
+	      <categories>
+
+	      </categories>
+	      </fixedIngredientFilter>
+	   <products>
+	   	<GoJuiceSpiked>20</GoJuiceSpiked>
+	   </products>
+	</RecipeDef>
+
+	<RecipeDef>
+	   <defName>Recipe_SmokeleafJointLaced</defName>
+	   <label>lace smokeleaf joints</label>
+	   <description>Add powerful stimulants, narcotics, or hallucinogens to smokeleaf joints to stretch out your supply.</description>
+	   <jobString>lacing smokeleaf joints.</jobString>
+	   <workSkill>Cooking</workSkill>
+	   <workSpeedStat>CookSpeed</workSpeedStat>
+	   <workAmount>1500</workAmount>
+	   <targetCountAdjustment>10</targetCountAdjustment>
+	   <effectWorking>Cook</effectWorking>
+	   <soundWorking>Recipe_CookMeal</soundWorking>
+	   <allowMixingIngredients>false</allowMixingIngredients>
+	   <researchPrerequisite>DrugProduction</researchPrerequisite>
+	   <recipeUsers>
+	       <li>FueledStove</li>
+	       <li>ElectricStove</li>
+	       <li>DrugLab</li>		
+	   </recipeUsers>
+	   <ingredients>
+	       <li>
+	        <filter>
+	   	<thingDefs>
+	   	    <li MayRequire="Ogliss.bishop.SmokeleafIndustryReborn">CrudeSmokeleafJoint</li>
+	   	    <li MayRequire="Ogliss.bishop.SmokeleafIndustryReborn">SmokeleafBuds</li>
+	   	    <li>SmokeleafJoint</li>
+	   	</thingDefs>
+	        </filter>
+	        <count>10</count>
+	       </li>
+	       <li>
+	        <filter>
+	   	<thingDefs>
+	   	    <li MayRequire="vanillaracesexpanded.android">LCB_RedIce</li>
+	   	    <li MayRequire="zal.meth">Methamphetamine</li>
+	   	    <li MayRequire="zal.meth">Smokeglass</li>
+	   	    <li MayRequire="Ogliss.bishop.SmokeleafIndustryReborn">SmokeleafDistillate</li>
+	   	    <li MayRequire="Ogliss.bishop.SmokeleafIndustryReborn">SmokeleafPills</li>
+	   	    <li MayRequire="Papito.MedicinesPlus.AT">Joy</li>
+	   	    <li MayRequire="Papito.MedicinesPlus.AT">Peyote</li>
+	   	    <li>LCB_Fent</li>
+	   	    <li>LCB_MorningGlory</li>
+	   	    <li>LCB_SalviaRC</li>
+	   	    <li>LCB_SinicuicheRC</li>
+	   	    <li>LCB_Zoom</li>
+	   	    <li>Flake</li>
+	   	    <li>GoJuice</li>
+	   	    <li>WakeUp</li>
+	   	</thingDefs>
+	        </filter>
+	        <count>2</count>
+	       </li>
+	   </ingredients>
+	      <fixedIngredientFilter>			
+	   	<thingDefs>
+	   	    <li MayRequire="vanillaracesexpanded.android">LCB_RedIce</li>
+	   	    <li MayRequire="zal.meth">Methamphetamine</li>
+	   	    <li MayRequire="zal.meth">Smokeglass</li>
+	   	    <li MayRequire="Ogliss.bishop.SmokeleafIndustryReborn">SmokeleafDistillate</li>
+	   	    <li MayRequire="Ogliss.bishop.SmokeleafIndustryReborn">SmokeleafPills</li>
+	   	    <li MayRequire="Papito.MedicinesPlus.AT">Joy</li>
+	   	    <li>LCB_Fent</li>
+	   	    <li>LCB_MorningGlory</li>
+	   	    <li>LCB_SalviaRC</li>
+	   	    <li>LCB_SinicuicheRC</li>
+	   	    <li>LCB_Zoom</li>
+	   	    <li>Flake</li>
+	   	    <li>GoJuice</li>
+	   	    <li>WakeUp</li>
+	   	</thingDefs>
+	      <categories>
+
+	      </categories>
+	      </fixedIngredientFilter>
+	   <products>
+	   	<SmokeleafJointLaced>20</SmokeleafJointLaced>
+	   </products>
+	</RecipeDef>
+
+	<RecipeDef>
+	   <defName>Recipe_WakeUpLaced</defName>
+	   <label>lace wake-up</label>
+	   <description>Add powerful stimulants and narcotics to wake-up to stretch out your supply.</description>
+	   <jobString>lacing wake-up.</jobString>
+	   <workSkill>Cooking</workSkill>
+	   <workSpeedStat>CookSpeed</workSpeedStat>
+	   <workAmount>1500</workAmount>
+	   <targetCountAdjustment>10</targetCountAdjustment>
+	   <effectWorking>Cook</effectWorking>
+	   <soundWorking>Recipe_CookMeal</soundWorking>
+	   <allowMixingIngredients>false</allowMixingIngredients>
+	   <researchPrerequisite>DrugProduction</researchPrerequisite>
+	   <recipeUsers>
+	       <li>FueledStove</li>
+	       <li>ElectricStove</li>
+	       <li>DrugLab</li>	   	   
+	   </recipeUsers>
+	   <ingredients>
+	       <li>
+	        <filter>
+	   	<thingDefs>
+	   	    <li>WakeUp</li>
+	   	</thingDefs>
+	        </filter>
+	        <count>20</count>
+	       </li>
+	       <li>
+	        <filter>
+	   	<thingDefs>
+	   	    <li MayRequire="vanillaracesexpanded.android">LCB_RedIce</li>
+	   	    <li MayRequire="zal.meth">Methamphetamine</li>
+	   	    <li MayRequire="zal.meth">Smokeglass</li>
+	   	    <li MayRequire="Papito.MedicinesPlus.AT">Joy</li>
+	   	    <li>LCB_Fent</li>
+	   	    <li>LCB_SinicuicheRC</li>
+	   	    <li>LCB_Zoom</li>
+	   	    <li>GoJuice</li>
+	   	</thingDefs>
+	        </filter>
+	        <count>4</count>
+	       </li>
+	   </ingredients>
+	      <fixedIngredientFilter>	   	   	   
+	   	<thingDefs>
+	   	    <li MayRequire="vanillaracesexpanded.android">LCB_RedIce</li>
+	   	    <li MayRequire="zal.meth">Methamphetamine</li>
+	   	    <li MayRequire="zal.meth">Smokeglass</li>
+	   	    <li MayRequire="Papito.MedicinesPlus.AT">Joy</li>
+	   	    <li>LCB_Fent</li>
+	   	    <li>LCB_SinicuicheRC</li>
+	   	    <li>LCB_Zoom</li>
+	   	    <li>GoJuice</li>
+	   	</thingDefs>
+	      <categories>
+	   	   	   	   
+	      </categories>
+	      </fixedIngredientFilter>
+	   <products>
+	   	<WakeUpLaced>20</WakeUpLaced>
+	   </products>
+	</RecipeDef>
+
+	<RecipeDef>
+	   <defName>Recipe_YayoLaced</defName>
+	   <label>lace yayo</label>
+	   <description>Add powerful stimulants or narcotics to yayo to stretch out your supply.</description>
+	   <jobString>lacing yayo.</jobString>
+	   <workSkill>Cooking</workSkill>
+	   <workSpeedStat>CookSpeed</workSpeedStat>
+	   <workAmount>1500</workAmount>
+	   <targetCountAdjustment>10</targetCountAdjustment>
+	   <effectWorking>Cook</effectWorking>
+	   <soundWorking>Recipe_CookMeal</soundWorking>
+	   <allowMixingIngredients>false</allowMixingIngredients>
+	   <researchPrerequisite>DrugProduction</researchPrerequisite>
+	   <recipeUsers>
+	       <li>FueledStove</li>
+	       <li>ElectricStove</li>
+	       <li>DrugLab</li>	   	   
+	   </recipeUsers>
+	   <ingredients>
+	       <li>
+	        <filter>
+	   	<thingDefs>
+	   	    <li>Yayo</li>
+	   	</thingDefs>
+	        </filter>
+	        <count>20</count>
+	       </li>
+	       <li>
+	        <filter>
+	   	<thingDefs>
+	   	    <li MayRequire="vanillaracesexpanded.android">LCB_RedIce</li>
+	   	    <li MayRequire="zal.meth">Methamphetamine</li>
+	   	    <li MayRequire="zal.meth">Smokeglass</li>
+	   	    <li MayRequire="Papito.MedicinesPlus.AT">Joy</li>
+	   	    <li>LCB_Fent</li>
+	   	    <li>LCB_SinicuicheRC</li>
+	   	    <li>LCB_Zoom</li>
+	   	    <li>WakeUp</li>
+	   	    <li>GoJuice</li>
+	   	</thingDefs>
+	        </filter>
+	        <count>4</count>
+	       </li>
+	   </ingredients>
+	      <fixedIngredientFilter>	   	   	   
+	   	<thingDefs>
+	   	    <li MayRequire="vanillaracesexpanded.android">LCB_RedIce</li>
+	   	    <li MayRequire="zal.meth">Methamphetamine</li>
+	   	    <li MayRequire="zal.meth">Smokeglass</li>
+	   	    <li MayRequire="Papito.MedicinesPlus.AT">Joy</li>
+	   	    <li>LCB_Fent</li>
+	   	    <li>LCB_SinicuicheRC</li>
+	   	    <li>LCB_Zoom</li>
+	   	    <li>WakeUp</li>
+	   	    <li>GoJuice</li>
+	   	</thingDefs>
+	      <categories>
+	   	   	   	   
+	      </categories>
+	      </fixedIngredientFilter>
+	   <products>
+	   	<YayoLaced>20</YayoLaced>
+	   </products>
+	</RecipeDef>
+</Defs>

@@ -1,0 +1,2535 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>  
+  
+  <ThingDef ParentName="DrugBase">
+    <defName>LCB_SalviaRC</defName>
+    <label>Salvia</label>
+    <description>Narcotic made from the Salvia plant.</description>
+	<tradeability>Sellable</tradeability>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <tickerType>Rare</tickerType>
+    <graphicData>
+      <texPath>Things/Materials/SalviaSpice</texPath>
+	  <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+	<descriptionHyperlinks>
+      <HediffDef>LCB_SalviaSpiceHigh</HediffDef>
+      <HediffDef>LCB_SalviaSpiceTolerance</HediffDef>
+      <HediffDef>LCB_SalviaSpiceAddiction</HediffDef>
+      <HediffDef>Carcinoma</HediffDef>
+      <HediffDef>Asthma</HediffDef>
+      
+	  <!--Hangover??
+      <HediffDef></HediffDef>
+	  -->
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>7</MarketValue>
+      <Flammability>1.0</Flammability>
+	  <Mass>0.03</Mass>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>3</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+	  <li Class="CompProperties_Drug">
+		  <chemical>RC_SalviaChem</chemical>
+          <addictiveness>0.019</addictiveness>
+		  <isCombatEnhancingDrug>false</isCombatEnhancingDrug>
+          <minToleranceToAddict>0.15</minToleranceToAddict>
+          <existingAddictionSeverityOffset>0.1</existingAddictionSeverityOffset>
+          <needLevelOffset>0.9</needLevelOffset>
+          <listOrder>36</listOrder>
+      </li>
+    </comps>
+    <ingestible>
+	<ingestHoldUsesTable>false</ingestHoldUsesTable>
+      <ingestCommandString>Smoke {0}</ingestCommandString>
+      <ingestReportString>Smoking {0}.</ingestReportString>
+      <ingestReportStringEat>Consuming {0}.</ingestReportStringEat>
+      <useEatingSpeedStat>false</useEatingSpeedStat>
+      <foodType>Plant, Processed</foodType>
+		<!--
+      <tasteThought>LCB_SmokedSalvia</tasteThought>   
+	    -->
+      <ingestSound>Ingest_Smoke</ingestSound>
+      <ingestEffect>Smoke_Joint</ingestEffect>
+	  <baseIngestTicks>80</baseIngestTicks>
+	  <joyKind>Chemical</joyKind>
+      <joy>0.75</joy>	  
+	  <drugCategory>Hard</drugCategory> 
+	  <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>LCB_SalviaSpiceHigh</hediffDef>
+          <severity>1</severity>
+          <toleranceChemical>RC_SalviaChem</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>DrugDesire</need>
+          <offset>0.2</offset>
+          <toleranceChemical>RC_SalviaChem</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>LCB_SalviaSpiceTolerance</hediffDef>
+          <severity>0.032</severity>
+          <divideByBodySize>true</divideByBodySize>	  
+        </li>
+      </outcomeDoers>
+    </ingestible>	
+	<recipeMaker>
+      <recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+	  <researchPrerequisite>LCB_SalviaProduction</researchPrerequisite>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <LCB_SalviaProduct>4</LCB_SalviaProduct>
+	</costList>
+  </ThingDef>
+  
+   <ThingDef ParentName="RoughPlantBase">
+    <defName>LCB_SalviaProduct</defName>
+    <label>Salvia Extract</label>
+    <description>Extract from the Salvia plant.</description>    
+    <soundInteract>Standard_Pickup</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+	<socialPropernessMatters>true</socialPropernessMatters>
+	 <graphicData>
+      <texPath>Things/Materials/RawSalvia</texPath>
+    </graphicData>   
+    <statBases>
+      <MarketValue>3.2</MarketValue>
+      <Flammability>1.0</Flammability>
+	  <Nutrition>0.03</Nutrition>
+	  <Mass>0.03</Mass>
+    </statBases>
+    <ingestible>
+      <preferability>DesperateOnly</preferability>
+    </ingestible>
+    <thingCategories>
+      <li>PlantMatter</li>
+    </thingCategories>
+    <tickerType>Rare</tickerType>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>35</daysToRotStart>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!--  ===============================  Hediffs  ======================================  -->
+  
+  
+  
+  <HediffDef>
+    <defName>LCB_SalviaSpiceHigh</defName>
+    <label>What the fuck?</label>
+    <description>I'm cool. Everything's cool. Why is your fac...aaaaahahahaha.</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(250, 44, 230)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>2.0</maxSeverity>
+	<!--
+	<minSeverity>0</minSeverity>
+    <maxSeverity>3</maxSeverity>
+	-->
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-28</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>	  
+    </comps>       
+    <stages> 
+	   <li>
+	     <vomitMtbDays>0.75</vomitMtbDays>
+		 <painFactor>0.05</painFactor>
+	     <restFallFactorOffset>0.15</restFallFactorOffset>
+	   </li>
+	   <li>
+	   <label>coming down</label>
+	   <minSeverity>0.1</minSeverity>	   
+	   <restFallFactorOffset>3</restFallFactorOffset>
+        <painFactor>-0.05</painFactor>      
+		<statOffsets>
+		  <WorkSpeedGlobal>-0.50</WorkSpeedGlobal>
+          <NegotiationAbility>-0.45</NegotiationAbility>
+		  <AimingDelayFactor>+0.10</AimingDelayFactor>		  
+        </statOffsets>
+		<capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>0.3</offset>
+          </li>				  
+        </capMods>
+	  </li>      
+	  <li>        
+		<minSeverity>0.35</minSeverity>
+		<label>Sammy Samsa, Majer(sic) League Boofball.</label>
+		<painFactor>-0.15</painFactor>      
+		<statOffsets>
+		  <WorkSpeedGlobal>-0.75</WorkSpeedGlobal>
+          <NegotiationAbility>-0.55</NegotiationAbility>
+		  <ShootingAccuracyPawn>-5</ShootingAccuracyPawn>
+		  <AimingDelayFactor>-0.10</AimingDelayFactor>		  
+        </statOffsets>
+		<capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>0.5</offset>
+          </li>
+          <li>
+            <capacity>BloodPumping</capacity>
+            <offset>1</offset>
+          </li>
+          <li>
+            <capacity>Talking</capacity>
+            <offset>-1</offset>
+          </li>
+        </capMods>
+      </li>	  
+	  <li>
+	   <label>salvia dance fight revolution</label>
+	   <minSeverity>0.60</minSeverity>
+	   <painFactor>-0.60</painFactor>       
+		<statOffsets>
+		  <WorkSpeedGlobal>-0.75</WorkSpeedGlobal>
+          <NegotiationAbility>-0.75</NegotiationAbility>
+		  <ShootingAccuracyPawn>-10</ShootingAccuracyPawn>
+		  <AimingDelayFactor>-0.90</AimingDelayFactor>		  
+        </statOffsets>
+		<capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>2</offset>
+          </li>
+          <li>
+            <capacity>BloodPumping</capacity>
+            <offset>2</offset>
+          </li>
+          <li>
+            <capacity>Talking</capacity>
+            <offset>-2</offset>
+          </li>
+        </capMods>
+		<mentalStateGivers>
+          <li>
+            <mentalState>Berserk</mentalState>
+            <mtbDays>0.4</mtbDays>
+          </li>
+          <li>
+            <mentalState>Tantrum</mentalState>
+            <mtbDays>0.4</mtbDays>
+          </li>
+        </mentalStateGivers>		
+	  </li>
+	  <li>	  
+	  <label>mushmarlow brain</label>
+	   <minSeverity>0.97</minSeverity>
+	   <painFactor>-0.60</painFactor>       
+		<statOffsets>		  
+          <NegotiationAbility>-0.75</NegotiationAbility>
+		  <ShootingAccuracyPawn>-10</ShootingAccuracyPawn>
+		  <AimingDelayFactor>-0.90</AimingDelayFactor>
+		  <WorkSpeedGlobal>-0.90</WorkSpeedGlobal>
+        </statOffsets>
+		<capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>2</offset>
+          </li>
+          <li>
+            <capacity>BloodPumping</capacity>
+            <offset>2</offset>
+          </li>
+          <li>
+            <capacity>Talking</capacity>
+            <offset>-2</offset>
+          </li>
+        </capMods>
+		<hediffGivers>
+		
+            <li Class="HediffGiver_Random">
+              <hediff>ChemicalDamageModerate</hediff>
+              <mtbDays>10</mtbDays>
+              <partsToAffect>
+                <li>Brain</li>
+              </partsToAffect>
+            </li>
+         
+	  </hediffGivers>
+	  </li>
+    </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>LCB_SalviaExperience</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LCB_SalviaSpiceHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+	<stackedEffectMultiplier>0.50</stackedEffectMultiplier>
+	<stackLimit>4</stackLimit>
+	
+	<!--
+	<durationDays>0.10</durationDays>
+	
+	-->
+    <stages>
+      <li>
+        <label>salvia trip</label>
+        <description>Wuarbbble wurbblle worrrbull</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- addiction -->
+  
+  <ChemicalDef>
+    <defName>RC_SalviaChem</defName>
+    <label>salvia</label>
+    <addictionHediff>LCB_SalviaSpiceAddiction</addictionHediff>
+    <toleranceHediff>LCB_SalviaSpiceTolerance</toleranceHediff>
+    <onGeneratedAddictedToleranceChance>0.8</onGeneratedAddictedToleranceChance>
+	<onGeneratedAddictedEvents>
+      <li>
+        <hediff>BrainShock</hediff>
+        <chance>0.25</chance>        
+      </li>
+    </onGeneratedAddictedEvents>
+  </ChemicalDef>
+  
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>LCB_NeedASalviaSpice</defName>
+    <needClass>Need_Chemical</needClass>
+    <label>salvia spice</label>
+    <description>Because of a salvia addiction, this person needs to regularly consume salvia to avoid withdrawal symptoms.</description>
+    <listPriority>20</listPriority>
+  </NeedDef>
+
+  <HediffDef ParentName="DrugToleranceBase">
+    <defName>LCB_SalviaSpiceTolerance</defName>
+    <label>salvia tolerance</label>
+    <description>A built-up tolerance to salvia. The more severe this tolerance is, the more salvia it takes to get the same effect.</description>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.025</severityPerDay>		
+      </li>
+      <li Class="HediffCompProperties_DrugEffectFactor">
+        <chemical>RC_SalviaChem</chemical>
+      </li>
+	  </comps>
+	  <hediffGivers>
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>Asthma</hediff>
+        <baseMtbDays>280</baseMtbDays>
+        <minSeverity>0.50</minSeverity>
+        <partsToAffect>
+          <li>Lung</li>
+        </partsToAffect>
+        <countToAffect>2</countToAffect>
+      </li>
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>Carcinoma</hediff>
+        <baseMtbDays>280</baseMtbDays>
+        <minSeverity>0.40</minSeverity>
+        <partsToAffect>
+          <li>Lung</li>
+        </partsToAffect>
+        <countToAffect>1</countToAffect>
+      </li>
+    </hediffGivers>
+    
+  </HediffDef>
+  
+  <HediffDef ParentName="AddictionBase">
+    <defName>LCB_SalviaSpiceAddiction</defName>
+    <label>salvia addiction</label>
+    <description>This ride is whack. Drop me off of this train.</description>
+    <hediffClass>Hediff_Addiction</hediffClass>
+    <causesNeed>LCB_NeedASalviaSpice</causesNeed>
+    <comps>     
+	  <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.015</severityPerDay>
+		<showDaysToRecover>true</showDaysToRecover>
+      </li>	  
+    </comps>
+    <stages>
+      <li>	    
+      </li>
+      <li>	
+        <label>withdrawal</label>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.20</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+        <mentalStateGivers>
+          <li>
+            <mentalState>PanicFlee</mentalState>
+            <mtbDays>50</mtbDays>
+          </li>
+          <li>
+            <mentalState>Binging_DrugMajor</mentalState>
+            <mtbDays>30</mtbDays>
+          </li>
+        </mentalStateGivers>
+      </li>	  
+	  <li>
+	    <label>desperately craving</label>
+		<minSeverity>0.90</minSeverity>
+		<statOffsets>
+		 <PsychicSensitivity>-2</PsychicSensitivity>
+		 <GlobalLearningFactor>-0.80</GlobalLearningFactor>
+		 <WorkSpeedGlobal>-0.60</WorkSpeedGlobal>
+		</statOffsets>
+		<capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.4</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.3</offset>
+          </li>          
+        </capMods>		
+		<mentalStateGivers>
+          <li>
+            <mentalState>WanderConfused</mentalState>
+            <mtbDays>7</mtbDays>
+          </li>
+          <li>
+            <mentalState>Wander_Psychotic</mentalState>
+            <mtbDays>14</mtbDays>
+          </li>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>21</mtbDays>
+          </li>
+        </mentalStateGivers>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>LCB_SalviaSpiceWithdrawal</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LCB_SalviaSpiceAddiction</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>      
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <label>salvia withdrawal</label>
+        <description>I need to lick the swamp mind five more times. I neeeed.</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+    
+    </stages>
+  </ThoughtDef>
+  
+  
+  
+  
+  <!--  =============================================   Morning Glory  ====================================  -->
+  
+  
+  
+  
+  <ThingDef ParentName="DrugBase">
+    <defName>LCB_MorningGlory</defName>
+    <label>Rodeo</label>
+    <description>Hallucinogen made from Morning Glory seeds.</description>
+	<tradeability>Sellable</tradeability>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <tickerType>Rare</tickerType>
+    <graphicData>
+      <texPath>Things/Materials/FabaceaeDust</texPath>  <!-- Come Back -->
+	  <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+	<descriptionHyperlinks>
+      <HediffDef>LCB_MorningGloryHigh</HediffDef>
+	  <HediffDef>LCB_PermanentRodeoTrip</HediffDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>12</MarketValue>
+      <Flammability>1.0</Flammability>
+	  <Mass>0.03</Mass>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>13</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+	  <li Class="CompProperties_Drug">		            
+		  <isCombatEnhancingDrug>false</isCombatEnhancingDrug>
+          <overdoseSeverityOffset>0.08~0.14</overdoseSeverityOffset>
+			
+      </li>
+    </comps>
+    <ingestible>
+	<ingestHoldUsesTable>false</ingestHoldUsesTable>
+      <ingestCommandString>Take {0}</ingestCommandString>
+      <ingestReportString>Taking {0}.</ingestReportString>
+      <ingestReportStringEat>Consuming {0}.</ingestReportStringEat>
+      <useEatingSpeedStat>false</useEatingSpeedStat>
+      <foodType>Plant, Processed</foodType>		
+         <!--  Here  -->
+      <ingestSound>Ingest_Pill</ingestSound>
+      <ingestEffect>EatVegetarian</ingestEffect>
+	  <baseIngestTicks>20</baseIngestTicks>
+	  <joyKind>Chemical</joyKind>
+      <joy>0.75</joy>	  
+	  <drugCategory>Hard</drugCategory> 
+	  <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>LCB_MorningGloryHigh</hediffDef>
+          <severity>1</severity>          
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Beauty</need>
+          <offset>0.5</offset>          
+        </li>        
+      </outcomeDoers>
+    </ingestible>	
+	<recipeMaker>
+      <recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+	  <researchPrerequisite>LCB_RodeoProduction</researchPrerequisite>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <LCB_MorningGlorySeeds>8</LCB_MorningGlorySeeds>
+	</costList>
+  </ThingDef>
+  
+  <ThingDef ParentName="RoughPlantBase">
+    <defName>LCB_MorningGlorySeeds</defName>
+    <label>Fabaceae Extract</label>
+    <description>Extract from the Fabaceae plant.</description>    
+	 <graphicData>
+      <texPath>Things/Materials/RawFabaceae</texPath>
+    </graphicData>
+    <soundInteract>Standard_Pickup</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>  
+<socialPropernessMatters>true</socialPropernessMatters>	
+    <statBases>
+      <MarketValue>5.4</MarketValue>
+      <Flammability>1.0</Flammability>
+	  <Nutrition>3</Nutrition>
+	  <Mass>0.03</Mass>
+    </statBases>
+    <ingestible>
+      <preferability>DesperateOnly</preferability>
+    </ingestible>
+    <thingCategories>
+      <li>PlantMatter</li>
+    </thingCategories>
+    <tickerType>Rare</tickerType>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>35</daysToRotStart>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <!--  ===============================  Hediffs  ======================================  -->
+  
+  <ThoughtDef>
+    <defName>LCB_MorningGloryExperience</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LCB_MorningGloryHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+	<stackedEffectMultiplier>0.05</stackedEffectMultiplier>
+	<stackLimit>3</stackLimit>
+	<!--
+    <durationDays>0.75</durationDays>
+	<showBubble>true</showBubble>	
+     -->	
+    <stages>	
+      <li>	  
+        <label>Coming Down</label>		
+        <description>Wow. That was fucking intense. Let's do it again!</description>
+        <baseMoodEffect>2</baseMoodEffect>
+	  </li>
+	  <li>
+	  <!--
+	  <minSeverity>0.3</minSeverity>
+	  -->
+        <label>Relief</label>		
+        <description>Oh Randy, I'm glad that's over. I still feel...hehehe...cooool...</description>
+        <baseMoodEffect>5</baseMoodEffect>
+	  </li>	
+	  <li>
+	  <!--
+	  <minSeverity>0.4</minSeverity>
+	  -->
+        <label>Fear of everlasting expansion into and beyond the connective conciousness of the universe.</label>		
+        <description>I've gone to far. I'm never coming back. What is this sludge oozing from my brain?!?</description>
+        <baseMoodEffect>-8</baseMoodEffect>
+	  </li>	
+	  <li>
+	  <!--
+	  <minSeverity>0.65</minSeverity>
+	  -->
+        <label>Peak Trip</label>		
+        <description>Oh wow! wooooooow!</description>
+        <baseMoodEffect>9</baseMoodEffect>
+	  </li>	  
+	  <li>
+	  <!--
+	  <minSeverity>0.8</minSeverity>
+	  -->
+        <label>^Going up^</label>		
+        <description>I can see my house from here.</description>
+        <baseMoodEffect>7</baseMoodEffect>
+	  </li>	  
+    </stages>	
+  </ThoughtDef>
+   
+  
+  <HediffDef>
+    <defName>LCB_MorningGloryHigh</defName>
+    <label>Trippin</label>
+    <description>100% out of my mind.</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(250, 44, 230)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+	<!--
+	<minSeverity>0</minSeverity>
+    <maxSeverity>3</maxSeverity>
+	-->
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1.75</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>	  
+    </comps>       
+    <stages> 
+	   <li>
+	     <label>Coming Down</label>
+	     <vomitMtbDays>0.90</vomitMtbDays>		 
+	     <restFallFactorOffset>0.15</restFallFactorOffset>
+		 <statOffsets>          
+		  <WorkSpeedGlobal>-0.10</WorkSpeedGlobal>
+		  <PsychicSensitivity>0.1</PsychicSensitivity>
+		  <EatingSpeed>-0.15</EatingSpeed>		  
+        </statOffsets>
+		<capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>0.25</offset>
+          </li>		  
+        </capMods>
+	   </li>
+	   <li>
+	     <label>Relief</label>
+	     <minSeverity>0.3</minSeverity>	     	     
+         <painFactor>-0.10</painFactor>      
+		 <statOffsets>		  
+          <TameAnimalChance>0.25</TameAnimalChance>
+		  <TrainAnimalChance>0.25</TrainAnimalChance>
+		  <ShootingAccuracyPawn>2</ShootingAccuracyPawn>
+		  <MeleeDodgeChance>20</MeleeDodgeChance>
+		  <AimingDelayFactor>-0.40</AimingDelayFactor>
+		  <WorkSpeedGlobal>-0.50</WorkSpeedGlobal>
+		  <PsychicSensitivity>1</PsychicSensitivity>
+		  <EatingSpeed>-0.65</EatingSpeed>
+		  <MedicalTendQuality>0.80</MedicalTendQuality>
+		  <MedicalSurgerySuccessChance>0.25</MedicalSurgerySuccessChance>
+        </statOffsets>
+		<capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>1.25</offset>
+          </li>		  
+        </capMods>
+	  </li>      
+	  <li>
+        <minSeverity>0.4</minSeverity>
+		<label>Fear of everlasting expansion into and beyond the connective conciousness of the universe.</label>
+		<painFactor>-0.65</painFactor>      
+		<statOffsets>		  
+          <TameAnimalChance>-1</TameAnimalChance>
+		  <TrainAnimalChance>-1</TrainAnimalChance>
+		  <ShootingAccuracyPawn>2</ShootingAccuracyPawn>
+		  <MeleeDodgeChance>-10</MeleeDodgeChance>
+		  <AimingDelayFactor>-0.90</AimingDelayFactor>
+		  <WorkSpeedGlobal>-0.90</WorkSpeedGlobal>
+		  <PsychicSensitivity>2</PsychicSensitivity>
+		  <EatingSpeed>-0.95</EatingSpeed>
+		  <MedicalTendQuality>-0.80</MedicalTendQuality>
+		  <MedicalSurgerySuccessChance>-0.90</MedicalSurgerySuccessChance>
+        </statOffsets>
+		<capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>1.5</offset>
+          </li>		  
+        </capMods>			
+		<mentalStateGivers>
+          <li>
+            <mentalState>Wander_Psychotic</mentalState>
+            <mtbDays>4.5</mtbDays>
+          </li>
+          <li>
+            <mentalState>WanderConfused</mentalState>
+            <mtbDays>1</mtbDays>
+          </li>  
+          <li>
+            <mentalState>Wander_OwnRoom</mentalState>
+            <mtbDays>1</mtbDays>
+          </li>  
+          <li>
+            <mentalState>Jailbreaker</mentalState>
+            <mtbDays>2.5</mtbDays>
+          </li>  
+          <li>
+            <mentalState>CorpseObsession</mentalState>
+            <mtbDays>3.5</mtbDays>
+          </li>            
+        </mentalStateGivers>
+		<hediffGivers>
+		
+            <li Class="HediffGiver_Random">
+              <hediff>LCB_PermanentRodeoTrip</hediff>
+              <mtbDays>100</mtbDays>
+              <partsToAffect>
+                <li>Brain</li>
+              </partsToAffect>
+            </li>
+         
+	   </hediffGivers>	
+      </li>	  
+	  <li>
+	   <label>Peak Trip</label>
+	   <minSeverity>0.65</minSeverity>
+	   <painFactor>-0.60</painFactor>       
+		<statOffsets>		  
+          <TameAnimalChance>+0.50</TameAnimalChance>
+		  <TrainAnimalChance>+0.50</TrainAnimalChance>
+		  <ShootingAccuracyPawn>1</ShootingAccuracyPawn>
+		  <MeleeDodgeChance>-20</MeleeDodgeChance>
+		  <AimingDelayFactor>-0.90</AimingDelayFactor>
+		  <WorkSpeedGlobal>-0.90</WorkSpeedGlobal>
+		  <PsychicSensitivity>2</PsychicSensitivity>
+		  <EatingSpeed>-0.95</EatingSpeed>
+		  <MedicalTendQuality>-0.40</MedicalTendQuality>
+		  <MedicalSurgerySuccessChance>-0.50</MedicalSurgerySuccessChance>
+        </statOffsets>
+		<capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>2</offset>
+          </li>		  
+        </capMods>				
+	  </li>
+	  <li>	  
+	   <label>^Going up^</label>
+	   <minSeverity>0.8</minSeverity>
+	   <painFactor>-0.30</painFactor>       
+		<statOffsets>		  
+          <TameAnimalChance>+0.50</TameAnimalChance>
+		  <TrainAnimalChance>+0.50</TrainAnimalChance>
+		  <ShootingAccuracyPawn>1</ShootingAccuracyPawn>
+		  <MeleeDodgeChance>-20</MeleeDodgeChance>
+		  <AimingDelayFactor>-0.90</AimingDelayFactor>
+		  <WorkSpeedGlobal>-0.90</WorkSpeedGlobal>
+		  <PsychicSensitivity>2</PsychicSensitivity>
+		  <EatingSpeed>-0.95</EatingSpeed>
+		  <MedicalTendQuality>-0.40</MedicalTendQuality>
+		  <MedicalSurgerySuccessChance>-0.50</MedicalSurgerySuccessChance>
+        </statOffsets>
+		<capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>2</offset>
+          </li>		  
+        </capMods>		
+	  </li>
+	 
+    </stages>
+  </HediffDef>
+
+  
+
+  <!-- addiction -->
+  
+  
+  <HediffDef ParentName="DiseaseBase">
+    <defName>LCB_PermanentRodeoTrip</defName>
+    <label>permanent rodeo trip</label>
+    <description>Something snapped during that last trip. This pawn's brain wiring is randomly changing itself causing hallucinations and strange behavior.</description>    
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>0.01</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>initial</label>
+		  <statOffsets>		  
+            <SocialImpact>-0.10</SocialImpact>		  
+          </statOffsets>
+			<mentalStateGivers>
+          <li>
+            <mentalState>WanderConfused</mentalState>
+            <mtbDays>7</mtbDays>
+          </li>
+          <li>
+            <mentalState>Wander_Psychotic</mentalState>
+            <mtbDays>14</mtbDays>
+          </li>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>21</mtbDays>
+          </li>
+        </mentalStateGivers>
+      </li>
+      <li>
+        <minSeverity>0.10</minSeverity>
+        <label>early</label>
+        <mentalBreakMtbDays>9</mentalBreakMtbDays>
+		<statOffsets>		  
+            <SocialImpact>-0.20</SocialImpact>
+			<EatingSpeed>-0.20</EatingSpeed>
+			<WorkSpeedGlobal>-0.20</WorkSpeedGlobal>			
+        </statOffsets>
+      </li>
+      <li>
+        <minSeverity>0.25</minSeverity>
+        <label>moderate</label>
+        <mentalBreakMtbDays>6</mentalBreakMtbDays>
+		<statOffsets>		  
+            <SocialImpact>-0.30</SocialImpact>
+			<EatingSpeed>-0.30</EatingSpeed>
+			<WorkSpeedGlobal>-0.30</WorkSpeedGlobal>
+        </statOffsets>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.90</postFactor>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.40</minSeverity>
+        <label>advanced</label>
+        <mentalBreakMtbDays>3</mentalBreakMtbDays>
+		<statOffsets>		  
+            <SocialImpact>-0.40</SocialImpact>
+			<EatingSpeed>-0.40</EatingSpeed>
+			<WorkSpeedGlobal>-0.40</WorkSpeedGlobal>
+        </statOffsets>
+        <capMods>
+          <li>
+          <capacity>Consciousness</capacity>
+          <postFactor>0.70</postFactor>
+        </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.55</minSeverity>
+        <label>severe</label>
+        <mentalBreakMtbDays>0.5</mentalBreakMtbDays>
+		<statOffsets>		  
+            <SocialImpact>-0.50</SocialImpact>	
+			<EatingSpeed>-0.50</EatingSpeed>
+			<WorkSpeedGlobal>-0.50</WorkSpeedGlobal>
+        </statOffsets>
+        <capMods>
+          <li>
+          <capacity>Consciousness</capacity>
+          <postFactor>0.50</postFactor>
+        </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.7</minSeverity>
+        <label>mind completely lost</label>
+        <mentalBreakMtbDays>0.25</mentalBreakMtbDays>
+		<statOffsets>		  
+            <SocialImpact>-0.60</SocialImpact>
+			<EatingSpeed>-0.60</EatingSpeed>
+			<WorkSpeedGlobal>-0.60</WorkSpeedGlobal>
+        </statOffsets>
+        <capMods>
+          <li>
+          <capacity>Consciousness</capacity>
+          <postFactor>0.30</postFactor>
+        </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.85</minSeverity>
+        <label>mumbling vegetable</label>
+		<statOffsets>		  
+            <SocialImpact>-0.70</SocialImpact>
+			<EatingSpeed>-0.70</EatingSpeed>
+			<WorkSpeedGlobal>-0.70</WorkSpeedGlobal>
+        </statOffsets>
+        <capMods>
+          <li>
+          <capacity>Consciousness</capacity>
+          <postFactor>0.10</postFactor>
+        </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  
+  
+  <!--  ==============================================  Sinicuiche ========================================  -->
+  
+  
+  
+   <ThingDef ParentName="DrugBase">
+    <defName>LCB_SinicuicheRC</defName>
+    <label>Sin</label>
+    <description>Narcotic made from the Sinicuiche plant. Goes by the street name Sin.</description>
+	<tradeability>Sellable</tradeability>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <tickerType>Rare</tickerType>
+    <graphicData>
+      <texPath>Things/Materials/HamamelisAcid</texPath>  <!--  here  -->
+	  <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+	<descriptionHyperlinks>
+      <HediffDef>LCB_SinicuicheHigh</HediffDef>
+      <HediffDef>LCB_SinicuicheTolerance</HediffDef>
+      <HediffDef>LCB_SinicuicheAddiction</HediffDef>	  
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>18</MarketValue>
+      <Flammability>1.0</Flammability>
+	  <Mass>0.03</Mass>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>13</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+	  <li Class="CompProperties_Drug">
+		  <chemical>RC_SinicuicheChem</chemical>
+          <addictiveness>0.069</addictiveness>
+		  <isCombatEnhancingDrug>false</isCombatEnhancingDrug>          
+          <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
+          <needLevelOffset>0.9</needLevelOffset>
+		  <overdoseSeverityOffset>0.18~0.35</overdoseSeverityOffset>          
+      </li>
+    </comps>
+    <ingestible>
+      <ingestHoldUsesTable>false</ingestHoldUsesTable>
+      <ingestCommandString>Use {0}</ingestCommandString>
+      <ingestReportString>Using {0}.</ingestReportString>
+      <useEatingSpeedStat>false</useEatingSpeedStat>
+      <ingestSound>Ingest_Inject</ingestSound>
+      <baseIngestTicks>20</baseIngestTicks>
+      <foodType>Processed</foodType>
+      <joyKind>Chemical</joyKind>
+      <joy>0.65</joy>	  
+	  <drugCategory>Hard</drugCategory>    
+	  <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>LCB_SinicuicheHigh</hediffDef>
+          <severity>0.6</severity>
+          <toleranceChemical>RC_SinicuicheChem</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Rest</need>
+          <offset>-0.2</offset>
+          <toleranceChemical>RC_SinicuicheChem</toleranceChemical>
+        </li>
+		<li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Comfort</need>
+          <offset>0.2</offset>
+          <toleranceChemical>RC_SinicuicheChem</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>LCB_SinicuicheTolerance</hediffDef>
+          <severity>0.042</severity>
+          <divideByBodySize>true</divideByBodySize>	  
+        </li>
+      </outcomeDoers>
+    </ingestible>	
+	<recipeMaker>
+      <recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+	  <researchPrerequisite>LCB_SinProduction</researchPrerequisite>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <LCB_SinicuicheTar>4</LCB_SinicuicheTar>   <!-- Change  -->
+    </costList>
+  </ThingDef>
+  
+  <ThingDef ParentName="RoughPlantBase">
+    <defName>LCB_SinicuicheTar</defName>
+    <label>sinicuiche tar</label>
+    <description>The sap from a sinicuiche plant.</description>       
+	 <graphicData>
+      <texPath>Things/Materials/RawHamamelis</texPath>
+    </graphicData>
+    <soundInteract>Standard_Pickup</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop> 
+		<socialPropernessMatters>true</socialPropernessMatters>
+    <statBases>
+      <MarketValue>0.6</MarketValue>
+      <Flammability>1.0</Flammability>
+	  <Nutrition>0.05</Nutrition>
+	  <Mass>0.03</Mass>
+    </statBases>
+    <ingestible>
+      <preferability>DesperateOnly</preferability>
+    </ingestible>
+    <thingCategories>
+      <li>PlantMatter</li>
+    </thingCategories>
+    <tickerType>Rare</tickerType>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>5</daysToRotStart>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <!--  ===============================  Hediffs  ======================================  -->
+  
+  
+  
+  <HediffDef>
+    <defName>LCB_SinicuicheHigh</defName>
+    <label>The Great Dragon Chase</label>
+    <description>The sensations of the Rim Poppy are in full effect.</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(250, 44, 230)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+	<!--
+	<minSeverity>0</minSeverity>
+    <maxSeverity>3</maxSeverity>
+	-->
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1.25</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>	  
+    </comps>       
+    <stages>	   
+	  <li>
+	   <label>chillin on a white horse</label>	   
+	   <painFactor>0.50</painFactor>
+		<restFallFactor>1.40</restFallFactor>
+		<statOffsets>		  
+          <ComfyTemperatureMin>-13</ComfyTemperatureMin>
+		  <ComfyTemperatureMax>+13</ComfyTemperatureMax>
+		  <CarryingCapacity>-12</CarryingCapacity>
+		  <WorkSpeedGlobal>-0.15</WorkSpeedGlobal>
+		  <GlobalLearningFactor>-0.05</GlobalLearningFactor>		  
+        </statOffsets>
+		<capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.75</postFactor>
+          </li>
+          <li>
+            <capacity>BloodPumping</capacity>
+            <postFactor>0.85</postFactor>
+          </li>
+          <li>
+            <capacity>Talking</capacity>
+            <postFactor>0.85</postFactor>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.7</postFactor>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.55</postFactor>
+          </li>
+          <li>
+            <capacity>Eating</capacity>
+            <postFactor>0.65</postFactor>
+          </li>
+          <li>
+            <capacity>Metabolism</capacity>
+            <postFactor>0.75</postFactor>
+          </li>		  
+          <li>
+            <capacity>Breathing</capacity>
+            <postFactor>0.95</postFactor>
+          </li>		  
+          <li>
+            <capacity>BloodPumping</capacity>
+            <postFactor>0.85</postFactor>
+          </li>
+        </capMods>
+	  </li>
+	  <li>	  
+	  <label>dancing on the moon with Randy</label>
+	<minSeverity>0.5</minSeverity>
+	<painFactor>0.20</painFactor>
+	<restFallFactor>1.20</restFallFactor>
+        <statOffsets>		  
+	   <ComfyTemperatureMin>-15</ComfyTemperatureMin>
+	   <ComfyTemperatureMax>+15</ComfyTemperatureMax>
+	   <CarryingCapacity>-15</CarryingCapacity>
+	   <WorkSpeedGlobal>-0.20</WorkSpeedGlobal>
+	   <GlobalLearningFactor>-0.10</GlobalLearningFactor>		  
+        </statOffsets>
+		<capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.6</postFactor>
+          </li>
+          <li>
+            <capacity>BloodPumping</capacity>
+            <postFactor>0.8</postFactor>
+          </li>
+          <li>
+            <capacity>Talking</capacity>
+            <postFactor>0.8</postFactor>
+          </li>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.6</postFactor>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.4</postFactor>
+          </li>
+          <li>
+            <capacity>Eating</capacity>
+            <postFactor>0.6</postFactor>
+          </li>
+          <li>
+            <capacity>Metabolism</capacity>
+            <postFactor>0.6</postFactor>
+          </li>		  
+          <li>
+            <capacity>Breathing</capacity>
+            <postFactor>0.9</postFactor>
+          </li>		  
+          <li>
+            <capacity>BloodPumping</capacity>
+            <postFactor>0.8</postFactor>
+          </li>
+        </capMods>
+	  </li>
+    </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>LCB_SinicuicheHighThought</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LCB_SinicuicheHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+	<stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+	<stackLimit>4</stackLimit>
+    <stages>
+	  <li>
+        <label>chillin on a white horse</label>
+        <description>Probably gonna just chill here for a bit.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+      <li>
+        <label>dancing on the moon with Randy</label>
+        <description>I want to feel this way forever.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- addiction -->
+  
+  <ChemicalDef>
+    <defName>RC_SinicuicheChem</defName>
+    <label>Sinicuiche</label>
+    <addictionHediff>LCB_SinicuicheAddiction</addictionHediff>
+    <toleranceHediff>LCB_SinicuicheTolerance</toleranceHediff>
+    <onGeneratedAddictedToleranceChance>0.05</onGeneratedAddictedToleranceChance>	
+  </ChemicalDef>
+  
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>LCB_NeedSinicuiche</defName>
+    <needClass>Need_Chemical</needClass>
+    <label>Sinicuiche</label>
+    <description>Because of an addiction to refined sinicuiche, this person needs to regularly consume sinicuiche to avoid withdrawal symptoms.</description>
+    <listPriority>20</listPriority>
+  </NeedDef>
+
+  <HediffDef ParentName="DrugToleranceBase">
+    <defName>LCB_SinicuicheTolerance</defName>
+    <label>Sin tolerance</label>
+    <description>A built-up tolerance to sinicuiche. The more severe this tolerance is, the more sinicuiche it takes to get the same effect.</description>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.01</severityPerDay>		
+      </li>
+      <li Class="HediffCompProperties_DrugEffectFactor">
+        <chemical>RC_SinicuicheChem</chemical>
+      </li>
+	</comps>    
+  </HediffDef>
+  
+  <HediffDef ParentName="AddictionBase">
+    <defName>LCB_SinicuicheAddiction</defName>
+    <label>sin addiction</label>
+    <description>Because of a sinicuiche addiction, this person needs to regularly consume sin to avoid withdrawal symptoms.</description>
+    <hediffClass>Hediff_Addiction</hediffClass>
+    <causesNeed>LCB_NeedSinicuiche</causesNeed>
+    <comps>     
+	  <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.0222</severityPerDay>
+		<showDaysToRecover>true</showDaysToRecover>
+      </li>	  
+    </comps>
+    <stages>
+      <li>	    
+      </li>
+	  <li>
+        <label>withdrawal</label>
+        <vomitMtbDays>0.33</vomitMtbDays>
+        <restFallFactorOffset>0.3</restFallFactorOffset>
+        <socialFightChanceFactor>3.0</socialFightChanceFactor>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.20</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.20</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.20</offset>
+          </li>
+        </capMods>
+        <mentalStateGivers>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>40</mtbDays>
+          </li>
+          <li>
+            <mentalState>Wander_Psychotic</mentalState>
+            <mtbDays>30</mtbDays>
+          </li>
+          <li>
+            <mentalState>Wander_Sad</mentalState>
+            <mtbDays>10</mtbDays>
+          </li>
+          <li>
+            <mentalState>Binging_DrugMajor</mentalState>
+            <mtbDays>20</mtbDays>
+          </li>
+        </mentalStateGivers>
+	  </li>
+	  <li>
+	   <label>desperately craving</label>
+            <minSeverity>0.30</minSeverity>
+            <vomitMtbDays>0.6</vomitMtbDays>
+            <statOffsets>		 
+            <GlobalLearningFactor>-0.30</GlobalLearningFactor>
+            <WorkSpeedGlobal>-0.40</WorkSpeedGlobal>
+          </statOffsets>
+	  <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.75</postFactor>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.75</postFactor>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.75</postFactor>
+          </li>          
+        </capMods>		
+        <mentalStateGivers>
+          <li>
+            <mentalState>SocialFighting</mentalState>
+            <mtbDays>7</mtbDays>
+          </li>
+          <li>
+            <mentalState>TargetedInsultingSpree</mentalState> 
+            <mtbDays>14</mtbDays>
+          </li>	
+          <li>
+            <mentalState>SadisticRage</mentalState>
+            <mtbDays>21</mtbDays>
+          </li>	
+        </mentalStateGivers>
+	<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+              <hediff>LCB_Itchy</hediff>
+              <baseMtbDays>0.1</baseMtbDays> <!-- regular mtbDays exists too, but does not work on RandomDrugEffect or as a decimal, by the way. -->
+              <minSeverity>0.30</minSeverity>
+              <partsToAffect>
+		<li>Brain</li> <!-- You have to target a bodypart for these methods. -->
+              </partsToAffect>
+          </li>	
+	</hediffGivers>
+      </li>
+    </stages>      
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>LCB_SinicuicheWithdrawal</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LCB_SinicuicheAddiction</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>      
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <label>Sin withdrawal</label>
+        <description>It just hurts not to have it. I don't want to feel anymore.</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+	  <li>
+        <label>Sin desperation</label>
+        <description>Sick. Can't stop...scratching. I NEED another hit.</description>
+        <baseMoodEffect>-40</baseMoodEffect>
+      </li>    
+    </stages>
+  </ThoughtDef>
+  
+  <HediffDef>
+    <defName>LCB_Itchy</defName>
+    <label>itchy</label>    
+    <description>Neurological adaptation to addictive drugs have caused the brain to constantly perceive phantom itching sensations.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <makesSickThought>true</makesSickThought>
+    <initialSeverity>1</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <comps>
+	<li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.0555</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>light</label>                
+      </li>
+      <li>
+        <label>noticable</label>
+        <minSeverity>0.20</minSeverity> 
+        <painOffset>0.05</painOffset>
+	  <hediffGivers>
+            <li Class="HediffGiver_RandomDrugEffect">
+              <hediff>Scratch</hediff>
+              <minSeverity>0.15</minSeverity>
+              <baseMtbDays>0.40</baseMtbDays>
+              <partsToAffect>
+                <li>Ear</li>
+		<li>Torso</li>
+		<li>Shoulder</li>
+		<li>Arm</li>
+		<li>Hand</li>
+		<li>Finger</li>
+		<li>Waist</li>
+		<li>Toe</li>
+		<li>Foot</li>
+		<li>Leg</li>
+		<li>Neck</li>
+		<li>Nose</li>
+		<li>Head</li>
+              </partsToAffect>
+            </li>
+	  </hediffGivers>        
+      </li>
+      <li>
+        <label>persistent</label>
+        <minSeverity>0.33</minSeverity>
+        <painOffset>0.15</painOffset>
+	  <hediffGivers>
+            <li Class="HediffGiver_RandomDrugEffect">
+              <hediff>Scratch</hediff>
+              <minSeverity>0.66</minSeverity>
+              <baseMtbDays>0.25</baseMtbDays>
+              <partsToAffect>
+                <li>Ear</li>
+		<li>Torso</li>
+		<li>Shoulder</li>
+		<li>Arm</li>
+		<li>Hand</li>
+		<li>Finger</li>
+		<li>Waist</li>
+		<li>Toe</li>
+		<li>Foot</li>
+		<li>Leg</li>
+		<li>Neck</li>
+		<li>Nose</li>
+		<li>Head</li>
+              </partsToAffect>
+            </li>
+	  </hediffGivers>        
+      </li>
+      <li>
+        <label>intense</label>
+        <minSeverity>0.66</minSeverity>
+        <painOffset>0.20</painOffset>
+	  <hediffGivers>
+            <li Class="HediffGiver_RandomDrugEffect">
+              <hediff>Scratch</hediff>
+              <minSeverity>0.90</minSeverity>
+              <baseMtbDays>0.10</baseMtbDays>
+              <partsToAffect>
+                <li>Ear</li>
+		<li>Torso</li>
+		<li>Shoulder</li>
+		<li>Arm</li>
+		<li>Hand</li>
+		<li>Finger</li>
+		<li>Waist</li>
+		<li>Toe</li>
+		<li>Foot</li>
+		<li>Leg</li>
+		<li>Neck</li>
+		<li>Nose</li>
+		<li>Head</li>
+              </partsToAffect>
+            </li>
+	  </hediffGivers>        
+      </li>
+      <li>
+        <label>maddening</label>
+        <minSeverity>0.85</minSeverity>
+        <painOffset>0.25</painOffset>
+	  <hediffGivers>
+            <li Class="HediffGiver_RandomDrugEffect">
+              <hediff>Scratch</hediff>
+              <minSeverity>2.75</minSeverity>
+              <baseMtbDays>0.01</baseMtbDays>
+              <partsToAffect>
+                <li>Ear</li>
+		<li>Torso</li>
+		<li>Shoulder</li>
+		<li>Arm</li>
+		<li>Hand</li>
+		<li>Finger</li>
+		<li>Waist</li>
+		<li>Toe</li>
+		<li>Foot</li>
+		<li>Leg</li>
+		<li>Neck</li>
+		<li>Nose</li>
+		<li>Head</li>
+              </partsToAffect>
+            </li>
+	  </hediffGivers>
+      </li>	  
+    </stages>
+  </HediffDef>
+  
+  <ThoughtDef>
+    <defName>LCB_ItchyThoughts</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LCB_Itchy</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>       
+      <li>
+        <label>itchy spot</label>
+        <description>This stupid itch won't go away.</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+      <li>
+        <label>noticable itching</label>
+        <description>If I keep scratching, people are going to notice.</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+      <li>
+        <label>persistent itching</label>
+        <description>I've got to shake this itch...</description>
+        <baseMoodEffect>-7</baseMoodEffect>
+      </li>
+      <li>
+        <label>intense itchiness</label>
+        <description>I can't stop. The more I scratch, the worse I itch! It's unbearable.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>maddening itchiness</label>
+        <description>AHHH! AHHHHHH!!! MAKE IT GO AWAY!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li> 
+    </stages>
+  </ThoughtDef>
+
+  <!--  ===============================  Fent  ======================================  -->
+
+  <ThingDef ParentName="DrugBase">
+    <defName>LCB_Fent</defName>
+    <label>Fent</label>
+    <description>Synthetic opiate made from chemical precursors. Fent can be used to step on other drugs to improve profit margins, though because the effective dose is so tiny overdose is bound to happen eventually. As a result, fent is well known for destroying lives, communities, and entire societies.</description>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <tickerType>Rare</tickerType>
+    <graphicData>
+	<texPath>Things/Materials/Fent</texPath>  <!--  here  -->
+	<graphicClass>Graphic_StackCount</graphicClass>
+        <shaderType>Transparent</shaderType>
+	<drawSize>0.65</drawSize>
+    </graphicData>
+	<descriptionHyperlinks>
+      <HediffDef>LCB_FentHigh</HediffDef>
+      <HediffDef>LCB_FentTolerance</HediffDef>
+      <HediffDef>LCB_FentAddiction</HediffDef>	  
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>3</MarketValue>
+      <Flammability>1.0</Flammability>
+	  <Mass>0.01</Mass>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>RC_FentChem</chemical>
+        <addictiveness>0.10</addictiveness>
+	<isCombatEnhancingDrug>false</isCombatEnhancingDrug>
+        <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
+        <needLevelOffset>0.9</needLevelOffset>
+	<overdoseSeverityOffset>0.28~0.56</overdoseSeverityOffset>
+        <largeOverdoseChance>0.084</largeOverdoseChance>
+      </li>
+    </comps>
+    <ingestible>
+      <foodType>Processed</foodType>
+      <baseIngestTicks>100</baseIngestTicks>
+      <chairSearchRadius>0</chairSearchRadius>
+      <ingestSound>Ingest_Pill</ingestSound>
+      <ingestHoldUsesTable>false</ingestHoldUsesTable>
+      <ingestCommandString>Take {0}</ingestCommandString>
+      <ingestReportString>Taking {0}.</ingestReportString>
+      <joyKind>Chemical</joyKind>
+      <joy>0.45</joy>	  
+	  <drugCategory>Hard</drugCategory>    
+	  <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>LCB_FentHigh</hediffDef>
+          <severity>0.5</severity>
+          <toleranceChemical>RC_FentChem</toleranceChemical>
+          <divideByBodySize>true</divideByBodySize>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Rest</need>
+          <offset>-0.2</offset>
+          <toleranceChemical>RC_FentChem</toleranceChemical>
+        </li>
+	<li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Comfort</need>
+          <offset>0.3</offset>
+          <toleranceChemical>RC_FentChem</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>LCB_FentTolerance</hediffDef>
+          <severity>0.12</severity>
+          <divideByBodySize>true</divideByBodySize>	  
+        </li>
+      </outcomeDoers>
+    </ingestible>
+ <!--   <recipeMaker>
+      <recipeUsers>
+        <li>FueledStove</li>
+        <li>ElectricStove</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+	  <researchPrerequisite>LCB_SinProduction</researchPrerequisite>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      	  <Neutroamine>1</Neutroamine> 
+    </costList>	 -->
+  </ThingDef>
+
+  <!--  ===============================  Hediffs  ======================================  -->
+  
+  <HediffDef>
+    <defName>LCB_FentHigh</defName>
+    <label>Bangin up the Fent</label>
+    <description>I'm glowing! I feel numb but so alive!</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(250, 44, 230)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+	<!--
+	<minSeverity>0</minSeverity>
+    <maxSeverity>3</maxSeverity>
+	-->
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-2.50</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>	  
+    </comps>
+    <stages>	   
+      <li>
+        <label>high on fent</label>	   
+	<painFactor>0.25</painFactor>
+        <restFallFactor>1.40</restFallFactor>
+        <statOffsets>		  
+          	  <ComfyTemperatureMin>-13</ComfyTemperatureMin>
+		  <ComfyTemperatureMax>+13</ComfyTemperatureMax>
+		  <CarryingCapacity>-12</CarryingCapacity>
+		  <WorkSpeedGlobal>-0.15</WorkSpeedGlobal>
+		  <GlobalLearningFactor>-0.05</GlobalLearningFactor>		  
+        </statOffsets>
+	<capMods>
+        <li>
+            <capacity>Moving</capacity>
+            <offset>-0.15</offset>
+        </li>
+        <li>
+            <capacity>BloodPumping</capacity>
+            <offset>-0.15</offset>
+        </li>
+        <li>
+            <capacity>Talking</capacity>
+            <offset>-0.15</offset>
+        </li>
+        <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.10</offset>
+        </li>
+        <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.15</offset>
+        </li>
+        <li>
+            <capacity>Eating</capacity>
+            <offset>-0.15</offset>
+        </li>
+        <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.15</offset>
+        </li>	  
+        <li>
+            <capacity>Breathing</capacity>
+            <offset>-0.20</offset>
+        </li>	  
+        </capMods>
+        </li>
+        <li>	  
+	  <label>like falling towards the sky</label>
+	   <minSeverity>0.55</minSeverity>
+	   <painFactor>0.15</painFactor>
+	   <restFallFactor>1.75</restFallFactor>
+          <statOffsets>		  
+	   <ComfyTemperatureMin>-18</ComfyTemperatureMin>
+	   <ComfyTemperatureMax>+18</ComfyTemperatureMax>
+	   <CarryingCapacity>-20</CarryingCapacity>
+	   <WorkSpeedGlobal>-0.25</WorkSpeedGlobal>
+	   <GlobalLearningFactor>-0.15</GlobalLearningFactor>		  
+          </statOffsets>
+	<capMods>
+        <li>
+            <capacity>Moving</capacity>
+            <offset>-0.30</offset>
+        </li>
+        <li>
+            <capacity>BloodPumping</capacity>
+            <offset>-0.30</offset>
+        </li>
+        <li>
+            <capacity>Talking</capacity>
+            <offset>-0.30</offset>
+        </li>
+        <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.35</offset>
+        </li>
+        <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.30</offset>
+        </li>
+        <li>
+            <capacity>Eating</capacity>
+            <offset>-0.30</offset>
+        </li>
+        <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.30</offset>
+        </li>	  
+        <li>
+            <capacity>Breathing</capacity>
+            <offset>-0.35</offset>
+        </li>
+        </capMods>
+        </li>
+        <li>	  
+	  <label>fent folding</label>
+	   <minSeverity>0.7</minSeverity>
+	   <painFactor>0.05</painFactor>
+	   <restFallFactor>2.50</restFallFactor>
+	<statOffsets>		  
+	   <ComfyTemperatureMin>-18</ComfyTemperatureMin>
+	   <ComfyTemperatureMax>+18</ComfyTemperatureMax>
+	   <CarryingCapacity>-26</CarryingCapacity>
+	   <WorkSpeedGlobal>-0.35</WorkSpeedGlobal>
+	   <GlobalLearningFactor>-0.45</GlobalLearningFactor>		  
+        </statOffsets>
+	<capMods>
+        <li>
+            <capacity>Moving</capacity>
+            <offset>-0.60</offset>
+        </li>
+        <li>
+            <capacity>BloodPumping</capacity>
+            <offset>-0.60</offset>
+        </li>
+        <li>
+            <capacity>Talking</capacity>
+            <offset>-0.60</offset>
+        </li>
+        <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.3</postFactor>
+        </li>
+        <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.60</offset>
+        </li>
+        <li>
+            <capacity>Eating</capacity>
+            <offset>-0.60</offset>
+        </li>
+        <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.60</offset>
+        </li>	  
+        <li>
+            <capacity>Breathing</capacity>
+            <postFactor>0.4</postFactor>
+        </li>	  
+        </capMods>
+	</li>
+	<li>	  
+	  <label>dancing with the reaper</label>
+	   <minSeverity>0.85</minSeverity>
+	   <painFactor>0.00</painFactor>
+	   <restFallFactor>3.50</restFallFactor>
+	<statOffsets>
+	   <GlobalLearningFactor>-1.00</GlobalLearningFactor>		  
+        </statOffsets>
+	<capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.20</postFactor>
+          </li>
+	  <li>
+            <capacity>BloodPumping</capacity>
+            <postFactor>0.4</postFactor>
+          </li>
+	  <li>
+            <capacity>Talking</capacity>
+            <postFactor>0.05</postFactor>
+          </li>
+	  <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.35</postFactor>
+          </li>
+	  <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.15</postFactor>
+          </li>
+	  <li>
+            <capacity>Eating</capacity>
+            <setMax>0.01</setMax>
+          </li>
+	  <li>
+            <capacity>Metabolism</capacity>
+            <postFactor>0.01</postFactor>
+          </li>		  
+	  <li>
+            <capacity>Breathing</capacity>
+            <setMax>0.20</setMax>
+          </li>		  
+        </capMods>
+	</li>
+    </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>LCB_FentHighThought_Bad</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LCB_FentHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+     <stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+    <stackLimit>4</stackLimit>
+    <requiredHediffs>
+      <li>DrugOverdose</li>
+    </requiredHediffs>
+    <stages>
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <label>dancing with the reaper</label>
+        <description>I can't breathe! I. Can't. Breathe. Am I gonna die?</description>
+        <baseMoodEffect>-16</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>LCB_LacedHighThought_Bad</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>DrugOverdose</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+     <stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+    <stackLimit>4</stackLimit>
+    <requiredHediffs>
+      <li MayRequire="zal.meth">MethLacedHigh</li>
+      <li>FlakeLacedHigh</li>
+      <li>GoJuiceSpikedHigh</li>
+      <li>SinicuicheLacedHigh</li>
+      <li>SmokeleafLacedHigh</li>
+      <li>WakeUpLacedHigh</li>
+      <li>YayoLacedHigh</li>
+    </requiredHediffs>
+    <stages>
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <label>dancing with the reaper</label>
+        <description>I can't breathe! Icantbreathe I. Can't. Breathe. Am I gonna die?</description>
+        <baseMoodEffect>-16</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>LCB_FentHighThought</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LCB_FentHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+    <stackLimit>3</stackLimit>
+    <nullifyingHediffs>
+      <li>SmokeleafLacedHigh</li>
+      <li>WakeUpLacedHigh</li>
+      <li>YayoLacedHigh</li>
+      <li>FlakeLacedHigh</li>
+    </nullifyingHediffs>
+    <stages>
+      <li>
+        <label>riding the wave</label>
+        <description>Probably gonna just chill here for a bit.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+      <li>
+        <label>catatonic cowboy</label>
+        <description>Haha I can't feel my face...so good!</description>
+        <baseMoodEffect>18</baseMoodEffect>
+      </li>
+      <li>
+        <label>gone with the fent</label>
+        <description>This blissful numbness... I don't need anything else in life</description>
+        <baseMoodEffect>24</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- addiction -->
+
+  <ChemicalDef>
+    <defName>RC_FentChem</defName>
+    <label>Fent</label>
+    <addictionHediff>LCB_FentAddiction</addictionHediff>
+    <toleranceHediff>LCB_FentTolerance</toleranceHediff>
+    <onGeneratedAddictedToleranceChance>0.1</onGeneratedAddictedToleranceChance>
+    <geneOverdoseChanceFactorResist>0.5</geneOverdoseChanceFactorResist>
+    <geneOverdoseChanceFactorImmune>0</geneOverdoseChanceFactorImmune>
+  </ChemicalDef>
+  
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>LCB_NeedFent</defName>
+    <needClass>Need_Chemical</needClass>
+    <label>Fent</label>
+    <description>Because of a Fent addiction, this person needs to regularly consume Fent to avoid withdrawal symptoms.</description>
+    <listPriority>20</listPriority>
+  </NeedDef>
+
+  <HediffDef ParentName="DrugToleranceBase">
+    <defName>LCB_FentTolerance</defName>
+    <label>Fent tolerance</label>
+    <description>A built-up tolerance to Fent. The more severe this tolerance is, the more Fent it takes to get the same effect.</description>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.04</severityPerDay>		
+      </li>
+      <li Class="HediffCompProperties_DrugEffectFactor">
+        <chemical>RC_FentChem</chemical>
+      </li>
+	</comps>    
+  </HediffDef>
+  
+  <HediffDef ParentName="AddictionBase">
+    <defName>LCB_FentAddiction</defName>
+    <label>Fent addiction</label>
+    <description>I'm so itchy and my back is killing me. I just feel so tired all the time.</description>
+    <hediffClass>Hediff_Addiction</hediffClass>
+    <causesNeed>LCB_NeedFent</causesNeed>
+    <comps>     
+	  <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.0333</severityPerDay>
+		<showDaysToRecover>true</showDaysToRecover>
+      </li>	  
+    </comps>
+    <stages>
+      <li>	    
+      </li>
+      <li>
+	<label>desperately craving</label>
+	<vomitMtbDays>0.40</vomitMtbDays>
+        <painOffset>0.9</painOffset>
+	<statOffsets>		 
+	 <GlobalLearningFactor>-0.80</GlobalLearningFactor>
+	 <WorkSpeedGlobal>-0.60</WorkSpeedGlobal>
+	</statOffsets>
+        <statFactors>
+         <RestFallRateFactor>1.3</RestFallRateFactor>
+        </statFactors>
+	<capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.5</postFactor>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.5</postFactor>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.5</postFactor>
+          </li>          
+        </capMods>		
+	<mentalStateGivers>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>1</mtbDays>
+          </li>
+          <li>
+            <mentalState>TargetedInsultingSpree</mentalState>
+            <mtbDays>2</mtbDays>
+          </li>
+	  <li>
+             <mentalState>SocialFighting</mentalState>
+            <mtbDays>6</mtbDays>
+          </li>	
+        </mentalStateGivers>
+      </li>
+	  <li>
+        <label>withdrawal</label>
+		<vomitMtbDays>0.66</vomitMtbDays>
+        <restFallFactorOffset>0.4</restFallFactorOffset>
+        <socialFightChanceFactor>4.0</socialFightChanceFactor>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.20</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.20</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.20</offset>
+          </li>
+        </capMods>
+        <mentalStateGivers>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>40</mtbDays>
+          </li>
+          <li>
+            <mentalState>Wander_Psychotic</mentalState>
+            <mtbDays>30</mtbDays>
+          </li>
+          <li>
+            <mentalState>Wander_Sad</mentalState>
+            <mtbDays>10</mtbDays>
+          </li>
+          <li>
+            <mentalState>Binging_DrugMajor</mentalState>
+            <mtbDays>20</mtbDays>
+          </li>
+        </mentalStateGivers>
+      </li>
+    </stages>      
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>LCB_FentWithdrawal</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LCB_FentAddiction</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>      
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <label>Fent withdrawal</label>
+        <description>I just need a little bit. It'll be the last one. Just need to get through the day.</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li> 
+    </stages>
+  </ThoughtDef>
+
+    <!--  ===============================  Zoom  ======================================  -->
+
+  <ThingDef ParentName="DrugBase">
+    <defName>LCB_Zoom</defName>    <!--  ==  Since this mod adds a lot of downers and psychadelics, zoom fills a niche for an upper that's like crack: cheap and very addictive ==  -->
+    <label>Zoom</label>
+    <description>Go-Juice distilled into a fine crystalline substance. Because the active ingredients have been isolated, zoom can be smoked to receive a far greater sense of euphoria as well as enhancement to performance relative to an average hit of go-juice. Like pressing an active belt sander into your frontal lobe, taking zoom comes at the cost of grave side-effects - including a greatly increased risk of overdose and addiction. As a result, zoom is well known for destroying lives, communities, and entire societies.</description>
+    <tradeability>Sellable</tradeability>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <tickerType>Rare</tickerType>
+    <graphicData>
+        <texPath>Things/Materials/DrugPipe</texPath>
+        <graphicClass>Graphic_StackCount</graphicClass>
+        <shaderType>Transparent</shaderType>
+        <drawSize>0.65</drawSize>
+        <color>(137,196,136)</color>
+    </graphicData>
+    <descriptionHyperlinks>
+      <HediffDef>LCB_ZoomHigh</HediffDef>
+      <HediffDef>LCB_ZoomTolerance</HediffDef>
+      <HediffDef>LCB_ZoomAddiction</HediffDef>	  
+    </descriptionHyperlinks>
+    <statBases>
+      <MarketValue>16</MarketValue>
+      <Flammability>1.0</Flammability>
+      <Mass>0.001</Mass>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>RC_ZoomChem</chemical>
+        <addictiveness>0.12</addictiveness>
+	<isCombatEnhancingDrug>false</isCombatEnhancingDrug>
+        <existingAddictionSeverityOffset>0.10</existingAddictionSeverityOffset>
+        <needLevelOffset>0.4</needLevelOffset>
+	<overdoseSeverityOffset>0.12~0.36</overdoseSeverityOffset>
+        <largeOverdoseChance>0.022</largeOverdoseChance>
+      </li>
+    </comps>
+    <ingestible>
+      <foodType>Processed</foodType>
+      <baseIngestTicks>650</baseIngestTicks>
+      <chairSearchRadius>0</chairSearchRadius>
+      <ingestSound>Ingest_Smoke</ingestSound>
+      <ingestEffect>Smoke_Flake</ingestEffect>
+      <ingestHoldOffsetStanding>
+	<northDefault>
+	    <offset>(0.27,0,0.08)</offset>
+	    <behind>true</behind>
+	</northDefault>
+	<east>
+	    <offset>(0.45,0,0.08)</offset>
+	</east>
+	<south>
+	    <offset>(0.27,0,0.08)</offset>
+	</south>
+	<west>
+	    <offset>(-0.50,0,0.08)</offset>
+	    <flip>true</flip>
+	</west>
+      </ingestHoldOffsetStanding>
+      <ingestHoldUsesTable>false</ingestHoldUsesTable>
+      <ingestCommandString>Smoke {0}</ingestCommandString>
+      <ingestReportString>Smoking {0}.</ingestReportString>
+      <useEatingSpeedStat>false</useEatingSpeedStat>
+      <joyKind>Chemical</joyKind>
+      <joy>0.45</joy>	  
+	  <drugCategory>Hard</drugCategory>    
+	  <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>LCB_ZoomHigh</hediffDef>
+          <severity>3.0</severity>
+          <toleranceChemical>RC_ZoomChem</toleranceChemical>
+          <divideByBodySize>true</divideByBodySize>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Rest</need>
+          <offset>1.0</offset>
+          <toleranceChemical>RC_ZoomChem</toleranceChemical>
+        </li>
+	<li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Comfort</need>
+          <offset>0.5</offset>
+          <toleranceChemical>RC_ZoomChem</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>LCB_ZoomTolerance</hediffDef>
+          <severity>0.08</severity>
+          <divideByBodySize>true</divideByBodySize>	  
+        </li>
+      </outcomeDoers>
+    </ingestible>
+<!--    <recipeMaker>
+      <recipeUsers>
+        <li>FueledStove</li>
+        <li>ElectricStove</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+	  <researchPrerequisite>GoJuiceProduction</researchPrerequisite>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      	  <Neutroamine>1</Neutroamine> Commented out in case you want to revert to MakeableDrugBase
+    </costList>	-->
+  </ThingDef>
+
+  <!--  ===============================  Hediffs  ======================================  -->
+  
+  
+  
+  <HediffDef>
+    <defName>LCB_ZoomHigh</defName>
+    <label>Blitzing on zoom!</label>
+    <description>Zoom in the bloodstream. It enhances combat-related abilities to a superhuman level, but is fiendishly addictive and deals a heavy cost to the brain. Most with the resources to do so will simply smoke more zoom to escape the inevitable crash, but the risk of mental breakdown is far more difficult to escape.</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(250, 44, 230)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>3.0</maxSeverity>
+	<!--
+	<minSeverity>0</minSeverity>
+    <maxSeverity>3</maxSeverity>
+	-->
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-4.50</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+      <li Class="LosCartelesDelBorde.HediffCompProperties_TraitManager">
+      </li>
+    </comps>
+    <stages>	   
+      <li>	  
+	<label>crashing</label>
+	<painOffset>0.6</painOffset>
+	<restFallFactor>5.75</restFallFactor>
+	<statOffsets>
+	  <CarryingCapacity>24</CarryingCapacity>
+	  <WorkSpeedGlobal>-0.25</WorkSpeedGlobal>
+	  <GlobalLearningFactor>-1.00</GlobalLearningFactor>
+	  <MentalBreakThreshold>0.18</MentalBreakThreshold>  
+	</statOffsets>
+	<capMods>
+        <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.35</offset>
+        </li>
+        <li>
+            <capacity>Moving</capacity>
+            <offset>-0.50</offset>
+        </li>
+        <li>
+            <capacity>Sight</capacity>
+            <offset>-0.30</offset>
+        </li>
+        <li>
+            <capacity>Talking</capacity>
+            <offset>-0.30</offset>
+        </li>
+        <li>
+            <capacity>BloodPumping</capacity>
+            <offset>-0.30</offset>
+        </li>
+        <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.30</offset>
+        </li>
+        <li>
+            <capacity>Eating</capacity>
+            <offset>-0.30</offset>
+        </li>
+        <li>
+            <capacity>Metabolism</capacity>
+            <offset>-0.30</offset>
+        </li>	  
+        <li>
+            <capacity>Breathing</capacity>
+            <offset>-0.35</offset>
+        </li>
+        </capMods>
+      </li>
+      <li>	  
+	<label>comedown</label>
+	<minSeverity>0.90</minSeverity>
+	<painFactor>0.60</painFactor>
+	<restFallFactor>5.75</restFallFactor>
+	<statOffsets>
+	  <CarryingCapacity>-5</CarryingCapacity>
+	  <WorkSpeedGlobal>-0.18</WorkSpeedGlobal>
+	  <GlobalLearningFactor>-0.70</GlobalLearningFactor>
+	  <MentalBreakThreshold>0.08</MentalBreakThreshold>  		  
+	</statOffsets>
+	<capMods>
+        <li>
+            <capacity>Consciousness</capacity>
+            <offset>0.15</offset>
+        </li>
+        <li>
+            <capacity>Moving</capacity>
+            <offset>0.20</offset>
+        </li>
+        <li>
+            <capacity>Sight</capacity>
+            <offset>-0.10</offset>
+        </li>
+        <li>
+            <capacity>Talking</capacity>
+            <offset>-0.40</offset>
+        </li>
+        <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.15</offset>
+        </li>
+        </capMods>
+      </li>
+      <li>
+        <label>high on zoom</label>
+	<minSeverity>1.20</minSeverity>   
+	<painFactor>0.00</painFactor>
+	<hungerRateFactorOffset>-0.5</hungerRateFactorOffset>
+        <restFallFactor>0.10</restFallFactor>
+        <statOffsets>		  
+	  <WorkSpeedGlobal>-0.15</WorkSpeedGlobal>
+	  <GlobalLearningFactor>-0.85</GlobalLearningFactor>
+	  <MeleeDodgeChance>0.24</MeleeDodgeChance>
+	  <MentalBreakThreshold>0.18</MentalBreakThreshold>  		  
+        </statOffsets>
+        <statFactors>
+	  <MeleeDamageFactor>1.5</MeleeDamageFactor>
+        </statFactors>
+	<capMods>
+        <li>
+            <capacity>Consciousness</capacity>
+            <offset>0.35</offset>
+        </li>
+        <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.15</offset>
+        </li>
+        <li>
+            <capacity>Moving</capacity>
+            <offset>0.75</offset>
+        </li>
+        <li>
+            <capacity>Sight</capacity>
+            <offset>0.40</offset>
+        </li>
+        <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.25</offset>
+        </li>
+        <li>
+            <capacity>Metabolism</capacity>
+            <offset>0.15</offset>
+        </li>	  
+        <li>
+            <capacity>Talking</capacity>
+            <offset>-0.30</offset>
+        </li>	  
+        </capMods>
+        </li>
+    </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>LCB_ZoomHighThought</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LCB_ZoomHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>crashing out</label>
+        <description>I feel so weak, my whole body hurts. Aargh, I need another hit!</description>
+        <baseMoodEffect>-14</baseMoodEffect>
+      </li>
+      <li>
+        <label>comedown dread</label>
+        <description>The rush! It's going already?</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+      <li>
+        <label>blitzing on zoom</label>
+        <description>I'm ZOOMING! WAAAGH!!!</description>
+        <baseMoodEffect>35</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- addiction -->
+
+  <ChemicalDef>
+    <defName>RC_ZoomChem</defName>
+    <label>Zoom</label>
+    <addictionHediff>LCB_ZoomAddiction</addictionHediff>
+    <toleranceHediff>LCB_ZoomTolerance</toleranceHediff>
+    <onGeneratedAddictedToleranceChance>0.6</onGeneratedAddictedToleranceChance>
+    <geneOverdoseChanceFactorResist>0.5</geneOverdoseChanceFactorResist>
+    <geneOverdoseChanceFactorImmune>0</geneOverdoseChanceFactorImmune>
+  </ChemicalDef>
+  
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>LCB_NeedZoom</defName>
+    <needClass>Need_Chemical</needClass>
+    <label>Zoom</label>
+    <description>Because of a Zoom addiction, this person needs to regularly consume Zoom to avoid withdrawal symptoms.</description>
+    <listPriority>20</listPriority>
+  </NeedDef>
+
+  <HediffDef ParentName="DrugToleranceBase">
+    <defName>LCB_ZoomTolerance</defName>
+    <label>Zoom tolerance</label>
+    <description>A built-up tolerance to Zoom. The more severe this tolerance is, the more Zoom it takes to get the same effect.</description>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.09</severityPerDay>		
+      </li>
+      <li Class="HediffCompProperties_DrugEffectFactor">
+        <chemical>RC_ZoomChem</chemical>
+      </li>
+    </comps>
+      <hediffGivers>
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>LCB_Itchy</hediff>
+        <baseMtbDays>0.1</baseMtbDays> <!-- regular mtbDays exists too, but does not work on RandomDrugEffect or as a decimal, by the way. -->
+        <minSeverity>0.45</minSeverity> <!-- How bad the condition is -->
+        <partsToAffect>
+            <li>Brain</li>
+        </partsToAffect>
+      </li>
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>ChemicalDamageModerate</hediff>
+        <severityToMtbDaysCurve>
+          <points>
+            <li>(0.45, 99999)</li>
+            <li>(0.5, 100)</li>
+            <li>(1, 75)</li>
+          </points>
+        </severityToMtbDaysCurve>
+        <partsToAffect>
+          <li>Jaw</li>		
+        </partsToAffect>
+      </li>
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>ChemicalDamageModerate</hediff>
+        <severityToMtbDaysCurve>
+          <points>
+            <li>(0.45, 99999)</li>
+            <li>(0.5, 120)</li>
+            <li>(1, 90)</li>
+          </points>
+        </severityToMtbDaysCurve>
+        <partsToAffect>
+          <li>Brain</li>
+        </partsToAffect>
+      </li>
+    </hediffGivers>  
+  </HediffDef>
+  
+  <HediffDef ParentName="AddictionBase">
+    <defName>LCB_ZoomAddiction</defName>
+    <label>Zoom addiction</label>
+    <description>A chemical addiction to zoom. Consumption of zoom has caused neurological adaptations at the cellular level, so the brain can no longer function properly without the drug.
+\n\nWithout regular doses of zoom, excruciating withdrawal symptoms will begin. However, extended abstinence will eventually force the brain to adapt back to its normal state, resolving the addiction.</description>
+    <hediffClass>Hediff_Addiction</hediffClass>
+    <causesNeed>LCB_NeedZoom</causesNeed>
+    <comps>     
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.0333</severityPerDay>
+	<showDaysToRecover>true</showDaysToRecover>
+      </li>	  
+    </comps>
+    <stages>
+      <li>	    
+      </li>
+      <li>
+	<label>desperately craving</label>
+	<vomitMtbDays>0.40</vomitMtbDays>
+        <painFactor>4</painFactor>
+	<minSeverity>0.30</minSeverity>
+	<statOffsets>		 
+	 <GlobalLearningFactor>-0.80</GlobalLearningFactor>
+	 <WorkSpeedGlobal>-0.60</WorkSpeedGlobal>
+	</statOffsets>
+	<capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.35</postFactor>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.40</postFactor>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.40</postFactor>
+          </li>          
+        </capMods>		
+	<mentalStateGivers>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>1</mtbDays>
+          </li>
+          <li>
+            <mentalState>TargetedInsultingSpree</mentalState>
+            <mtbDays>2</mtbDays>
+          </li>
+	  <li>
+             <mentalState>SocialFighting</mentalState>
+            <mtbDays>3</mtbDays>
+          </li>	
+	  <li>
+            <mentalState>Berserk</mentalState>
+            <mtbDays>3</mtbDays>
+          </li>	
+        </mentalStateGivers>
+	<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+              <hediff>LCB_Itchy</hediff>
+              <baseMtbDays>0.1</baseMtbDays> <!-- regular mtbDays exists too, but does not work on RandomDrugEffect or as a decimal, by the way. -->
+              <minSeverity>0.45</minSeverity> <!-- How bad the condition is -->
+              <partsToAffect>
+		<li>Brain</li>
+              </partsToAffect>
+          </li>	
+	</hediffGivers>
+      </li>
+      <li>
+        <label>withdrawal</label>
+	<vomitMtbDays>0.66</vomitMtbDays>
+        <painOffset>0.05</painOffset>
+        <painFactor>4</painFactor>
+	<minSeverity>0.45</minSeverity>
+        <hungerRateFactorOffset>0.5</hungerRateFactorOffset>
+        <restFallFactorOffset>0.6</restFallFactorOffset>
+        <socialFightChanceFactor>8.0</socialFightChanceFactor>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.30</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.5</postFactor>
+          </li>
+          <li>
+            <capacity>Sight</capacity>
+            <offset>-0.25</offset>
+          </li>
+          <li>
+            <capacity>BloodPumping</capacity>
+            <offset>-0.25</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.20</offset>
+          </li>
+        </capMods>
+        <mentalStateGivers>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>10</mtbDays>
+          </li>
+          <li>
+            <mentalState>Wander_Psychotic</mentalState>
+            <mtbDays>7</mtbDays>
+          </li>
+          <li>
+            <mentalState>Binging_DrugMajor</mentalState>
+            <mtbDays>4</mtbDays>
+          </li>
+	  <li>
+            <mentalState>Wander_Sad</mentalState>
+            <mtbDays>2</mtbDays>
+          </li>
+        </mentalStateGivers>
+	<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+              <hediff>LCB_Itchy</hediff>
+              <baseMtbDays>0.1</baseMtbDays> <!-- regular mtbDays exists too, but does not work on RandomDrugEffect or as a decimal, by the way. -->
+              <minSeverity>0.30</minSeverity> <!-- How bad the itching is. Delete to make it max by default -->
+              <partsToAffect>
+		<li>Brain</li> <!-- You have to target a bodypart for these methods. -->
+              </partsToAffect>
+          </li>	
+	</hediffGivers>
+      </li>
+    </stages>      
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>LCB_ZoomWithdrawal</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LCB_ZoomAddiction</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+    <stackLimit>3</stackLimit>
+    <nullifyingHediffs>
+      <li>GoJuiceSpikedHigh</li>
+    </nullifyingHediffs>
+    <stages>
+      <li>
+        <visible>false</visible>
+      </li>
+      <li>
+        <label>Zoom withdrawal</label>
+        <description>My head is bursting out of my skull and my blood feels like it's on fire. If only I had another hit, I wouldn't feel so tired.</description>
+        <baseMoodEffect>-22</baseMoodEffect>
+      </li>
+      <li>
+        <label>Zoom desperation</label>
+        <description>I feel so sick, I must be dying. Someone, anyone! PLEASE get me a hit!</description>
+        <baseMoodEffect>-40</baseMoodEffect>
+      </li> <!-- Earlier I had trouble getting this to work, I knew it should since the same method works on other Hediffs. Turns out the original code is missing a minSeverity tag -->
+    </stages>
+  </ThoughtDef>
+
+</Defs>

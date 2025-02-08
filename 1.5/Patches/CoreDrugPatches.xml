@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationAdd">
+		   <xpath>/Defs/ThoughtDef[defName="SmokeleafHigh"]</xpath>
+		     <value>
+			    <nullifyingHediffs>
+				<li>SmokeleafLacedHigh</li>
+			    </nullifyingHediffs>
+		     </value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		   <xpath>/Defs/ThoughtDef[defName="YayoHigh"]</xpath>
+		     <value>
+			    <nullifyingHediffs>
+				<li>YayoLacedHigh</li>
+			    </nullifyingHediffs>
+		     </value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		   <xpath>/Defs/ThoughtDef[defName="FlakeHigh"]</xpath>
+		     <value>
+			    <nullifyingHediffs>
+				<li>FlakeLacedHigh</li>
+			    </nullifyingHediffs>
+		     </value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		   <xpath>/Defs/ThingDef[defName="Flake"]/graphicData/texPath</xpath>
+		     <value>
+      			<texPath>Things/Materials/DrugPipe</texPath>
+		     </value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		   <xpath>/Defs/ThingDef[defName="Flake"]/graphicData/drawSize</xpath>
+		     <value>
+      			<drawSize>0.65</drawSize>
+		     </value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		   <xpath>/Defs/ThingDef[defName="Flake"]/ingestible/ingestHoldOffsetStanding</xpath>
+		     <value>
+      			<ingestHoldOffsetStanding>
+      			  <northDefault>
+			    <offset>(0.27,0,0.08)</offset>
+			    <behind>true</behind>
+      			  </northDefault>
+      			  <east>
+			    <offset>(0.45,0,0.08)</offset>
+      			  </east>
+      			  <south>
+			    <offset>(0.27,0,0.08)</offset>
+      			  </south>
+      			  <west>
+			    <offset>(-0.50,0,0.08)</offset>
+			    <flip>true</flip>
+      			  </west>
+		       </ingestHoldOffsetStanding>
+		     </value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		   <xpath>/Defs/ThoughtDef[defName="GoJuiceHigh"]</xpath>
+		     <value>
+		       <nullifyingHediffs>
+      			  <li>GoJuiceSpikedHigh</li>
+		       </nullifyingHediffs>
+		     </value>
+	</Operation>
+
+</Patch>

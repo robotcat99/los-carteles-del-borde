@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    
+  <!--  ===============================  Go Juice  ======================================  -->
+
+  <ThingDef ParentName="DrugBase">
+    <defName>GoJuiceSpiked</defName>
+    <label>go-juice</label>
+    <description>A synthetic performance-enhancing drug developed for space marines during the early days of interplanetary warfare. Go-juice blocks pain, increases movement speed, and improves the user's melee and shooting abilities.\n\nThe military chemists who created it were never able to remove its addictiveness. Some saw this as a downside; others saw it as a benefit.</description>
+    <descriptionHyperlinks>
+      <HediffDef>GoJuiceHigh</HediffDef>
+      <HediffDef>GoJuiceAddiction</HediffDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Drug/GoJuice</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>600</WorkToMake>
+      <MarketValue>53</MarketValue>
+      <Mass>0.1</Mass>
+    </statBases>
+    <techLevel>Industrial</techLevel>
+    <ingestible>
+      <joyKind>Chemical</joyKind>
+      <joy>0.40</joy>
+      <drugCategory>Hard</drugCategory>
+      <foodType>Processed, Fluid</foodType>
+      <baseIngestTicks>80</baseIngestTicks>
+      <ingestSound>Ingest_Inject</ingestSound>
+      <ingestHoldOffsetStanding>
+        <northDefault>
+          <offset>(0.18,0,0)</offset>
+        </northDefault>
+      </ingestHoldOffsetStanding>
+      <ingestCommandString>Inject {0}</ingestCommandString>
+      <ingestReportString>Injecting {0}.</ingestReportString>
+      <useEatingSpeedStat>false</useEatingSpeedStat>
+      <chairSearchRadius>0</chairSearchRadius>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>GoJuiceSpikedHigh</hediffDef>
+          <severity>0.50</severity>
+          <toleranceChemical>GoJuiceSpiked</toleranceChemical>
+          <divideByBodySize>true</divideByBodySize>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Rest</need>
+          <offset>0.4</offset>
+          <toleranceChemical>GoJuiceSpiked</toleranceChemical>
+        </li>
+	<li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Comfort</need>
+          <offset>0.5</offset>
+          <toleranceChemical>GoJuiceSpiked</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetPsyfocus">
+          <offset>0.15</offset>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>GoJuiceSpikedTolerance</hediffDef>
+          <severity>0.03</severity>
+          <divideByBodySize>true</divideByBodySize>	  
+        </li>
+      </outcomeDoers>
+    </ingestible>
+<!--    <recipeMaker>
+      <researchPrerequisite>GoJuiceProduction</researchPrerequisite>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <soundWorking>Recipe_Drug</soundWorking>
+      <displayPriority>1500</displayPriority>
+    </recipeMaker>
+    <costList>
+      <Neutroamine>2</Neutroamine>
+      <GoJuice>1</GoJuice>
+    </costList> -->
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>GoJuiceSpiked</chemical>
+        <addictiveness>0.018</addictiveness>
+        <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
+        <needLevelOffset>0.6</needLevelOffset>
+        <isCombatEnhancingDrug>true</isCombatEnhancingDrug>
+        <listOrder>210</listOrder>
+        <overdoseSeverityOffset>0.32~0.55</overdoseSeverityOffset>
+        <largeOverdoseChance>0.104</largeOverdoseChance>
+      </li>
+      <li Class="CompProperties_Drug">
+        <chemical>GoJuice</chemical>
+        <addictiveness>0.016</addictiveness>
+        <existingAddictionSeverityOffset>0.10</existingAddictionSeverityOffset>
+        <needLevelOffset>0.4</needLevelOffset>
+        <isCombatEnhancingDrug>true</isCombatEnhancingDrug>
+        <listOrder>200</listOrder>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>GoJuiceSpikedHigh</defName>
+    <label>high on spiked go-juice</label>
+    <labelNoun>spiked go-juice high</labelNoun>
+    <description>Go-juice's active chemical in the bloodstream, diluted and laced with another stimulant to make up the difference. Traditionally zoom, but go-juice has been adulterated by stimulants of all kinds since its creation. Narcotics and depressants, however, go unused even by the desperate due to the skyrocketing chances of a heart attack. The undesired difference impacts the integrity of the experience among all but hardcore drug enthusiasts.</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1.50</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+      <li Class="LosCartelesDelBorde.HediffCompProperties_TraitManager">
+      </li>
+    </comps>
+    <stages>						<!--Stage One -->
+      <li>
+        <label>high on spiked go-juice</label>
+	<vomitMtbDays>2.00</vomitMtbDays>
+        <painOffset>0.2</painOffset>
+        <painFactor>0.6</painFactor>
+	<statOffsets>		 
+	 <GlobalLearningFactor>-0.20</GlobalLearningFactor>
+	 <WorkSpeedGlobal>0.15</WorkSpeedGlobal>
+	</statOffsets>
+        <statFactors>
+	  <MeleeDamageFactor>1.15</MeleeDamageFactor>
+        </statFactors>
+	<capMods>
+        <li>
+            <capacity>Consciousness</capacity>
+            <offset>0.12</offset>
+        </li>
+        <li>
+            <capacity>Sight</capacity>
+            <offset>0.18</offset>
+        </li>
+        <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.15</offset>
+        </li>
+        <li>
+            <capacity>Moving</capacity>
+            <offset>0.25</offset>
+        </li>
+        <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.05</offset>
+        </li>
+        <li>
+            <capacity>Talking</capacity>
+            <postFactor>0.88</postFactor>
+        </li>	  
+        </capMods>		
+	<mentalStateGivers>
+          <li>
+            <mentalState>TargetedInsultingSpree</mentalState>
+            <mtbDays>11</mtbDays>
+          </li>
+	  <li>
+             <mentalState>SocialFighting</mentalState>
+            <mtbDays>14</mtbDays>
+          </li>	
+	  <li>
+            <mentalState>Berserk</mentalState>
+            <mtbDays>18</mtbDays>
+          </li>	
+        </mentalStateGivers>
+	<hediffGivers>	<!-- Injecting random drugs is incredibly bad for your long term well-being. I'm thinking this would simulate a chemically induced neuropathy -->
+          <li Class="HediffGiver_Random">
+            <hediff>ChemicalDamageModerate</hediff>
+            <mtbDays>100</mtbDays>
+            <partsToAffect>
+              <li>Arm</li>
+              <li>Hand</li>	
+            </partsToAffect>
+          </li>		<!-- And this here would be necrosis of the arm, since intravenous drug use can cause abcesses to develop in cases of improper use or contamination -->
+          <li Class="HediffGiver_Random">
+            <hediff>OrganDecay</hediff>
+            <mtbDays>160</mtbDays>
+            <partsToAffect>
+              <li>Arm</li>
+              <li>Hand</li>
+            </partsToAffect>
+            <countToAffect>1</countToAffect> <!-- Most addicts use the same arm, some even to the point of shooting up into an abcess, but this method will narrow it down to one -->
+          </li>
+	</hediffGivers>
+      </li>
+      <li>						<!--Stage Two -->
+        <label>high on spiked go-juice</label>
+	<minSeverity>0.51</minSeverity>
+	<vomitMtbDays>1.25</vomitMtbDays>
+        <painFactor>0.4</painFactor>
+        <painOffset>0.2</painOffset>
+	<statOffsets>		 
+	 <GlobalLearningFactor>-0.20</GlobalLearningFactor>
+	 <MeleeDodgeChance>0.08</MeleeDodgeChance>
+	 <WorkSpeedGlobal>0.15</WorkSpeedGlobal>
+	</statOffsets>
+        <statFactors>
+	  <MeleeDamageFactor>1.35</MeleeDamageFactor>
+        </statFactors>
+	<capMods>
+        <li>
+            <capacity>Consciousness</capacity>
+            <offset>0.16</offset>
+        </li>
+        <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.35</offset>
+        </li>
+        <li>
+            <capacity>Moving</capacity>
+            <offset>0.25</offset>
+        </li>
+        <li>
+            <capacity>Sight</capacity>
+            <offset>0.20</offset>
+        </li>
+        <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.15</offset>
+        </li>
+        <li>
+            <capacity>Talking</capacity>
+            <postFactor>0.25</postFactor>
+        </li>	  
+        </capMods>
+      </li>
+    </stages>      
+  </HediffDef>
+
+  <ChemicalDef>
+    <defName>GoJuiceSpiked</defName>
+    <label>go-juice</label>
+    <addictionHediff>GoJuiceSpikedAddiction</addictionHediff>
+    <toleranceHediff>GoJuiceSpikedTolerance</toleranceHediff>
+    <onGeneratedAddictedToleranceChance>0.6</onGeneratedAddictedToleranceChance>
+    <geneOverdoseChanceFactorResist>0.5</geneOverdoseChanceFactorResist>
+    <geneOverdoseChanceFactorImmune>0</geneOverdoseChanceFactorImmune>
+  </ChemicalDef>
+  
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>NeedGoJuiceSpiked</defName>
+    <needClass>Need_Chemical</needClass>
+    <label>go-juice</label>
+    <description>Because of an addiction to spiked go-juice, this person needs to regularly consume more to avoid withdrawal symptoms.</description>
+    <listPriority>20</listPriority>
+  </NeedDef>
+
+  <HediffDef ParentName="DrugToleranceBase">
+    <defName>GoJuiceSpikedTolerance</defName>
+    <label>tolerance to spiked go-juice</label>
+    <description>A built-up tolerance to spiked go-juice. The more severe this tolerance is, the more it takes to get the same effect.\n\nContaminated drugs are infamous for the long-term health risks they pose, which only increase as usage continues.</description>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.09</severityPerDay>		
+      </li>
+      <li Class="HediffCompProperties_DrugEffectFactor">
+        <chemical>GoJuiceSpiked</chemical>
+      </li>
+    </comps>
+    <hediffGivers>
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>ChemicalDamageModerate</hediff>
+        <severityToMtbDaysCurve>
+          <points>
+            <li>(0.05, 99999)</li>
+            <li>(0.3, 220)</li>
+            <li>(1.0, 45)</li>
+          </points>
+        </severityToMtbDaysCurve>
+        <partsToAffect>
+          <li>Kidney</li>
+        </partsToAffect>
+      </li>
+      <li Class="HediffGiver_RandomDrugEffect">
+        <hediff>ChemicalDamageSevere</hediff>
+        <severityToMtbDaysCurve>
+          <points>
+            <li>(0.05, 99999)</li>
+            <li>(0.10, 380)</li>
+            <li>(0.40, 260)</li>
+            <li>(0.6, 170)</li>
+            <li>(1.0, 90)</li>
+          </points>
+        </severityToMtbDaysCurve>
+        <partsToAffect>
+          <li>Heart</li>
+          <li>Brain</li>
+        </partsToAffect>
+      </li>
+    </hediffGivers>    
+  </HediffDef>
+  
+  <HediffDef ParentName="AddictionBase">
+    <defName>GoJuiceSpikedAddiction</defName>
+    <label>addiction to spiked go-juice</label>
+    <description>A chemical addiction to spiked go-juice. Consumption of adulterated drugs has caused neurological adaptations at the cellular level, so the brain can no longer function properly without them.\n\nWithout regular doses of spiked go-juice, excruciating withdrawal symptoms will begin. However, extended abstinence will eventually force the brain to adapt back to its normal state, resolving the addiction.</description>
+    <hediffClass>Hediff_Addiction</hediffClass>
+    <causesNeed>NeedGoJuiceSpiked</causesNeed>
+    <comps>     
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.0333</severityPerDay>
+	<showDaysToRecover>true</showDaysToRecover>
+      </li>	  
+    </comps>
+    <stages>
+      <li>	    
+      </li>
+      <li>
+	<label>desperately craving spiked go-juice</label>
+	<vomitMtbDays>0.40</vomitMtbDays>
+        <painOffset>0.12</painOffset>
+        <painFactor>1.8</painFactor>
+	<minSeverity>0.30</minSeverity>		<!-- The higher this number the faster the addiction becomes unsatisfied -->
+	<statOffsets>		 
+	 <GlobalLearningFactor>-0.80</GlobalLearningFactor>
+	 <WorkSpeedGlobal>-0.60</WorkSpeedGlobal>
+	</statOffsets>
+	<capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.35</postFactor>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.7</postFactor>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.7</postFactor>
+          </li>          
+        </capMods>		
+	<mentalStateGivers>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>1</mtbDays>
+          </li>
+          <li>
+            <mentalState>TargetedInsultingSpree</mentalState>
+            <mtbDays>2</mtbDays>
+          </li>
+	  <li>
+             <mentalState>SocialFighting</mentalState>
+            <mtbDays>3</mtbDays>
+          </li>	
+	  <li>
+            <mentalState>Berserk</mentalState>
+            <mtbDays>3</mtbDays>
+          </li>	
+        </mentalStateGivers>
+	<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+              <hediff>LCB_Itchy</hediff>
+              <baseMtbDays>0.1</baseMtbDays> <!-- regular mtbDays exists too, but does not work on RandomDrugEffect or as a decimal, by the way. -->
+              <partsToAffect>
+		<li>Brain</li>
+              </partsToAffect>
+          </li>	
+	</hediffGivers>
+      </li>
+      <li>
+        <label>withdrawal</label>
+	<vomitMtbDays>0.66</vomitMtbDays>
+        <painOffset>0.05</painOffset>
+        <painFactor>4</painFactor>
+	<minSeverity>0.45</minSeverity>
+        <hungerRateFactorOffset>0.5</hungerRateFactorOffset>
+        <restFallFactorOffset>0.6</restFallFactorOffset>
+        <socialFightChanceFactor>8.0</socialFightChanceFactor>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.30</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.5</postFactor>
+          </li>
+          <li>
+            <capacity>Sight</capacity>
+            <offset>-0.25</offset>
+          </li>
+          <li>
+            <capacity>BloodPumping</capacity>
+            <offset>-0.25</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.20</offset>
+          </li>
+        </capMods>
+        <mentalStateGivers>
+          <li>
+            <mentalState>Binging_DrugExtreme</mentalState>
+            <mtbDays>10</mtbDays>
+          </li>
+          <li>
+            <mentalState>Wander_Psychotic</mentalState>
+            <mtbDays>7</mtbDays>
+          </li>
+          <li>
+            <mentalState>Binging_DrugMajor</mentalState>
+            <mtbDays>4</mtbDays>
+          </li>
+	  <li>
+            <mentalState>Wander_Sad</mentalState>
+            <mtbDays>2</mtbDays>
+          </li>
+        </mentalStateGivers>
+	<hediffGivers>
+            <li Class="HediffGiver_RandomDrugEffect">
+              <hediff>LCB_Itchy</hediff>
+              <baseMtbDays>40</baseMtbDays> <!-- regular mtbDays exists too, but does not work as a decimal, by the way. -->
+              <partsToAffect>
+		<li>Brain</li>
+              </partsToAffect>
+            </li>
+	</hediffGivers>
+      </li>
+    </stages>      
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>GoJuiceSpikedHigh_Bad</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>GoJuiceSpikedHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+    <stackLimit>3</stackLimit>
+    <nullifyingTraits>
+      <li>DrugDesire</li>
+    </nullifyingTraits>
+    <stages>
+      <li>
+        <label>high on spiked go-juice</label>
+        <description>This juice burns! Hnrggh, what's wrong with this hit?!</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+      <li>
+        <label>high on spiked go-juice</label>
+        <description>It's...I'm...RRrrRRAAAAGH!!!</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>GoJuiceSpikedHigh_Good</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>GoJuiceSpikedHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+    <stackLimit>3</stackLimit>
+    <requiredTraits>
+      <li>DrugDesire</li>
+    </requiredTraits>
+    <stages>
+      <li>
+        <label>high on spiked go-juice</label>
+        <description>I am the unstoppable force! A fist to the heart of my enemies!</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+      <li>
+        <label>high on spiked go-juice</label>
+        <description>The POWER! MUST KILL!!!</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>GoJuiceSpikedWithdrawal</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>GoJuiceSpikedAddiction</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+    <stackLimit>3</stackLimit>
+    <nullifyingHediffs>
+      <li>GoJuiceSpikedHigh</li>
+    </nullifyingHediffs>
+    <stages>
+      <li>
+        <label>spiked go-juice withdrawal</label>
+        <description>My head is bursting out of my skull and my blood feels like it's on fire. If only I had another hit, I wouldn't feel so tired.</description>
+        <baseMoodEffect>-22</baseMoodEffect>
+      </li>
+      <li>
+        <label>desperation for spiked go-juice</label>
+        <description>Can't stop...scratching. I feel so sick, I must be dying. Someone, anyone! PLEASE get me a hit!</description>
+        <baseMoodEffect>-40</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

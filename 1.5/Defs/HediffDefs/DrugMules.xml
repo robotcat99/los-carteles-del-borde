@@ -1,0 +1,1101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+   <HediffDef Name="LCB_DrugStuffedOrgans" ParentName="ImplantHediffBase" Abstract="True">    
+    <label>drug mule</label>
+    <description>This person's stomach has been stuffed with drugs.</description>
+	<priceImpact>true</priceImpact>
+	<descriptionHyperlinks>
+		<HediffDef>LCB_RupturedPackages</HediffDef>
+	</descriptionHyperlinks>
+    <stages>
+      <li>
+        <partEfficiencyOffset>-0.50</partEfficiencyOffset>
+		<capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.90</postFactor>
+          </li>		  
+		  <li>
+            <capacity>Eating</capacity>
+            <postFactor>0.25</postFactor>
+          </li>
+		</capMods>
+		<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>LCB_RupturedPackages</hediff>
+             <minSeverity>0.01</minSeverity>
+             <baseMtbDays>7</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>
+             </partsToAffect>
+          </li>
+		</hediffGivers>        
+      </li>
+    </stages>	 
+  </HediffDef>
+  
+  <HediffDef ParentName="LCB_DrugStuffedOrgans">
+  <defName>LCB_DrugStuffedOrgansWakeUp</defName>
+  <spawnThingOnRemoved>LCB_DrugPackWU</spawnThingOnRemoved>
+  <descriptionHyperlinks>
+	<RecipeDef>LCB_RemoveDrugPacksWakeUp</RecipeDef>
+  </descriptionHyperlinks>
+  </HediffDef>
+  
+  <HediffDef ParentName="LCB_DrugStuffedOrgans">
+  <defName>LCB_DrugStuffedOrgansSmokeleaf</defName>
+  <spawnThingOnRemoved>LCB_DrugPackSL</spawnThingOnRemoved>
+  <descriptionHyperlinks>
+	<RecipeDef>LCB_RemoveDrugPacksSmokeleaf</RecipeDef>
+  </descriptionHyperlinks>
+  </HediffDef>
+  
+  <HediffDef ParentName="LCB_DrugStuffedOrgans">
+  <defName>LCB_DrugStuffedOrgansYayo</defName>
+  <spawnThingOnRemoved>LCB_DrugPackYY</spawnThingOnRemoved>
+  <descriptionHyperlinks>
+	<RecipeDef>LCB_RemoveDrugPacksYayo</RecipeDef>
+  </descriptionHyperlinks>
+  </HediffDef>
+  
+  <HediffDef ParentName="LCB_DrugStuffedOrgans">
+  <defName>LCB_DrugStuffedOrgansFlake</defName>
+  <spawnThingOnRemoved>LCB_DrugPackFlake</spawnThingOnRemoved>
+  <descriptionHyperlinks>
+	<RecipeDef>LCB_RemoveDrugPacksFlake</RecipeDef>
+  </descriptionHyperlinks>
+  </HediffDef>
+  
+  <HediffDef ParentName="LCB_DrugStuffedOrgans">
+  <defName>LCB_DrugStuffedOrgansLuci</defName>
+  <spawnThingOnRemoved>LCB_DrugPackLuci</spawnThingOnRemoved>
+  <descriptionHyperlinks>
+	<RecipeDef>LCB_RemoveDrugPacksLuci</RecipeDef>
+  </descriptionHyperlinks>
+  <!--
+  <label>drug mule</label>
+    <description>This person's stomach has been stuffed with drugs.</description>
+	<priceImpact>true</priceImpact>
+    <stages>
+      <li>
+        <partEfficiencyOffset>-0.50</partEfficiencyOffset>
+		<capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.10</offset>
+          </li>		  
+		  <li>
+            <capacity>Eating</capacity>
+            <offset>-0.75</offset>
+          </li>
+		</capMods>		
+		<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>LCB_RupturedLuciPackages</hediff>
+             <minSeverity>0.01</minSeverity>
+             <baseMtbDays>7</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>
+             </partsToAffect>
+          </li>
+		</hediffGivers>        
+      </li>
+    </stages>
+		-->
+  </HediffDef>
+  
+  <HediffDef ParentName="LCB_DrugStuffedOrgans">
+  <defName>LCB_DrugStuffedOrgansSalvia</defName>
+  <spawnThingOnRemoved>LCB_DrugPackSalvia</spawnThingOnRemoved>  
+  <descriptionHyperlinks>
+	<RecipeDef>LCB_RemoveDrugPacksSalvia</RecipeDef>
+  </descriptionHyperlinks>
+  </HediffDef>
+  
+  <HediffDef ParentName="LCB_DrugStuffedOrgans">
+  <defName>LCB_DrugStuffedOrgansRodeo</defName>
+  <spawnThingOnRemoved>LCB_DrugPackRodeo</spawnThingOnRemoved>
+  <descriptionHyperlinks>
+	<RecipeDef>LCB_RemoveDrugPacksRodeo</RecipeDef>
+  </descriptionHyperlinks>
+  </HediffDef>
+  
+  <HediffDef ParentName="LCB_DrugStuffedOrgans">
+  <defName>LCB_DrugStuffedOrgansSin</defName>
+  <spawnThingOnRemoved>LCB_DrugPackSin</spawnThingOnRemoved>
+  <descriptionHyperlinks>
+	<RecipeDef>LCB_RemoveDrugPacksSin</RecipeDef>
+  </descriptionHyperlinks>
+  </HediffDef>
+
+  <HediffDef ParentName="LCB_DrugStuffedOrgans">
+  <defName>LCB_DrugStuffedOrgansFent</defName>
+  <spawnThingOnRemoved>LCB_DrugPackFent</spawnThingOnRemoved>
+  <descriptionHyperlinks>
+	<RecipeDef>LCB_RemoveDrugPacksFent</RecipeDef>
+  </descriptionHyperlinks>
+  </HediffDef>
+  
+  <HediffDef ParentName="LCB_DrugStuffedOrgans">
+  <defName>LCB_DrugStuffedOrgansGoJuice</defName>
+  <spawnThingOnRemoved>LCB_DrugPackGJ</spawnThingOnRemoved>
+  <descriptionHyperlinks>
+	<RecipeDef>LCB_RemoveDrugPacksGoJuice</RecipeDef>
+  </descriptionHyperlinks>
+  </HediffDef>
+  
+  <HediffDef ParentName="LCB_DrugStuffedOrgans">
+  <defName>LCB_DrugStuffedOrgansZoom</defName>
+  <spawnThingOnRemoved>LCB_DrugPackZoom</spawnThingOnRemoved>
+  <descriptionHyperlinks>
+	<RecipeDef>LCB_RemoveDrugPacksZoom</RecipeDef>
+  </descriptionHyperlinks>
+  </HediffDef>  
+
+  <HediffDef ParentName="ChronicDiseaseBase">
+    <defName>LCB_RupturedPackages</defName>
+    <label>ruptured drug packs</label>
+    <description>Drug packs implanted in the abdomen of this pawn have ruptured. This massive toxic dose is going to eat away the pawns organs and kill them unless their system is flushed.</description>
+    <descriptionHyperlinks>
+		<RecipeDef>LCB_FlushOrgans</RecipeDef>
+	</descriptionHyperlinks>
+	<hediffClass>HediffWithComps</hediffClass>
+	<priceImpact>true</priceImpact>
+    <initialSeverity>0.01</initialSeverity>
+	<makesSickThought>true</makesSickThought>
+	<lethalSeverity>1</lethalSeverity>
+	<tendable>true</tendable>
+    <stages>
+      <li>
+        <label>minor</label>
+        <partEfficiencyOffset>-0.1</partEfficiencyOffset>
+        <painOffset>0.1</painOffset>
+		<hediffGivers>		  
+          <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageModerate</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.8</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		  <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageSevere</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>1.6</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		</hediffGivers>        
+      </li>
+      <li>
+        <minSeverity>0.15</minSeverity>
+        <label>minor</label>
+        <partEfficiencyOffset>-0.25</partEfficiencyOffset>
+        <painOffset>0.2</painOffset>
+		<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageModerate</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.4</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		  <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageSevere</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.8</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		</hediffGivers>        
+      </li>
+      <li>
+        <minSeverity>0.4</minSeverity>
+        <label>major</label>
+        <partEfficiencyOffset>-0.5</partEfficiencyOffset>
+        <painOffset>0.35</painOffset>
+		<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageModerate</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.2</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		  <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageSevere</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.4</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		</hediffGivers>        
+      </li>
+      <li>
+        <minSeverity>0.6</minSeverity>
+        <label>major</label>
+        <partEfficiencyOffset>-0.8</partEfficiencyOffset>
+        <painOffset>0.5</painOffset>
+		<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageModerate</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.1</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		  <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageSevere</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.2</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		</hediffGivers>        
+      </li>
+      <li>
+        <minSeverity>0.8</minSeverity>
+        <label>extreme</label>
+        <partEfficiencyOffset>-0.95</partEfficiencyOffset>
+        <painOffset>0.6</painOffset>
+		<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageModerate</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.05</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		  <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageSevere</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.1</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		</hediffGivers>        
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>0.37</severityPerDay>
+      </li>
+	  <li Class="HediffCompProperties_TendDuration">
+        <baseTendDurationHours>6</baseTendDurationHours>
+        <severityPerDayTended>-0.27</severityPerDayTended>  <!-- Only want to slow it down cannot cure through tending  -->
+      </li>
+    </comps>
+  </HediffDef>
+  <!--
+  <HediffDef ParentName="ChronicDiseaseBase">
+    <defName>LCB_RupturedLuciPackages</defName>
+    <label>ruptured drug packs</label>
+    <description>Drug packs implanted in the abdomen of this pawn have ruptured. This massive toxic dose is going to eat away the pawns organs and kill them unless their system is flushed.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+	<priceImpact>true</priceImpact>
+    <initialSeverity>0.01</initialSeverity>
+	<makesSickThought>true</makesSickThought>
+	<lethalSeverity>1</lethalSeverity>
+	<tendable>true</tendable>
+    <stages>
+      <li>
+        <label>minor</label>
+        <partEfficiencyOffset>-0.1</partEfficiencyOffset>
+        <painOffset>0.1</painOffset>
+		<hediffGivers>		  
+          <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageModerate</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.8</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		  <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageSevere</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>1.6</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		  <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>LuciferiumAddiction</hediff>
+             <minSeverity>0.01</minSeverity>
+             <baseMtbDays>0.00001</baseMtbDays>
+          </li>
+		</hediffGivers>        
+      </li>
+      <li>
+        <minSeverity>0.15</minSeverity>
+        <label>minor</label>
+        <partEfficiencyOffset>-0.25</partEfficiencyOffset>
+        <painOffset>0.2</painOffset>
+		<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageModerate</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.4</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		  <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageSevere</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.8</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		</hediffGivers>        
+      </li>
+      <li>
+        <minSeverity>0.4</minSeverity>
+        <label>major</label>
+        <partEfficiencyOffset>-0.5</partEfficiencyOffset>
+        <painOffset>0.35</painOffset>
+		<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageModerate</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.2</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		  <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageSevere</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.4</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		</hediffGivers>        
+      </li>
+      <li>
+        <minSeverity>0.6</minSeverity>
+        <label>major</label>
+        <partEfficiencyOffset>-0.8</partEfficiencyOffset>
+        <painOffset>0.5</painOffset>
+		<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageModerate</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.1</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		  <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageSevere</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.2</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		</hediffGivers>        
+      </li>
+      <li>
+        <minSeverity>0.8</minSeverity>
+        <label>extreme</label>
+        <partEfficiencyOffset>-0.9</partEfficiencyOffset>
+        <painOffset>0.6</painOffset>
+		<hediffGivers>
+          <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageModerate</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.05</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		  <li Class="HediffGiver_RandomDrugEffect">
+             <hediff>ChemicalDamageSevere</hediff>
+             <minSeverity>0.25</minSeverity>
+             <baseMtbDays>0.1</baseMtbDays>
+             <partsToAffect>
+               <li>Stomach</li>			   
+			   <li>Liver</li>
+			   <li>Kidney</li>
+			   <li>Heart</li>
+			   <li>Brain</li>
+             </partsToAffect>
+          </li>
+		</hediffGivers>        
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>0.37</severityPerDay>
+      </li>
+	  <li Class="HediffCompProperties_TendDuration">
+        <baseTendDurationHours>6</baseTendDurationHours>
+        <severityPerDayTended>-0.27</severityPerDayTended>     
+      </li>
+    </comps>
+  </HediffDef>   
+  
+  -->  
+   
+  <RecipeDef ParentName="SurgeryFlesh">
+    <defName>LCB_FlushOrgans</defName>
+    <label>flush organs</label>
+    <description>A life-saving prcedure necessary to flush toxic chemicals from organs.</description>
+    <workerClass>Recipe_RemoveHediff</workerClass>
+    <jobString>Flushing organs.</jobString>
+    <workAmount>4500</workAmount>
+    <removesHediff>LCB_RupturedPackages</removesHediff>
+    <successfullyRemovedHediffMessage>{0} has successfully flushed {1}'s organs.</successfullyRemovedHediffMessage>
+	<surgerySuccessChanceFactor>0.85</surgerySuccessChanceFactor>
+    <deathOnFailedSurgeryChance>0.01</deathOnFailedSurgeryChance>
+	<isViolation>false</isViolation>
+	 <recipeUsers>
+         <li>Human</li>
+      </recipeUsers>
+    <skillRequirements>
+      <Medicine>8</Medicine>
+    </skillRequirements>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+          </categories>
+        </filter>
+        <count>3</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>Neutroamine</li>    
+          </thingDefs>
+        </filter>
+        <count>6</count>     
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <categories>
+        <li>Medicine</li>
+      </categories>
+	  <thingDefs>
+        <li>Neutroamine</li>    
+      </thingDefs>      
+    </fixedIngredientFilter>
+  </RecipeDef>
+  
+   
+   <!--  ============================  Recipies Add ==============================================  -->
+   
+   
+   <RecipeDef Name="LCB_StuffOrgansWithDrugsBase" ParentName="SurgeryInstallImplantBase" Abstract="True">
+		<appliedOnFixedBodyParts>
+          <li>Stomach</li>
+		</appliedOnFixedBodyParts>
+		<descriptionHyperlinks>
+			<HediffDef>LCB_RupturedPackages</HediffDef>
+		</descriptionHyperlinks>
+	</RecipeDef>	
+   
+  <RecipeDef ParentName="LCB_StuffOrgansWithDrugsBase">
+    <defName>LCB_DrugMuleWakeUp</defName>
+    <label>stuff with Wake Up</label>
+    <description>stuff abdomen with Wake Up.</description>
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansWakeUp</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Stuffing abdomen with Wake Up.</jobString>	
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>LCB_DrugPackWU</li>    <!-- Patch new? -->
+          </thingDefs>
+        </filter>
+        <count>1</count>     <!--  5500 w/20% discount  -->
+      </li>
+	  <li>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+          </categories>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+	  <categories>
+        <li>Medicine</li>
+      </categories>
+      <thingDefs>
+        <li>LCB_DrugPackWU</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <addsHediff>LCB_DrugStuffedOrgansWakeUp</addsHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_StuffOrgansWithDrugsBase">
+    <defName>LCB_DrugMuleSmokeleaf</defName>
+    <label>stuff with Smokeleaf</label>
+    <description>stuff abdomen with Smokeleaf.</description>
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansSmokeleaf</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Stuffing abdomen with Smokeleaf.</jobString>	
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>LCB_DrugPackSL</li>    <!-- Patch new? -->
+          </thingDefs>
+        </filter>
+        <count>1</count>     <!--  5500 w/20% discount  -->
+      </li>
+	  <li>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+          </categories>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+	  <categories>
+        <li>Medicine</li>
+      </categories>
+      <thingDefs>
+        <li>LCB_DrugPackSL</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <addsHediff>LCB_DrugStuffedOrgansSmokeleaf</addsHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_StuffOrgansWithDrugsBase">
+    <defName>LCB_DrugMuleYayo</defName>
+    <label>stuff with Yayo</label>
+    <description>stuff abdomen with Yayo.</description>
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansYayo</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Stuffing abdomen with Yayo.</jobString>	
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>LCB_DrugPackYY</li>    <!-- Patch new? -->
+          </thingDefs>
+        </filter>
+        <count>1</count>     <!--  5500 w/20% discount  -->
+      </li>
+	  <li>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+          </categories>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+	  <categories>
+        <li>Medicine</li>
+      </categories>
+      <thingDefs>
+        <li>LCB_DrugPackYY</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <addsHediff>LCB_DrugStuffedOrgansYayo</addsHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_StuffOrgansWithDrugsBase">
+    <defName>LCB_DrugMuleFlake</defName>
+    <label>stuff with Flake</label>
+    <description>stuff abdomen with Flake.</description>
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansFlake</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Stuffing abdomen with Flake.</jobString>	
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>LCB_DrugPackFlake</li>    <!-- Patch new? -->
+          </thingDefs>
+        </filter>
+        <count>1</count>     <!--  5500 w/20% discount  -->
+      </li>
+	  <li>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+          </categories>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+	  <categories>
+        <li>Medicine</li>
+      </categories>
+      <thingDefs>
+        <li>LCB_DrugPackFlake</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <addsHediff>LCB_DrugStuffedOrgansFlake</addsHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_StuffOrgansWithDrugsBase">
+    <defName>LCB_DrugMuleLuci</defName>
+    <label>stuff with Luci</label>
+    <description>stuff abdomen with Luci.</description>
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansLuci</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Stuffing abdomen with Luci.</jobString>	
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>LCB_DrugPackLuci</li>    <!-- Patch new? -->
+          </thingDefs>
+        </filter>
+        <count>1</count>     <!--  5500 w/20% discount  -->
+      </li>
+	  <li>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+          </categories>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+	  <categories>
+        <li>Medicine</li>
+      </categories>
+      <thingDefs>
+        <li>LCB_DrugPackLuci</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <addsHediff>LCB_DrugStuffedOrgansLuci</addsHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_StuffOrgansWithDrugsBase">
+    <defName>LCB_DrugMuleSalvia</defName>
+    <label>stuff with Salvia</label>
+    <description>stuff abdomen with Salvia.</description>
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansSalvia</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Stuffing abdomen with Salvia.</jobString>	
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>LCB_DrugPackSalvia</li>    <!-- Patch new? -->
+          </thingDefs>
+        </filter>
+        <count>1</count>     <!--  5500 w/20% discount  -->
+      </li>
+	  <li>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+          </categories>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+	  <categories>
+        <li>Medicine</li>
+      </categories>
+      <thingDefs>
+        <li>LCB_DrugPackSalvia</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <addsHediff>LCB_DrugStuffedOrgansSalvia</addsHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_StuffOrgansWithDrugsBase">
+    <defName>LCB_DrugMuleRodeo</defName>
+    <label>stuff with Rodeo</label>
+    <description>stuff abdomen with Rodeo.</description>
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansRodeo</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Stuffing abdomen with Rodeo.</jobString>	
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>LCB_DrugPackRodeo</li>    <!-- Patch new? -->
+          </thingDefs>
+        </filter>
+        <count>1</count>     <!--  5500 w/20% discount  -->
+      </li>
+	  <li>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+          </categories>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+	  <categories>
+        <li>Medicine</li>
+      </categories>
+      <thingDefs>
+        <li>LCB_DrugPackRodeo</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <addsHediff>LCB_DrugStuffedOrgansRodeo</addsHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_StuffOrgansWithDrugsBase">
+    <defName>LCB_DrugMuleSin</defName>
+    <label>stuff with Sin</label>
+    <description>stuff abdomen with Sin.</description>
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansSin</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Stuffing abdomen with Sin.</jobString>	
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>LCB_DrugPackSin</li>    <!-- Patch new? -->
+          </thingDefs>
+        </filter>
+        <count>1</count>     <!--  5500 w/20% discount  -->
+      </li>
+	  <li>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+          </categories>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+	  <categories>
+        <li>Medicine</li>
+      </categories>
+      <thingDefs>
+        <li>LCB_DrugPackSin</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <addsHediff>LCB_DrugStuffedOrgansSin</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LCB_StuffOrgansWithDrugsBase">
+    <defName>LCB_DrugMuleFent</defName>
+    <label>stuff with Fent</label>
+    <description>stuff abdomen with Fent.</description>
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansFent</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Stuffing abdomen with Fent.</jobString>	
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>LCB_DrugPackFent</li>    <!-- Patch new? -->
+          </thingDefs>
+        </filter>
+        <count>1</count>     <!--  450 w/20% discount  -->
+      </li>
+	  <li>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+          </categories>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+	  <categories>
+        <li>Medicine</li>
+      </categories>
+      <thingDefs>
+        <li>LCB_DrugPackFent</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <addsHediff>LCB_DrugStuffedOrgansFent</addsHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_StuffOrgansWithDrugsBase">
+    <defName>LCB_DrugMuleGoJuice</defName>
+    <label>stuff with Go Juice</label>
+    <description>stuff abdomen with Go Juice.</description>
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansGoJuice</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Stuffing abdomen with Go Juice.</jobString>	
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>LCB_DrugPackGJ</li>    <!-- Patch new? -->
+          </thingDefs>
+        </filter>
+        <count>1</count>     <!--  5500 w/20% discount  -->
+      </li>
+	  <li>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+          </categories>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+	  <categories>
+        <li>Medicine</li>
+      </categories>
+      <thingDefs>
+        <li>LCB_DrugPackGJ</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <addsHediff>LCB_DrugStuffedOrgansGoJuice</addsHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_StuffOrgansWithDrugsBase">
+    <defName>LCB_DrugMuleZoom</defName>
+    <label>stuff with Go Juice</label>
+    <description>stuff abdomen with zoom.</description>
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansZoom</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Stuffing abdomen with zoom.</jobString>	
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>LCB_DrugPackZoom</li>    <!-- Patch new? -->
+          </thingDefs>
+        </filter>
+        <count>1</count>     <!--  5500 w/20% discount  -->
+      </li>
+	  <li>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+          </categories>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+	  <categories>
+        <li>Medicine</li>
+      </categories>
+      <thingDefs>
+        <li>LCB_DrugPackZoom</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <addsHediff>LCB_DrugStuffedOrgansZoom</addsHediff>
+  </RecipeDef>
+  
+  <!--  ============================  Recipes Remove ==============================================  -->
+  
+  
+  <RecipeDef Name="LCB_RemoveDrugPacksBase" ParentName="SurgeryRemoveImplantBase" Abstract="True">
+	<label>remove drug packs</label>
+    <description>Remove drug packs from stomach.</description>
+	<surgerySuccessChanceFactor>0.80</surgerySuccessChanceFactor>
+	<deathOnFailedSurgeryChance>0.50</deathOnFailedSurgeryChance>
+	<jobString>Removing drug packs.</jobString>
+	<successfullyRemovedHediffMessage>{0} has successfully removed the drugs from {1}'s stomach.</successfullyRemovedHediffMessage>
+  </RecipeDef>	
+	
+  <RecipeDef ParentName="LCB_RemoveDrugPacksBase">
+    <defName>LCB_RemoveDrugPacksWakeUp</defName>    
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansWakeUp</HediffDef>
+    </descriptionHyperlinks>    
+    <removesHediff>LCB_DrugStuffedOrgansWakeUp</removesHediff>	
+	<!--
+	<products>
+      <WakeUp>200</WakeUp>
+    </products>
+	-->
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_RemoveDrugPacksBase">
+    <defName>LCB_RemoveDrugPacksGoJuice</defName>    
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansGoJuice</HediffDef>
+    </descriptionHyperlinks>    
+    <removesHediff>LCB_DrugStuffedOrgansGoJuice</removesHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LCB_RemoveDrugPacksBase">
+    <defName>LCB_RemoveDrugPacksZoom</defName>    
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansZoom</HediffDef>
+    </descriptionHyperlinks>    
+    <removesHediff>LCB_DrugStuffedOrgansZoom</removesHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_RemoveDrugPacksBase">
+    <defName>LCB_RemoveDrugPacksSin</defName>    
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansSin</HediffDef>
+    </descriptionHyperlinks>    
+    <removesHediff>LCB_DrugStuffedOrgansSin</removesHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LCB_RemoveDrugPacksBase">
+    <defName>LCB_RemoveDrugPacksFent</defName>    
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansFent</HediffDef>
+    </descriptionHyperlinks>    
+    <removesHediff>LCB_DrugStuffedOrgansFent</removesHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_RemoveDrugPacksBase">
+    <defName>LCB_RemoveDrugPacksRodeo</defName>    
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansRodeo</HediffDef>
+    </descriptionHyperlinks>    
+    <removesHediff>LCB_DrugStuffedOrgansRodeo</removesHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_RemoveDrugPacksBase">
+    <defName>LCB_RemoveDrugPacksSalvia</defName>    
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansSalvia</HediffDef>
+    </descriptionHyperlinks>    
+    <removesHediff>LCB_DrugStuffedOrgansSalvia</removesHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_RemoveDrugPacksBase">
+    <defName>LCB_RemoveDrugPacksLuci</defName>    
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansLuci</HediffDef>
+    </descriptionHyperlinks>    
+    <removesHediff>LCB_DrugStuffedOrgansLuci</removesHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_RemoveDrugPacksBase">
+    <defName>LCB_RemoveDrugPacksFlake</defName>    
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansFlake</HediffDef>
+    </descriptionHyperlinks>    
+    <removesHediff>LCB_DrugStuffedOrgansFlake</removesHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_RemoveDrugPacksBase">
+    <defName>LCB_RemoveDrugPacksYayo</defName>    
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansYayo</HediffDef>
+    </descriptionHyperlinks>    
+    <removesHediff>LCB_DrugStuffedOrgansYayo</removesHediff>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LCB_RemoveDrugPacksBase">
+    <defName>LCB_RemoveDrugPacksSmokeleaf</defName>    
+    <descriptionHyperlinks>
+      <HediffDef>LCB_DrugStuffedOrgansSmokeleaf</HediffDef>
+    </descriptionHyperlinks>    
+    <removesHediff>LCB_DrugStuffedOrgansSmokeleaf</removesHediff>
+  </RecipeDef>
+  
+</Defs>  

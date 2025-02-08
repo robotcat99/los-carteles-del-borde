@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <ThingCategoryDef>
+    <defName>LCB_CrateCategories</defName>
+    <label>cartel crates</label>
+    <parent>Root</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/LCB_Crate</iconPath>
+  </ThingCategoryDef>
+  
+</Defs>  
