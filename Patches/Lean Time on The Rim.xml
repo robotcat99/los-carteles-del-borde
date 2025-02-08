@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+     <li Class="PatchOperationAdd" MayRequire="RandomBoio.Lean">
+      <xpath>Defs</xpath>
+       <value>
+	<ThingDef ParentName="DrugBase">
+	 <defName>Sindeine</defName>
+	 <label>Sindeine</label>
+	 <description>A drug for treating persistent cough as well as mild to moderate pain, such as the kind caused by cancer. Treats asthma only due to the drug's opiate-based anti-intussive mechanism, and lack of any antibiotic or antiviral qualities.\n\n(Studies in real life show that codeine is contraindicated for asthma and might be no better than a placebo for coughs. I added this ability to be more useful for game balance than only suppressing pain.)</description>
+	 <possessionCount>3</possessionCount>
+	 <descriptionHyperlinks><HediffDef>SindeineHigh</HediffDef></descriptionHyperlinks>
+	 <graphicData>
+	   <texPath>Things/Materials/Sindeine</texPath>
+	   <graphicClass>Graphic_StackCount</graphicClass>
+	 </graphicData>
+	 <socialPropernessMatters>false</socialPropernessMatters>
+	 <rotatable>false</rotatable>
+	 <statBases>
+	   <WorkToMake>600</WorkToMake>
+	   <MarketValue>18</MarketValue>
+	   <Mass>0.005</Mass>
+	   <Flammability>0.7</Flammability>
+	 </statBases>
+	   <techLevel>Industrial</techLevel>
+	 <ingestible>
+	   <foodType>Fluid, Processed</foodType>
+	   <drugCategory>Medical</drugCategory>
+	   <outcomeDoers>
+	     <li Class="IngestionOutcomeDoer_GiveHediff">
+	     <hediffDef>SindeineHigh</hediffDef>
+	     <severity>1.0</severity>
+	     </li>
+	   </outcomeDoers>
+	 </ingestible>
+<!--	     <recipeMaker>
+	     <researchPrerequisite>DrugProduction</researchPrerequisite>
+	     <recipeUsers>
+	     <li>DrugLab</li>
+	     </recipeUsers>
+	     <displayPriority>2100</displayPriority>
+	     </recipeMaker>
+	     <costList>
+		<Neutroamine>1</Neutroamine>
+		<LCB_SinicuicheTar>1</LCB_SinicuicheTar>
+	     </costList> -->
+	     <comps>
+	     <li Class="CompProperties_Drug">
+		<listOrder>1000</listOrder>
+		<overdoseSeverityOffset>0.08~0.14</overdoseSeverityOffset>
+	     </li>
+	     <li Class="CompProperties_UseEffect">
+		<compClass>Sindeine.CompUseEffect_AsthmaTreatment</compClass>
+	     </li>
+	    </comps>
+          </ThingDef>
+        </value>
+      </li>
+
+     <li Class="PatchOperationAdd" MayRequire="RandomBoio.Lean">
+      <xpath>Defs</xpath>
+       <value>
+	<HediffDef>
+	 <defName>SindeineHigh</defName>
+	 <hediffClass>Sindeine.Hediff_AsthmaTreatment</hediffClass>
+	 <label>sindeine</label>
+	 <description>Sindeine-induced pain relief. Can cause stomach issues.</description>
+	 <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+	 <scenarioCanAdd>true</scenarioCanAdd>
+	 <maxSeverity>1.0</maxSeverity>
+	 <isBad>false</isBad>
+	 <comps>
+	   <li Class="HediffCompProperties_SeverityPerDay">
+	    <severityPerDay>-1.5</severityPerDay>
+	    <showHoursToRecover>true</showHoursToRecover>
+	   </li>
+	 </comps>
+	 <stages>
+	  <li>
+	   <painFactor>0.75</painFactor>
+	   <restFallFactor>1.15</restFallFactor>
+	   <capMods>
+            <li>
+              <capacity>Moving</capacity>
+              <offset>-0.05</offset>
+            </li>
+	    <li>
+              <capacity>Manipulation</capacity>
+              <offset>-0.05</offset>
+            </li>
+	   </capMods>
+	  </li>
+	 </stages>
+	</HediffDef>
+       </value>
+      </li>
+
+      <li Class="PatchOperationReplace" MayRequire="RandomBoio.Lean">
+       <xpath>/Defs/ThingDef[defName="Lean"]</xpath>
+        <value>
+	 <costList>
+	  <Beer>1</Beer>
+	  <Sindeine>1</Sindeine>
+	 </costList>
+        </value>
+      </li>
+    </operations>
+</Operation>
+
+</Patch>

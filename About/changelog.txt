@@ -1,0 +1,22 @@
+# Changelog for Los Carteles del Borde
+
+#1.5
+
+#-Added fent
+#-Added zoom
+#-Added sindeine
+#-Added lacing/spiking mechanic
+#-Added more drug and gun crates, along with a new gag item.
+#-Added Ideology compatibility
+#-Added Combat Extended compatibility
+#-Added Lean Time on the Rim patch - Lean requires sindeine instead of penoxcycline
+#-Added Meth Production (Continued) compatibility - New crates, drug packs, lacing, and street-grade smokeglass
+#-Added Smokeleaf Industry Reborn compatibility with accompanying custom cartel
+#-Implemented latent Rimmunation compatibility
+#-Changed flake texture from green yayo into a glass pipe
+#-Fixed drug mule pawn generation at settlements
+#-Fixed cartel trade menu generation
+
+#WIP
+
+#-Playable dealing w/ Hospitality integration

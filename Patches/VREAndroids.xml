@@ -1,0 +1,570 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+     <li Class="PatchOperationAdd" MayRequire="vanillaracesexpanded.android">
+      <xpath>Defs</xpath>
+       <value>
+	<ThingDef ParentName="DrugBase">
+	 <defName>LCB_RedIce</defName>
+	 <label>red-ice</label>
+	 <description>A street drug inextricably linked to the inequality often caused by androids displacing human workers. Essentially nothing but re-processed android "blood" carefully mixed with intoxicating substances, solvents, or other contaminants, there is no one formula for red-ice. Nonetheless it can still be generally characterized by the vibrant red hue, and the mental instability it induces within its users.</description>
+	 <possessionCount>3</possessionCount>
+	 <descriptionHyperlinks><HediffDef>LCB_RedIceHigh</HediffDef></descriptionHyperlinks>
+	 <graphicData>
+	   <texPath>Things/Materials/DrugPipe_Bag</texPath>
+	   <graphicClass>Graphic_StackCount</graphicClass>
+	   <shaderType>Transparent</shaderType>
+	   <color>(96,06,32)</color>
+	   <drawSize>0.65</drawSize>
+	 </graphicData>
+	 <socialPropernessMatters>false</socialPropernessMatters>
+	 <rotatable>false</rotatable>
+	 <statBases>
+	   <WorkToMake>4600</WorkToMake>
+	   <MarketValue>26</MarketValue>
+	   <Mass>0.005</Mass>
+	   <Flammability>0.7</Flammability>
+	 </statBases>
+	   <techLevel>Industrial</techLevel>
+	 <ingestible>
+	   <foodType>Processed</foodType>
+	   <drugCategory>Hard</drugCategory>
+	   <joyKind>Chemical</joyKind>
+	   <joy>0.70</joy>
+	   <baseIngestTicks>650</baseIngestTicks>
+	   <ingestSound>Ingest_Smoke</ingestSound>
+	   <ingestEffect>Smoke_Flake</ingestEffect>
+	   <ingestHoldOffsetStanding>
+	     <northDefault>
+		<offset>(0.27,0,0.08)</offset>
+		<behind>true</behind>
+	     </northDefault>
+	     <east>
+		<offset>(0.45,0,0.08)</offset>
+	     </east>
+	     <south>
+		<offset>(0.27,0,0.08)</offset>
+	     </south>
+	     <west>
+		<offset>(-0.50,0,0.08)</offset>
+		<flip>true</flip>
+	     </west>
+	   </ingestHoldOffsetStanding>
+	   <ingestHoldUsesTable>false</ingestHoldUsesTable>
+	   <ingestCommandString>Smoke {0}</ingestCommandString>
+	   <ingestReportString>Smoking {0}.</ingestReportString>
+	   <useEatingSpeedStat>false</useEatingSpeedStat>
+	   <outcomeDoers>
+	     <li Class="IngestionOutcomeDoer_GiveHediff">
+	     <hediffDef>LCB_RedIceHigh</hediffDef>
+	     <severity>1.0</severity>
+	     </li>
+	   </outcomeDoers>
+	 </ingestible>
+<!--	     <recipeMaker>
+	     <researchPrerequisite>DrugProduction</researchPrerequisite>
+	     <recipeUsers>
+	     <li>DrugLab</li>
+	     </recipeUsers>
+	     <displayPriority>2100</displayPriority>
+	     </recipeMaker>
+	     <costList>
+		<Neutroamine>1</Neutroamine>
+		<Flake>1</Flake>
+	     </costList> -->
+	     <comps>
+	     <li Class="CompProperties_Drug">
+		<listOrder>1000</listOrder>
+		<overdoseSeverityOffset>0.08~0.14</overdoseSeverityOffset>
+	     </li>
+	    </comps>
+          </ThingDef>
+       </value>
+     </li>
+
+     <li Class="PatchOperationAdd" MayRequire="vanillaracesexpanded.android">
+      <xpath>Defs</xpath>
+       <value>
+	<HediffDef>
+	 <defName>LCB_RedIceHigh</defName>
+	 <hediffClass>Hediff_High</hediffClass>
+	 <label>high on red-ice</label>
+	 <description>Active red-ice in the bloodstream. Generates an intense euphoric high, though added intoxicants and contaminants cause the experience to be debilitating both mentally and physically.</description>
+	 <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+	 <scenarioCanAdd>true</scenarioCanAdd>
+	 <maxSeverity>1.0</maxSeverity>
+	 <isBad>false</isBad>
+	 <comps>
+	   <li Class="HediffCompProperties_SeverityPerDay">
+	    <severityPerDay>-2.5</severityPerDay>
+	    <showHoursToRecover>true</showHoursToRecover>
+	   </li>
+	 </comps>
+	 <stages>
+	  <li>
+	   <label>high on red-ice</label>
+	   <painFactor>0.85</painFactor>
+	   <statFactors>
+	      <RestFallRateFactor>0.85</RestFallRateFactor>
+	   </statFactors>
+	   <statOffsets>
+	      <GlobalLearningFactor>-0.10</GlobalLearningFactor>
+	      <MaxNutrition>-0.15</MaxNutrition>
+	      <MedicalTendQuality>-0.25</MedicalTendQuality>
+	      <SurgerySuccessChanceFactor>-0.25</SurgerySuccessChanceFactor>
+	      <MentalBreakThreshold>0.22</MentalBreakThreshold>
+	   </statOffsets>
+	   <capMods>
+            <li>
+              <capacity>Moving</capacity>
+              <offset>0.15</offset>
+            </li>
+	    <li>
+              <capacity>Manipulation</capacity>
+              <offset>-0.15</offset>
+            </li>
+	   </capMods>
+	   <mentalStateGivers>
+	    <li>
+              <mentalState>TargetedInsultingSpree</mentalState>
+              <mtbDays>3</mtbDays>
+            </li>
+	    <li>
+              <mentalState>SocialFighting</mentalState>
+              <mtbDays>8</mtbDays>
+            </li>
+	    <li>
+              <mentalState>Berserk</mentalState>
+              <mtbDays>17</mtbDays>
+            </li>
+	   </mentalStateGivers>
+	   <hediffGivers>
+             <li Class="HediffGiver_Random">
+              <hediff>Asthma</hediff>
+              <mtbDays>160</mtbDays>
+              <partsToAffect>
+               <li>Lung</li>
+              </partsToAffect>
+             </li>
+             <li Class="HediffGiver_RandomDrugEffect">
+              <hediff>ChemicalDamageModerate</hediff>
+              <severityToMtbDaysCurve>
+               <points>
+		<li>(0.15, 140</li>
+		<li>(0.3, 100</li>
+		<li>(0.6, 60)</li>
+		<li>(1.0, 15)</li>
+               </points>
+              </severityToMtbDaysCurve>
+              <partsToAffect>
+               <li>Jaw</li>
+              </partsToAffect>
+             </li>
+             <li Class="HediffGiver_Random">
+              <hediff>OrganDecay</hediff>
+              <mtbDays>80</mtbDays>
+              <partsToAffect>
+               <li>Jaw</li>
+              </partsToAffect>
+             </li>
+	   </hediffGivers>
+	  </li>
+	  <li>
+	   <label>high on red-ice</label>
+	   <minSeverity>0.45</minSeverity>
+	   <painFactor>0.65</painFactor>
+	   <statFactors>
+	      <MeleeDamageFactor>1.25</MeleeDamageFactor>
+	      <RestFallRateFactor>0.85</RestFallRateFactor>
+	   </statFactors>
+	   <statOffsets>
+	      <GlobalLearningFactor>-0.15</GlobalLearningFactor>
+	      <MaxNutrition>-0.33</MaxNutrition>
+	      <MedicalTendQuality>-0.45</MedicalTendQuality>
+	      <SurgerySuccessChanceFactor>-0.45</SurgerySuccessChanceFactor>
+	      <MentalBreakThreshold>0.32</MentalBreakThreshold>
+	   </statOffsets>
+	   <capMods>
+            <li>
+              <capacity>Consciousness</capacity>
+              <offset>-0.20</offset>
+            </li>
+            <li>
+              <capacity>Moving</capacity>
+              <postFactor>1.40</postFactor>
+            </li>
+	   </capMods>
+	   <mentalStateGivers>
+	    <li>
+              <mentalState>TargetedInsultingSpree</mentalState>
+              <mtbDays>2</mtbDays>
+            </li>
+	    <li>
+              <mentalState>SocialFighting</mentalState>
+              <mtbDays>5</mtbDays>
+            </li>
+	    <li>
+              <mentalState>Berserk</mentalState>
+              <mtbDays>8</mtbDays>
+            </li>
+	   </mentalStateGivers>
+	   <hediffGivers>
+             <li Class="HediffGiver_Random">
+              <hediff>Asthma</hediff>
+              <mtbDays>100</mtbDays>
+              <partsToAffect>
+               <li>Lung</li>
+              </partsToAffect>
+             </li>
+             <li Class="HediffGiver_Random">
+              <hediff>Frail</hediff>
+              <mtbDays>130</mtbDays>
+              <partsToAffect>
+               <li>Torso</li>
+              </partsToAffect>
+             </li>
+             <li Class="HediffGiver_Random">
+              <hediff>ChemicalDamageModerate</hediff>
+              <mtbDays>140</mtbDays>
+              <partsToAffect>
+                <li>Lung</li>
+              </partsToAffect>
+             </li>
+             <li Class="HediffGiver_Random">
+              <hediff>ChemicalDamageModerate</hediff>
+              <mtbDays>260</mtbDays>
+              <partsToAffect>
+                <li>Brain</li>
+              </partsToAffect>
+             </li>
+	   </hediffGivers>
+	  </li>
+	 </stages>
+	</HediffDef>
+       </value>
+     </li>
+
+     <li Class="PatchOperationAdd" MayRequire="vanillaracesexpanded.android">					
+      <xpath>Defs</xpath>
+       <value>
+        <RecipeDef>
+          <defName>LCB_CookRedIce</defName>
+          <label>cook red-ice</label>
+          <description>Cook red-ice.</description>
+          <jobString>cooking red-ice.</jobString>
+          <workSkill>Cooking</workSkill>
+          <workSpeedStat>CookSpeed</workSpeedStat>
+          <workAmount>4600</workAmount>
+          <targetCountAdjustment>10</targetCountAdjustment>
+          <effectWorking>Cook</effectWorking>
+          <soundWorking>Recipe_CookMeal</soundWorking>
+          <allowMixingIngredients>false</allowMixingIngredients>
+          <researchPrerequisite>DrugProduction</researchPrerequisite>
+          <recipeUsers>
+              <li>FueledStove</li>
+              <li>ElectricStove</li>
+              <li>DrugLab</li>		
+          </recipeUsers>
+          <ingredients>
+              <li>
+               <filter>
+          	<thingDefs>
+		   <li>Neutroamine</li>
+          	</thingDefs>
+               </filter>
+               <count>10</count>
+              </li>
+              <li>
+               <filter>
+          	<thingDefs>
+		   <li MayRequire="zal.meth">Methamphetamine</li>
+		   <li MayRequire="zal.meth">Smokeglass</li>
+		   <li>LCB_Fent</li>
+		   <li>LCB_Zoom</li>
+		   <li>Flake</li>
+		   <li>GoJuice</li>
+		   <li>WakeUp</li>
+          	</thingDefs>
+               </filter>
+               <count>2</count>
+              </li>
+          </ingredients>
+             <fixedIngredientFilter>			
+          	<thingDefs>
+		   <li MayRequire="zal.meth">Methamphetamine</li>
+		   <li MayRequire="zal.meth">Smokeglass</li>
+		   <li>LCB_Fent</li>
+		   <li>LCB_Zoom</li>
+		   <li>Flake</li>
+		   <li>GoJuice</li>
+		   <li>WakeUp</li>
+          	</thingDefs>
+             <categories>
+          
+             </categories>
+             </fixedIngredientFilter>
+          <products>
+          	<LCB_RedIce>20</LCB_RedIce>
+          </products>
+        </RecipeDef>
+       </value>
+     </li>
+
+     <li Class="PatchOperationAdd" MayRequire="vanillaracesexpanded.android">					
+      <xpath>Defs</xpath>
+       <value>
+        <ThoughtDef>
+          <defName>LCB_RedIceHigh</defName>
+          <workerClass>ThoughtWorker_Hediff</workerClass>
+          <hediff>LCB_RedIceHigh</hediff>
+          <validWhileDespawned>true</validWhileDespawned>
+          <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+          <stackedEffectMultiplier>0.30</stackedEffectMultiplier>
+          <stackLimit>3</stackLimit>
+          <requiredTraits>
+            <li>BodyPurist</li>
+          </requiredTraits>
+          <stages>
+            <li>
+              <label>high on red-ice</label>
+              <description>Oh, yeahhh...</description>
+              <baseMoodEffect>13</baseMoodEffect>
+            </li>
+            <li>
+              <label>high on red-ice</label>
+              <description>That's right, blood beats metal, you damn machines! So watch me SMOKE yours!</description>
+              <baseMoodEffect>18</baseMoodEffect>
+            </li>
+          </stages>
+        </ThoughtDef>
+       </value>
+     </li>
+
+     <li Class="PatchOperationAdd" MayRequire="vanillaracesexpanded.android">					
+      <xpath>Defs</xpath>
+       <value>
+        <RecipeDef ParentName="SurgeryFlesh">
+	 <defName>DrainAndroids</defName>
+	 <label>drain android of neutroamine fuel</label>
+	 <description>Extract neutroamine from the target. The operation will fail to produce a neutroamine if the target does not have enough.\n\nNeutroamine can be administered to androids to reduce fuel loss.</description>
+	 <workerClass>LCB_DrainAndroids.Recipe_DrainAndroids</workerClass>
+	 <jobString>Extracting neutroamine.</jobString>
+	 <workAmount>500</workAmount>
+	 <hideBodyPartNames>true</hideBodyPartNames>
+	 <targetsBodyPart>false</targetsBodyPart>
+	 <isViolation>true</isViolation>
+	 <descriptionHyperlinks>
+	   <ThingDef>Neutroamine</ThingDef>
+	 </descriptionHyperlinks>
+	 <uiIconThing>Neutroamine</uiIconThing>
+	 <anesthetize>false</anesthetize>
+	 <workSkillLearnFactor>2</workSkillLearnFactor>
+        </RecipeDef>
+       </value>
+     </li>
+
+     <li Class="PatchOperationAdd" MayRequire="vanillaracesexpanded.android">
+      <xpath>Defs</xpath>
+       <value>
+	<HistoryEventDef>
+          <defName>DrainedAndroid</defName>
+          <label>extracted neutroamine from android member</label>
+	</HistoryEventDef>
+       </value>
+     </li>
+
+     <li Class="PatchOperationAdd" MayRequire="vanillaracesexpanded.android">					
+      <xpath>Defs</xpath>
+       <value>
+	<ThingDef ParentName="FurnitureBase">
+          <defName>LCB_NeutroSiphon</defName>
+          <label>neutro siphon</label>
+          <description>A neutro-siphon casket specially designed for use by android scrapping drug traffickers, particularly on android-prevalent worlds that have heavy restrictions on neutroamine production. Often they will resort to pirating shipments of androids for their neutroamine supply, or traffic individual units given the opportunity. There must be neutroamine available within the android.\n\nThe maximum amount of neutroamine an android can hold is 100 units, but they can operate with minimal functions at 50 units.</description>
+          <thingClass>LCB_DrainAndroids.Building_NeutroSiphon</thingClass>
+          <tickerType>Normal</tickerType>
+          <drawerType>RealtimeOnly</drawerType>
+          <passability>PassThroughOnly</passability>
+          <graphicData>
+              <texPath>Things/Neutrocasket/Neutrocasket</texPath>
+              <graphicClass>Graphic_Multi</graphicClass>
+              <shaderType>CutoutComplex</shaderType>
+              <drawSize>(2,2)</drawSize>
+          </graphicData>
+          <size>(1,2)</size>
+          <statBases>
+              <MaxHitPoints>250</MaxHitPoints>
+              <Mass>30</Mass>
+              <Flammability>1</Flammability>
+              <WorkToBuild>3200</WorkToBuild>
+          </statBases>
+          <designationCategory>Biotech</designationCategory>
+          <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+          <costList>
+              <Steel>180</Steel>
+              <ComponentIndustrial>3</ComponentIndustrial>
+          </costList>
+          <techLevel>Ultra</techLevel>
+          <altitudeLayer>Building</altitudeLayer>
+          <rotatable>false</rotatable>
+          <castEdgeShadows>True</castEdgeShadows>
+          <staticSunShadowHeight>0.17</staticSunShadowHeight>
+          <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+          <drawGUIOverlay>true</drawGUIOverlay>
+          <canOverlapZones>false</canOverlapZones>
+          <defaultPlacingRot>South</defaultPlacingRot>
+          <building>
+              <bed_showSleeperBody>True</bed_showSleeperBody>
+              <buildingSizeCategory>Small</buildingSizeCategory>
+              <bed_humanlike>true</bed_humanlike>
+              <bed_healPerDay>0</bed_healPerDay>
+              <bed_defaultMedical>false</bed_defaultMedical>
+          </building>
+          <fillPercent>0.5</fillPercent>
+          <pathCost>42</pathCost>
+          <uiIconScale>1.0</uiIconScale>
+          <comps>
+              <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <shortCircuitInRain>false</shortCircuitInRain>
+                <basePowerConsumption>40</basePowerConsumption>
+              </li>
+              <li Class="PipeSystem.CompProperties_ResourceStorage" MayRequire="vanillaracesexpanded.android,OskarPotocki.VanillaFactionsExpanded.Core">
+                <pipeNet>VREA_NeutroamineNet</pipeNet>
+                <storageCapacity>100</storageCapacity>
+                <barSize>(0.54, 0.15)</barSize>
+                <margin>0.1</margin>
+                <centerOffset>(0, 0, -0.15)</centerOffset>
+                <extractOptions>
+                 <texPath>UI/ExtractNeutroamine</texPath>
+                 <labelKey>VREA_ExtractNeutroamine</labelKey>
+                 <descKey>VREA_ExtractNeutroamineDesc</descKey>
+                 <extractAmount>20</extractAmount>
+                 <thing>Neutroamine</thing>
+                 <ratio>1</ratio>
+                </extractOptions>
+              </li>
+              <li Class="LCB_DrainAndroids.CompProperties_NeutroSiphon" MayRequire="vanillaracesexpanded.android">
+		<drainRate>0.005</drainRate>
+              </li>
+              <li Class="CompProperties_Breakdownable"/>
+              <li Class="CompProperties_Forbiddable"/>
+          </comps>
+          <minifiedDef>MinifiedThing</minifiedDef>
+          <thingCategories>
+              <li>BuildingsMisc</li>
+          </thingCategories>
+          <researchPrerequisites>
+              <li>VREA_AndroidTech</li>
+          </researchPrerequisites>
+	</ThingDef>
+       </value>
+     </li>
+
+     <li Class="PatchOperationAdd" MayRequire="vanillaracesexpanded.android">					
+      <xpath>Defs</xpath>
+       <value>
+	<TaleDef>
+	  <defName>PutIntoNeutroSiphon</defName>
+	  <label>put into neutro-siphon</label>
+	  <taleClass>Tale_DoublePawn</taleClass>
+	  <type>Volatile</type>
+	  <baseInterest>5</baseInterest>
+	  <firstPawnSymbol>CARRIER</firstPawnSymbol>
+	  <secondPawnSymbol>SLEEPER</secondPawnSymbol>
+	  <rulePack>
+	    <rulesStrings>
+	      <li>tale_noun->[CARRIER_nameDef] putting [SLEEPER_nameDef] into neutro-siphon</li>
+	      <li>image->[CARRIER_nameFull] placing [SLEEPER_nameDef] inside a neutro-siphon casket [circumstance_group]</li>
+	      <li>image->[CARRIER_nameFull] opening an empty neutro-siphon casket while supporting [SLEEPER_nameDef] [circumstance_group]</li>
+	      <li>image->[CARRIER_nameFull] sealing [SLEEPER_nameDef] inside a neutro-siphon casket [circumstance_group]</li>
+	      <li>image->[CARRIER_nameFull] walking away as [SLEEPER_nameDef] looks through the wall of a neutro-siphon casket [circumstance_group]</li>
+	      <li>circumstance_phrase(p=3)->with a [AdjectiveAny] expression</li>
+	      <li>circumstance_phrase->while consumed in thought</li>
+	      <li>circumstance_phrase->while gazing at a faraway [TerrainFeature]</li>
+	      <li>circumstance_phrase->with visible tension between the two</li>
+	      <li>desc_sentence->[Quantity_adjphrase] [Animal]s rest near the scene.</li>
+	      <li>desc_sentence->[Quantity_adjphrase] [Enemy]s approach the area.</li>
+	      <li>desc_sentence->[CARRIER_nameDef] radiates determination.</li>
+	      <li>desc_sentence->[SLEEPER_nameDef] is visibly wounded.</li>
+	      <li>desc_sentence->[SLEEPER_nameDef] looks exhausted.</li>
+	      <li>desc_sentence->[Quantity_adjphrase] filled neutro-siphon caskets surround the scene.</li>
+	    </rulesStrings>
+	  </rulePack>
+	</TaleDef>
+       </value>
+     </li>
+
+     <li Class="PatchOperationAdd" MayRequire="vanillaracesexpanded.android">					
+      <xpath>Defs</xpath>
+       <value>
+	<TaleDef>
+	  <defName>EnteredNeutroSiphon</defName>
+	  <label>entered neutro-siphon</label>
+	  <taleClass>Tale_SinglePawn</taleClass>
+	  <type>Volatile</type>
+	  <baseInterest>5</baseInterest>
+	  <rulePack>
+	    <rulesStrings>
+	      <li>tale_noun->[PAWN_nameDef] entering a neutro-siphon</li>
+	      <li>image->[PAWN_nameFull] lying down inside a neutro-siphon casket [circumstance_group]</li>
+	      <li>image->[PAWN_nameFull] opening an empty neutro-siphon casket [circumstance_group]</li>
+	      <li>image->[PAWN_nameFull] sealing themselves inside a neutro-siphon casket [circumstance_group]</li>
+	      <li>image->[PAWN_nameFull] looking through the wall of a neutro-siphon casket at a world they're about to leave [circumstance_group]</li>
+	      <li>circumstance_phrase->with a [AdjectiveAngsty] expression</li>
+	      <li>circumstance_phrase->while consumed in thought</li>
+	      <li>circumstance_phrase->while gazing at a faraway [TerrainFeature]</li>
+	      <li>circumstance_phrase->and talking quietly to themselves</li>
+	      <li>desc_sentence->[Quantity_adjphrase] [Animal]s rest near the scene.</li>
+	      <li>desc_sentence->[Quantity_adjphrase] [Enemy]s approach the area.</li>
+	      <li>desc_sentence->[PAWN_nameDef] radiates determination.</li>
+	      <li>desc_sentence->[PAWN_nameDef] is visibly wounded.</li>
+	      <li>desc_sentence->A [Color] aurora shines in the background.</li>
+	      <li>desc_sentence->[Quantity_adjphrase] filled neutro-siphon caskets surround the scene.</li>
+	    </rulesStrings>
+	  </rulePack>
+	</TaleDef>
+       </value>
+     </li>
+
+     <li Class="PatchOperationAdd" MayRequire="vanillaracesexpanded.android">
+      <xpath>Defs</xpath>
+       <value>
+	<JobDef>
+	  <defName>CarryToNeutroSiphon</defName>
+	  <driverClass>LCB_DrainAndroids.JobDriver_CarryToNeutroSiphon</driverClass>
+	  <reportString>siphoning.</reportString>
+	  <casualInterruptible>false</casualInterruptible>
+	  <taleOnCompletion>PutIntoNeutroSiphon</taleOnCompletion>
+	</JobDef>
+       </value>
+     </li>
+
+     <li Class="PatchOperationAdd" MayRequire="vanillaracesexpanded.android">
+      <xpath>Defs</xpath>
+       <value>
+	<JobDef>
+	  <defName>EnterNeutroSiphon</defName>
+	  <driverClass>LCB_DrainAndroids.JobDriver_EnterNeutroSiphon</driverClass>
+	  <reportString>siphoning.</reportString>
+	  <taleOnCompletion>EnteredNeutroSiphon</taleOnCompletion>
+	  <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
+       </value>
+     </li>
+
+<!--     <li Class="PatchOperationReplace" MayRequire="RandomBoio.Lean">
+      <xpath>/Defs/ThingDef[defName="Lean"]</xpath>
+       <value>
+	<costList>
+	 <Beer>1</Beer>
+	 <Sindeine>1</Sindeine>
+	</costList>
+       </value>
+     </li> -->
+    </operations>
+</Operation>
+
+</Patch>

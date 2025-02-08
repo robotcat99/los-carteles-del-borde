@@ -1,0 +1,1270 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+
+  <!--  ===============================  Rebalance  ======================================  -->
+
+<Operation Class="PatchOperationSequence">
+    <success>Normal</success>
+    <operations>
+        <li Class="PatchOperationReplace" MayRequire="zal.meth">
+	  <xpath>/Defs/ThingDef[defName="Methamphetamine"]/graphicData</xpath> <!-- I wanted to only patch the drawSize, but the game refused to accept anything else -->
+	     <value>
+	       <graphicData>
+		<texPath>Things/Items/Meth</texPath>
+		<graphicClass>Graphic_StackCount</graphicClass>
+		<shaderType>Transparent</shaderType>
+		<drawSize>0.45</drawSize>
+	       </graphicData>
+	     </value>
+        </li>
+        <li Class="PatchOperationReplace" MayRequire="zal.meth">
+	  <xpath>/Defs/HediffDef[defName="MethHigh"]</xpath>
+	     <value>
+	       <HediffDef>		<!-- This Hediff wasn't very well balanced with LCB at all, but since it's not a mod that's likely to get a ton of patches it should be fine -->
+		<defName>MethHigh</defName>
+		<label>high on meth</label>
+		<labelNoun>a meth high</labelNoun>
+		<description>Meth in the bloodstream. It supercharges combat-related abilities and reduces pain, at the cost of increased aggression and impaired social skills.</description>
+		<hediffClass>Hediff_High</hediffClass>
+		<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+		<scenarioCanAdd>true</scenarioCanAdd>
+		<maxSeverity>1.0</maxSeverity>
+		<isBad>false</isBad>
+		<comps>
+      		 <li Class="HediffCompProperties_SeverityPerDay">
+      		  <severityPerDay>-3.00</severityPerDay>
+      		  <showHoursToRecover>true</showHoursToRecover>
+      		 </li>
+		</comps>
+      		<stages>
+      		<li>
+		  <painFactor>0.6</painFactor>
+		  <socialFightChanceFactor>3.0</socialFightChanceFactor>
+		  <restFallFactor>0.5</restFallFactor>
+      		<capMods>
+      		 <li>
+      		  <capacity>Consciousness</capacity>
+      		  <offset>0.15</offset>
+      		 </li>
+      		 <li>
+      		  <capacity>Talking</capacity>
+      		  <offset>-0.40</offset>
+      		 </li>
+      		 <li>
+      		  <capacity>Sight</capacity>
+      		  <offset>0.05</offset>
+      		 </li>
+      		 <li>
+      		  <capacity>Metabolism</capacity>
+      		  <offset>1.00</offset>
+      		 </li>
+      		 <li>
+      		  <capacity>Moving</capacity>
+      		  <offset>0.25</offset>
+      		 </li>
+      		 <li>
+      		  <capacity>Manipulation</capacity>
+      		  <offset>0.05</offset>
+      		 </li>
+		</capMods>		  
+		  <statOffsets>
+      		  <WorkSpeedGlobal>0.10</WorkSpeedGlobal>
+      		  <PawnBeauty>-1</PawnBeauty>			
+		</statOffsets>
+		<hediffGivers>
+      		 <li Class="HediffGiver_RandomDrugEffect">
+      		  <hediff>ChemicalDamageModerate</hediff>
+      		  <severityToMtbDaysCurve>
+		   <points>
+		    <li>(0.15, 300)</li>
+		    <li>(0.3, 140)</li>
+		    <li>(0.6, 60)</li>
+		    <li>(1.0, 15)</li>
+		   </points>
+      		  </severityToMtbDaysCurve>
+      		  <partsToAffect>
+		    <li>Jaw</li>
+      		  </partsToAffect>
+      		 </li>
+      		 <li Class="HediffGiver_Random">
+      		  <hediff>OrganDecay</hediff>
+      		  <mtbDays>80</mtbDays>
+      		  <partsToAffect>
+		    <li>Jaw</li>
+      		  </partsToAffect>
+      		 </li>
+      		 <li Class="HediffGiver_Random">
+      		  <hediff>Frail</hediff>
+      		  <mtbDays>30</mtbDays>
+      		  <partsToAffect>
+		    <li>Torso</li>
+      		  </partsToAffect>
+      		 </li>
+      		 <li Class="HediffGiver_Random">
+      		  <hediff>HeartAttack</hediff>
+      		  <mtbDays>15</mtbDays>
+      		  <partsToAffect>
+		    <li>Heart</li>
+      		  </partsToAffect>
+      		 </li>
+		</hediffGivers>
+		<mentalStateGivers>
+      		 <li>
+		  <mentalState>Berserk</mentalState>
+		  <mtbDays>30</mtbDays>
+      		 </li>
+      		 <li>
+		  <mentalState>Wander_Psychotic</mentalState>
+		  <mtbDays>7</mtbDays>
+      		 </li>
+		</mentalStateGivers>
+      	     </li>
+      	     </stages>
+	   </HediffDef>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace" MayRequire="zal.meth">
+	  <xpath>/Defs/ThingDef[defName="Methamphetamine"]/statBases/MarketValue</xpath> <!--  To make changes to a nested node, you have to point to the layer above it as well.  -->
+            <value>
+		<MarketValue>30</MarketValue>
+            </value>
+        </li>
+        <li Class="PatchOperationRemove" MayRequire="zal.meth">  <!--  I hate how there's no clear guides for this stuff. MayRequire only works on li -->
+	  <xpath>/Defs/ThingDef[defName="Methamphetamine"]/recipeMaker</xpath>  <!-- To get rid of a node, don't use value b/c you only need to specify in xpath  -->
+        </li>
+        <li Class="PatchOperationReplace" MayRequire="zal.meth">
+	  <xpath>/Defs/ThingDef[defName="Methamphetamine"]/ingestible/baseIngestTicks</xpath>
+            <value>
+		 <baseIngestTicks>650</baseIngestTicks>
+            </value>
+        </li>
+        <li Class="PatchOperationReplace" MayRequire="zal.meth">
+	  <xpath>/Defs/ThingDef[defName="Methamphetamine"]/ingestible/ingestSound</xpath>
+            <value>
+		 <ingestSound>Ingest_Snort</ingestSound>
+            </value>
+        </li>
+        <li Class="PatchOperationReplace" MayRequire="zal.meth">
+	  <xpath>/Defs/ThingDef[defName="Methamphetamine"]/ingestible/ingestCommandString</xpath>
+            <value>
+		 <ingestCommandString>Snort {0}</ingestCommandString>
+            </value>
+        </li>
+        <li Class="PatchOperationReplace" MayRequire="zal.meth">
+	  <xpath>/Defs/ThingDef[defName="Methamphetamine"]/ingestible/ingestReportString</xpath>
+            <value>
+		 <ingestReportString>Snorting {0}.</ingestReportString>
+            </value>
+        </li>
+        <li Class="PatchOperationReplace" MayRequire="zal.meth">
+	  <xpath>/Defs/RecipeDef[defName="RealMeth_MakeMeth"]/ingredients/li/count</xpath>
+            <value>
+		   <count>10</count>
+            </value>
+        </li>
+        <li Class="PatchOperationReplace" MayRequire="zal.meth">
+	  <xpath>/Defs/RecipeDef[defName="RealMeth_MakeMeth"]/products/Methamphetamine</xpath>
+            <value>
+		   <Methamphetamine>20</Methamphetamine>
+            </value>
+        </li>
+        <li Class="PatchOperationReplace" MayRequire="zal.meth">
+	  <xpath>/Defs/RecipeDef[defName="RealMeth_MakeMeth"]/workSkill</xpath>
+            <value>
+		   <workSkill>Intellectual</workSkill>
+            </value>
+        </li>
+        <li Class="PatchOperationReplace" MayRequire="zal.meth">
+	  <xpath>/Defs/RecipeDef[defName="RealMeth_MakeMeth"]/workSpeedStat</xpath>
+            <value>
+		   <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+            </value>
+        </li>
+        <li Class="PatchOperationReplace" MayRequire="zal.meth">
+	  <xpath>/Defs/RecipeDef[defName="RealMeth_MakeMeth"]/soundWorking</xpath>
+            <value>
+		   <soundWorking>Recipe_Drug</soundWorking>
+            </value>
+        </li>
+        <li Class="PatchOperationReplace" MayRequire="zal.meth">
+	  <xpath>/Defs/RecipeDef[defName="RealMeth_MakeMeth"]</xpath>
+            <value>
+		   <requiredGiverWorkType>Research</requiredGiverWorkType>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">				
+		<xpath>Defs</xpath>
+		    <value>
+			 <RecipeDef>
+				<defName>RealMeth_MakeMeth_Bulk</defName>
+				<label>make bulk methamphetamine</label>
+				<description>Make Bulk Methamphetamine.</description>
+				<jobString>making methamphetamine in bulk.</jobString>
+				<workSkill>Intellectual</workSkill>
+				<workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+				<workAmount>8500</workAmount>
+				<soundWorking>Recipe_Drug</soundWorking>
+				<requiredGiverWorkType>Research</requiredGiverWorkType>
+				<effectWorking>Cook</effectWorking>
+				<researchPrerequisite>MethProduction</researchPrerequisite>
+				<recipeUsers>
+				    <li>DrugLab</li>		
+				</recipeUsers>
+				<ingredients>
+				    <li>
+				    <count>40</count>
+				     <filter>
+					<thingDefs>
+					   <li>Neutroamine</li>
+					</thingDefs>
+				     </filter>
+				    </li>
+				</ingredients>
+			   <fixedIngredientFilter>			
+				<thingDefs>
+				    <li>Neutroamine</li>
+				</thingDefs>
+			   <categories>
+				
+			   </categories>
+			   </fixedIngredientFilter>
+				<products>
+					<Methamphetamine>80</Methamphetamine>
+				</products>
+			 </RecipeDef>
+            </value>
+        </li>
+
+  <!--  =======================  I'm pretty sure those glass pipes aren't called blunts. Also pure meth is snorted now, shooting up is for late-stage tweakers  =======================  -->
+
+        <li Class="PatchOperationReplace" MayRequire="zal.meth">
+	   <xpath>/Defs/ThoughtDef[defName="RealMeth_SmokedMeth"]/stages</xpath>
+	     <value>
+		<stages>
+      		 <li>
+      		  <label>snorted an awful hit</label>
+      		  <description>Absolute awful quality hit. This person doesn't know what the hell he's doing!</description>
+      		  <baseMoodEffect>-12</baseMoodEffect>
+      		 </li>
+
+      		 <li>
+      		  <label>snorted a poor hit</label>
+      		  <description>Not bad, but not great either.</description>
+      		  <baseMoodEffect>-5</baseMoodEffect>
+      		 </li>
+
+      		 <li>
+      		  <label>snorted a normal hit</label>
+      		  <description>It gets you high.</description>
+      		  <baseMoodEffect>10</baseMoodEffect>
+      		 </li>
+
+      		 <li>
+      		  <label>snorted a good hit</label>
+      		  <description>I snorted a fine hit.</description>
+      		  <baseMoodEffect>13</baseMoodEffect>
+      		 </li>
+
+      		 <li>
+      		  <label>snorted an excellent hit</label>
+      		  <description>Now that's quality.</description>
+      		  <baseMoodEffect>16</baseMoodEffect>
+      		 </li>
+
+      		 <li>
+      		  <label>snorted a masterwork hit</label>
+      		  <description>Hit so majestic, felt so high, I thought I was in heaven.</description>
+      		  <baseMoodEffect>20</baseMoodEffect>
+      		 </li>
+
+      		 <li>
+      		  <label>snorted a legendary hit</label>
+      		  <description>Tight! Tight-tight, YEAH!</description>
+      		  <baseMoodEffect>28</baseMoodEffect>
+      		 </li>
+		</stages>
+            </value>
+        </li>
+
+  <!--  ===============================  Bulk Drug Crate  ======================================  -->
+
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">			
+          <xpath>Defs</xpath>
+            <value>
+		<ThingDef ParentName="LCB_BulkCratesDrugsBase">
+		  <defName>LCB_Crate_RM_Meth</defName>
+		    <label>crate of drugs</label>
+			<description>A crate packed with drugs.</description>
+			<graphicData>
+			  <texPath>Things/Item/Resource/LCB_Crate</texPath>
+			  <graphicClass>Graphic_Single</graphicClass>
+			  <drawSize>1.50</drawSize>
+			</graphicData>
+			<statBases>
+			  <MarketValue>3580</MarketValue>       <!-- 30 -->
+			  <Mass>2.27</Mass>	   
+			</statBases>
+			<costList>
+			  <Methamphetamine>150</Methamphetamine>
+			  <WoodLog>5</WoodLog>
+			</costList>
+			<killedLeavings>
+			  <Methamphetamine>15</Methamphetamine>
+			  <WoodLog>3</WoodLog>
+			</killedLeavings>
+		</ThingDef>
+            </value>
+        </li>
+
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">			
+          <xpath>Defs</xpath>
+            <value>
+		<ThingDef ParentName="LCB_BulkCratesDrugsBase">
+		  <defName>LCB_Crate_RM_MethLaced</defName>
+		    <label>crate of drugs</label>
+			<description>A crate packed with drugs.</description>
+			<graphicData>
+			  <texPath>Things/Item/Resource/LCB_Crate</texPath>
+			  <graphicClass>Graphic_Single</graphicClass>
+			  <drawSize>1.50</drawSize>
+			</graphicData>
+			<statBases>
+			  <MarketValue>3580</MarketValue>       <!-- 30 -->
+			  <Mass>2.27</Mass>	   
+			</statBases>
+			<costList>
+			  <MethamphetamineLaced>150</MethamphetamineLaced>
+			  <WoodLog>5</WoodLog>
+			</costList>
+			<killedLeavings>
+			  <MethamphetamineLaced>15</MethamphetamineLaced>
+			  <WoodLog>3</WoodLog>
+			</killedLeavings>
+		</ThingDef>
+            </value>
+        </li>
+
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">					
+		          <xpath>Defs</xpath>
+		            <value>
+			           <ThingDef ParentName="LCB_BulkCratesDrugsBase">
+						<defName>LCB_Crate_Smokeglass</defName>
+						<label>crate of drugs</label>
+						<description>A crate packed with drugs.</description>
+						<graphicData>
+							<texPath>Things/Item/Resource/LCB_Crate</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>1.50</drawSize>
+						</graphicData>
+						<statBases>
+							<MarketValue>2240</MarketValue>       <!-- 14 -->
+							<Mass>2.27</Mass>	   
+						</statBases>
+						<costList>
+							<Smokeglass>200</Smokeglass>
+							<WoodLog>5</WoodLog>
+						</costList>
+						<killedLeavings>
+							<Smokeglass>50</Smokeglass>
+							<WoodLog>3</WoodLog>
+						</killedLeavings>
+				    </ThingDef>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">					
+		          <xpath>Defs</xpath>
+		            <value>
+			           <ThingDef ParentName="LCB_BulkCratesDrugsBase">
+						<defName>LCB_Crate_SmokeglassLaced</defName>
+						<label>crate of drugs</label>
+						<description>A crate packed with drugs.</description>
+						<graphicData>
+							<texPath>Things/Item/Resource/LCB_Crate</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>1.50</drawSize>
+						</graphicData>
+						<statBases>
+							<MarketValue>2240</MarketValue>       <!-- 14 -->
+							<Mass>2.27</Mass>	   
+						</statBases>
+						<costList>
+							<SmokeglassLaced>200</SmokeglassLaced>
+							<WoodLog>5</WoodLog>
+						</costList>
+						<killedLeavings>
+							<SmokeglassLaced>50</SmokeglassLaced>
+							<WoodLog>3</WoodLog>
+						</killedLeavings>
+				    </ThingDef>
+            </value>
+        </li>
+
+  <!--  ===============================  Bulk Drug Packs ======================================  -->
+
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">					
+	     <xpath>Defs</xpath>
+	         <value>
+		    <ThingDef ParentName="LCB_BodyPartDrugMuleBase">
+			<defName>LCB_DrugPackMeth</defName>
+			<label>meth drug pack</label>
+			<description>Cloth bags filled with drugs.</description>
+			<descriptionHyperlinks><RecipeDef>LCB_DrugMuleMeth</RecipeDef></descriptionHyperlinks>    <!--  Here  -->
+			<graphicData>
+				<color>(174,219,228)</color>
+			</graphicData>
+			<costList>
+				<Methamphetamine>150</Methamphetamine>
+				<Cloth>10</Cloth>
+			</costList>    
+			<statBases>
+				<MarketValue>3580</MarketValue>
+				<Mass>1</Mass>
+			</statBases>
+		    </ThingDef>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">					
+	     <xpath>Defs</xpath>
+	         <value>
+		    <ThingDef ParentName="LCB_BodyPartDrugMuleBase">
+			<defName>LCB_DrugPackSmokeglass</defName>
+			<label>Smokeglass drug pack</label>
+			<description>Cloth bags filled with drugs.</description>
+			<descriptionHyperlinks><RecipeDef>LCB_DrugMuleSmokeglass</RecipeDef></descriptionHyperlinks>    <!--  Here  -->
+			<graphicData>
+				<color>(137,201,232)</color>
+			</graphicData>
+			<costList>
+				<Smokeglass>200</Smokeglass>
+				<Cloth>10</Cloth>
+			</costList>    
+			<statBases>
+				<MarketValue>2240</MarketValue>
+				<Mass>1</Mass>
+			</statBases>
+		    </ThingDef>
+            </value>
+        </li>
+
+  <!--  ===============================  Bulk Drug Packs - Complex Integration ======================================  -->
+
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">		
+	     <xpath>Defs</xpath>
+		    <value>
+			 <RecipeDef ParentName="LCB_StuffOrgansWithDrugsBase">
+			   <defName>LCB_DrugMuleMeth</defName>
+			   <label>stuff with meth</label>
+			   <description>stuff abdomen with meth.</description>
+			   <descriptionHyperlinks>
+				    <HediffDef>LCB_DrugStuffedOrgansMeth</HediffDef>
+			   </descriptionHyperlinks>
+			   <jobString>Stuffing abdomen with meth.</jobString>	
+			   <ingredients>
+		           <li>
+			      <filter>
+				 <thingDefs>
+				    <li>LCB_DrugPackMeth</li>    <!-- Patch new? -->
+				 </thingDefs>
+			      </filter>
+		           <count>1</count>     <!--  4500 w/20% discount  -->
+		           </li>
+		           <li>
+			     <filter>
+				 <categories>
+				    <li>Medicine</li>
+				 </categories>
+			     </filter>
+			     <count>2</count>
+		           </li>
+			   </ingredients>
+			   <fixedIngredientFilter>
+			   <categories>
+				    <li>Medicine</li>
+			   </categories>
+			   <thingDefs>
+				    <li>LCB_DrugPackMeth</li>
+			   </thingDefs>
+			   </fixedIngredientFilter>
+			   <addsHediff>LCB_DrugStuffedOrgansMeth</addsHediff>
+			 </RecipeDef>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">		
+	     <xpath>Defs</xpath>
+		    <value>
+			 <RecipeDef ParentName="LCB_StuffOrgansWithDrugsBase">
+			   <defName>LCB_DrugMuleSmokeglass</defName>
+			   <label>stuff with smokeglass</label>
+			   <description>stuff abdomen with smokeglass.</description>
+			   <descriptionHyperlinks>
+				    <HediffDef>LCB_DrugStuffedOrgansSmokeglass</HediffDef>
+			   </descriptionHyperlinks>
+			   <jobString>Stuffing abdomen with smokeglass.</jobString>	
+			   <ingredients>
+		           <li>
+			     <filter>
+				 <thingDefs>
+				    <li>LCB_DrugPackSmokeglass</li>    <!-- Patch new? -->
+				 </thingDefs>
+			     </filter>
+			     <count>1</count>     <!--  5500 w/20% discount  -->
+		           </li>
+		           <li>
+			     <filter>
+				 <categories>
+				    <li>Medicine</li>
+				 </categories>
+			     </filter>
+			     <count>2</count>
+		           </li>
+			   </ingredients>
+			   <fixedIngredientFilter>
+			   <categories>
+				    <li>Medicine</li>
+			   </categories>
+			   <thingDefs>
+				    <li>LCB_DrugPackSmokeglass</li>
+			   </thingDefs>
+			   </fixedIngredientFilter>
+			   <addsHediff>LCB_DrugStuffedOrgansSmokeglass</addsHediff>
+			 </RecipeDef>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">		
+	    <xpath>Defs</xpath>
+		<value>
+		    <RecipeDef ParentName="LCB_RemoveDrugPacksBase">
+		        <defName>LCB_RemoveDrugPacksMeth</defName>    
+		        <descriptionHyperlinks>
+			   <HediffDef>LCB_DrugStuffedOrgansMeth</HediffDef>
+		        </descriptionHyperlinks>    
+		        <removesHediff>LCB_DrugStuffedOrgansMeth</removesHediff>
+		    </RecipeDef>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">		
+	    <xpath>Defs</xpath>
+		<value>
+		    <RecipeDef ParentName="LCB_RemoveDrugPacksBase">
+		        <defName>LCB_RemoveDrugPacksSmokeglass</defName>    
+		        <descriptionHyperlinks>
+			   <HediffDef>LCB_DrugStuffedOrgansSmokeglass</HediffDef>
+		        </descriptionHyperlinks>    
+		        <removesHediff>LCB_DrugStuffedOrgansSmokeglass</removesHediff>
+		    </RecipeDef>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">		
+	    <xpath>Defs</xpath>
+		<value>
+		    <HediffDef ParentName="LCB_DrugStuffedOrgans">
+		        <defName>LCB_DrugStuffedOrgansMeth</defName>
+		        <spawnThingOnRemoved>LCB_DrugPackMeth</spawnThingOnRemoved>
+		        <descriptionHyperlinks>
+			   <RecipeDef>LCB_RemoveDrugPacksMeth</RecipeDef>
+		        </descriptionHyperlinks>
+		    </HediffDef>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">		
+	    <xpath>Defs</xpath>
+		<value>
+		    <HediffDef ParentName="LCB_DrugStuffedOrgans">
+		        <defName>LCB_DrugStuffedOrgansSmokeglass</defName>
+		        <spawnThingOnRemoved>LCB_DrugPackSmokeglass</spawnThingOnRemoved>
+		        <descriptionHyperlinks>
+			   <RecipeDef>LCB_RemoveDrugPacksSmokeglass</RecipeDef>
+		        </descriptionHyperlinks>
+		    </HediffDef>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">						
+		<xpath>Defs</xpath>
+		    <value>
+			 <RecipeDef ParentName="LCB_UnpackDrugsBase">
+			   <defName>LCB_UnpackDrugsMeth</defName>
+			   <ingredients>
+		           <li>
+			     <filter>
+				<thingDefs>
+				    <li>LCB_DrugPackMeth</li>
+				</thingDefs>
+			     </filter>
+			     <count>1</count>
+		           </li>
+			   </ingredients>
+			   <fixedIngredientFilter>
+				<thingDefs>
+				    <li>LCB_DrugPackMeth</li>
+				</thingDefs>
+			   </fixedIngredientFilter>
+			   <products>
+				    <Methamphetamine>100</Methamphetamine>
+			   </products>
+			   <workSkill>Crafting</workSkill>
+			 </RecipeDef>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">						
+		<xpath>Defs</xpath>
+		    <value>
+			 <RecipeDef ParentName="LCB_UnpackDrugsBase">
+			   <defName>LCB_UnpackDrugsSmokeglass</defName>
+			   <ingredients>
+		           <li>
+			     <filter>
+				<thingDefs>
+				    <li>LCB_DrugPackSmokeglass</li>
+				</thingDefs>
+			     </filter>
+			     <count>1</count>
+		           </li>
+			   </ingredients>
+			   <fixedIngredientFilter>
+				<thingDefs>
+				    <li>LCB_DrugPackSmokeglass</li>
+				</thingDefs>
+			   </fixedIngredientFilter>
+			   <products>
+				    <Smokeglass>100</Smokeglass>
+			   </products>
+			   <workSkill>Crafting</workSkill>
+			 </RecipeDef>
+            </value>
+        </li>
+
+  <!--  ===============================  Street Meth - (Needs better name. How about Amp? Maybe Smokeglass?)  ======================================  -->  
+
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">							
+		<xpath>Defs</xpath>
+		    <value>
+			 <ThingDef ParentName="DrugBase">
+			   <defName>Smokeglass</defName>
+			   <label>Smokeglass</label>
+			   <description>These cyan crystals can be smoked to induce a short but powerful euphoric state. Although it masks exhaustion, is cheap to produce, and extremely pleasurable to use, it is also exceptionally addictive. Smokeglass is known for destroying lives, communities, and entire societies.</description>
+			   <descriptionHyperlinks>
+			     <HediffDef>MethHigh</HediffDef>
+			     <HediffDef>MethTolerance</HediffDef>
+			     <HediffDef>MethAddiction</HediffDef>
+			     <HediffDef>ChemicalDamageSevere</HediffDef>
+			   </descriptionHyperlinks>
+			   <graphicData>
+			     <texPath>Things/Materials/DrugPipe</texPath>
+			     <graphicClass>Graphic_StackCount</graphicClass>
+			     <shaderType>Transparent</shaderType>
+			     <color>(137,201,232)</color>
+			     <drawSize>0.65</drawSize>
+			   </graphicData>
+			   <rotatable>false</rotatable>
+			   <statBases>
+			     <WorkToMake>600</WorkToMake>
+			     <MarketValue>18</MarketValue>
+			     <Mass>0.05</Mass>
+			   </statBases>
+			   <techLevel>Industrial</techLevel>
+			   <minRewardCount>10</minRewardCount>
+			   <ingestible>
+			     <foodType>Processed</foodType>
+			     <joyKind>Chemical</joyKind>
+			     <joy>0.70</joy>
+			     <baseIngestTicks>650</baseIngestTicks>
+			     <nurseable>true</nurseable>
+			     <drugCategory>Hard</drugCategory>
+			     <ingestSound>Ingest_Smoke</ingestSound>
+			     <ingestEffect>Smoke_Flake</ingestEffect>
+			     <ingestHoldOffsetStanding>
+				<northDefault>
+				    <offset>(0.27,0,0.08)</offset>
+				    <behind>true</behind>
+				</northDefault>
+				<east>
+				    <offset>(0.45,0,0.08)</offset>
+				</east>
+				<south>
+				    <offset>(0.27,0,0.08)</offset>
+				</south>
+				<west>
+				    <offset>(-0.50,0,0.08)</offset>
+				    <flip>true</flip>
+				</west>
+			     </ingestHoldOffsetStanding>
+			     <ingestHoldUsesTable>false</ingestHoldUsesTable>
+			     <ingestCommandString>Smoke {0}</ingestCommandString>
+			     <ingestReportString>Smoking {0}.</ingestReportString>
+			     <useEatingSpeedStat>false</useEatingSpeedStat>
+			     <outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+				    <hediffDef>MethHigh</hediffDef>
+				    <severity>0.50</severity>
+				    <toleranceChemical>Methamphetamine</toleranceChemical>
+				</li>
+				<li Class="IngestionOutcomeDoer_OffsetNeed">
+				    <need>Rest</need>
+				    <offset>0.75</offset>
+				    <toleranceChemical>Methamphetamine</toleranceChemical>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+				    <hediffDef>MethTolerance</hediffDef>
+				    <toleranceChemical>Methamphetamine</toleranceChemical>
+				    <severity>0.04</severity>
+				    <divideByBodySize>true</divideByBodySize>
+				    <multiplyByGeneToleranceFactors>true</multiplyByGeneToleranceFactors>
+				</li>
+      			     </outcomeDoers>
+			   </ingestible>
+			   <comps>
+			     <li>
+				<compClass>CompQuality</compClass>
+			     </li>
+				<li Class="RealMethGoFuckYourself.CompProperties_IngestedThoughtFromQuality">
+				<ingestedThought>RealMeth_SmokedMeth</ingestedThought>
+			     </li>
+			     <li Class="CompProperties_Drug">
+				<chemical>Methamphetamine</chemical>
+				<addictiveness>0.05</addictiveness>
+				<existingAddictionSeverityOffset>0.15</existingAddictionSeverityOffset>
+				<needLevelOffset>0.4</needLevelOffset>
+				<listOrder>110</listOrder>
+				<overdoseSeverityOffset>0.28~0.65</overdoseSeverityOffset>
+				<largeOverdoseChance>0.015</largeOverdoseChance>
+			     </li>
+			   </comps>
+    			   <butcherProducts>
+			     <SmokeglassLaced>20</SmokeglassLaced>
+    			   </butcherProducts>
+			 </ThingDef>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">						
+		<xpath>Defs</xpath>
+		    <value>
+			 <RecipeDef>
+				<defName>RealMeth_MakeSmokeglass</defName>
+				<label>cook smokeglass</label>
+				<description>Cook Smokeglass.</description>
+				<jobString>cooking smokeglass.</jobString>
+				<workSkill>Cooking</workSkill>
+				<workSpeedStat>CookSpeed</workSpeedStat>
+				<workAmount>2200</workAmount>
+				<effectWorking>Cook</effectWorking>
+				<soundWorking>Recipe_CookMeal</soundWorking>
+				<researchPrerequisite>MethProduction</researchPrerequisite>
+				<recipeUsers>
+				    <li>FueledStove</li>
+				    <li>ElectricStove</li>
+				    <li>DrugLab</li>		
+				</recipeUsers>
+				<ingredients>
+				    <li>
+				     <filter>
+					<thingDefs>
+					   <li>Neutroamine</li>
+					</thingDefs>
+				     </filter>
+				     <count>5</count>
+				    </li>
+				</ingredients>
+				   <fixedIngredientFilter>			
+					<thingDefs>
+					    <li>Neutroamine</li>
+					</thingDefs>
+				   <categories>
+				
+				   </categories>
+				   </fixedIngredientFilter>
+				<products>
+					<Smokeglass>20</Smokeglass>
+				</products>
+			 </RecipeDef>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">					
+		<xpath>Defs</xpath>
+		    <value>
+			 <RecipeDef>
+				<defName>RealMeth_MakeSmokeglass_Bulk</defName>
+				<label>cook smokeglass in bulk</label>
+				<description>Cook Smokeglass in Bulk.</description>
+				<jobString>cooking smokeglass in bulk.</jobString>
+				<workSkill>Cooking</workSkill>
+				<workSpeedStat>CookSpeed</workSpeedStat>
+				<workAmount>1500</workAmount>
+				<effectWorking>Cook</effectWorking>
+				<soundWorking>Recipe_CookMeal</soundWorking>
+				<researchPrerequisite>MethProduction</researchPrerequisite>
+				<recipeUsers>
+				    <li>FueledStove</li>
+				    <li>ElectricStove</li>
+				    <li>DrugLab</li>		
+				</recipeUsers>
+				<ingredients>
+				    <li>
+				    <count>10</count>
+				     <filter>
+					<thingDefs>
+					   <li>Neutroamine</li>
+					</thingDefs>
+				     </filter>
+				    </li>
+				</ingredients>
+			   <fixedIngredientFilter>			
+				<thingDefs>
+				    <li>Neutroamine</li>
+				</thingDefs>
+			   <categories>
+				
+			   </categories>
+			   </fixedIngredientFilter>
+				<products>
+					<Smokeglass>40</Smokeglass>
+				</products>
+			 </RecipeDef>
+            </value>
+        </li>
+
+  <!--  ===============================  Street Meth - (Now with lacing!)  ======================================  -->  
+
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">		
+	   <xpath>Defs</xpath>
+	     <value>
+	       <ThoughtDef>
+		<defName>RealMeth_SmokedLacedMeth</defName>
+		<showBubble>true</showBubble>
+		<durationDays>1</durationDays>
+		<stages>
+      		 <li>
+      		  <label>an awful laced hit</label>
+      		  <description>That was absolutely awful. I feel like I just inhaled a heart attack, and not in a good way.</description>
+      		  <baseMoodEffect>-15</baseMoodEffect>
+      		 </li>
+
+      		 <li>
+      		  <label>a poor laced hit</label>
+      		  <description>What a poor quality hit. This is more like a headache than a rush.</description>
+      		  <baseMoodEffect>-7</baseMoodEffect>
+      		 </li>
+
+      		 <li>
+      		  <label>a normal laced hit</label>
+      		  <description>I think I just took bath salts.</description>
+      		  <baseMoodEffect>-3</baseMoodEffect>
+      		 </li>
+
+      		 <li>
+      		  <label>a good laced hit</label>
+      		  <description>It eases the shakes at least, so that's good.</description>
+      		  <baseMoodEffect>5</baseMoodEffect>
+      		 </li>
+
+      		 <li>
+      		  <label>an excellent laced hit</label>
+      		  <description>Whatever was in that hit has me messed up.</description>
+      		  <baseMoodEffect>8</baseMoodEffect>
+      		 </li>
+
+      		 <li>
+      		  <label>a masterwork hit</label>
+      		  <description>I don't care what's in this, their cook is a master!</description>
+      		  <baseMoodEffect>13</baseMoodEffect>
+      		 </li>
+
+      		 <li>
+      		  <label>a legendary hit</label>
+      		  <description>hgh,hghhg ghhggmh ,hg ,h,gh ,, g,f , ,a, ahhgmm,aaa,,</description>
+      		  <baseMoodEffect>17</baseMoodEffect>
+      		 </li>
+		</stages>
+    	   </ThoughtDef>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">							
+		<xpath>Defs</xpath>
+		    <value>
+			 <ThingDef ParentName="DrugBase">
+			   <defName>MethamphetamineLaced</defName>
+			   <label>Meth</label>
+			   <description>A synthesized combat-effective performance-enhancing drug developed in the historic times during the very early days of war. These cyan crystals, while extremely addictive, block pain, increase movement speed, improve the user's overall combat capabilities while also removing the need to rest. The chemists that made this drug often times did it in undesirable environments such as a 1986 Fleetwood Bounder, however, this sample is entirely pure and military-grade. One dose weighs about 50mg.</description>
+			   <descriptionHyperlinks>
+			     <HediffDef>MethHigh</HediffDef>
+			     <HediffDef>MethTolerance</HediffDef>
+			     <HediffDef>MethAddiction</HediffDef>
+			     <HediffDef>ChemicalDamageSevere</HediffDef>
+			   </descriptionHyperlinks>
+			   <graphicData>
+			     <texPath>Things/Items/Meth</texPath>
+			     <graphicClass>Graphic_StackCount</graphicClass>
+			     <shaderType>Transparent</shaderType>
+			     <drawSize>0.45</drawSize>
+			   </graphicData>
+			   <rotatable>True</rotatable>
+			   <statBases>
+			     <WorkToMake>1000</WorkToMake>
+			     <MarketValue>30</MarketValue>
+			     <Mass>0.005</Mass>
+			   </statBases>
+			   <techLevel>Industrial</techLevel>
+			   <minRewardCount>10</minRewardCount>
+			   <ingestible>
+			     <foodType>Processed</foodType>
+			     <joyKind>Chemical</joyKind>
+			     <joy>0.70</joy>
+			     <baseIngestTicks>650</baseIngestTicks>
+			     <nurseable>true</nurseable>
+			     <drugCategory>Hard</drugCategory>
+			     <ingestSound>Ingest_Snort</ingestSound>
+			     <ingestHoldOffsetStanding>
+				<northDefault>
+				    <offset>(0.21,0,0.05)</offset>
+				</northDefault>
+			     </ingestHoldOffsetStanding>
+			     <ingestHoldUsesTable>false</ingestHoldUsesTable>
+			     <ingestCommandString>Snort {0}</ingestCommandString>
+			     <ingestReportString>Snorting {0}.</ingestReportString>
+			     <useEatingSpeedStat>false</useEatingSpeedStat>
+			     <outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+				    <hediffDef>MethLacedHigh</hediffDef>
+				    <severity>0.50</severity>
+				    <toleranceChemical>Methamphetamine</toleranceChemical>
+				</li>
+				<li Class="IngestionOutcomeDoer_OffsetNeed">
+				    <need>Rest</need>
+				    <offset>0.75</offset>
+				    <toleranceChemical>Methamphetamine</toleranceChemical>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+				    <hediffDef>MethTolerance</hediffDef>
+				    <toleranceChemical>Methamphetamine</toleranceChemical>
+				    <severity>0.04</severity>
+				    <divideByBodySize>true</divideByBodySize>
+				    <multiplyByGeneToleranceFactors>true</multiplyByGeneToleranceFactors>
+				</li>
+      			     </outcomeDoers>
+			   </ingestible>
+			   <comps>
+			     <li>
+				<compClass>CompQuality</compClass>
+			     </li>
+				<li Class="RealMethGoFuckYourself.CompProperties_IngestedThoughtFromQuality">
+				<ingestedThought>RealMeth_SmokedLacedMeth</ingestedThought>
+			     </li>
+			     <li Class="CompProperties_Drug">
+				<chemical>Methamphetamine</chemical>
+				<addictiveness>0.05</addictiveness>
+				<existingAddictionSeverityOffset>0.15</existingAddictionSeverityOffset>
+				<needLevelOffset>0.4</needLevelOffset>
+				<listOrder>110</listOrder>
+				<overdoseSeverityOffset>0.28~0.45</overdoseSeverityOffset>
+				<largeOverdoseChance>0.15</largeOverdoseChance>
+			     </li>
+			   </comps>
+			 </ThingDef>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">							
+		<xpath>Defs</xpath>
+		    <value>
+			 <ThingDef ParentName="DrugBase">
+			   <defName>SmokeglassLaced</defName>
+			   <label>Smokeglass</label>
+			   <description>These cyan crystals can be smoked to induce a short but powerful euphoric state. Although it masks exhaustion, is cheap to produce, and extremely pleasurable to use, it is also exceptionally addictive. Smokeglass is known for destroying lives, communities, and entire societies.</description>
+			   <descriptionHyperlinks>
+			     <HediffDef>MethHigh</HediffDef>
+			     <HediffDef>MethTolerance</HediffDef>
+			     <HediffDef>MethAddiction</HediffDef>
+			     <HediffDef>ChemicalDamageSevere</HediffDef>
+			   </descriptionHyperlinks>
+			   <graphicData>
+			     <texPath>Things/Materials/DrugPipe</texPath>
+			     <graphicClass>Graphic_StackCount</graphicClass>
+			     <shaderType>Transparent</shaderType>
+			     <color>(137,201,232)</color>
+			     <drawSize>0.65</drawSize>
+			   </graphicData>
+			   <rotatable>false</rotatable>
+			   <statBases>
+			     <WorkToMake>600</WorkToMake>
+			     <MarketValue>18</MarketValue>
+			     <Mass>0.05</Mass>
+			   </statBases>
+			   <techLevel>Industrial</techLevel>
+			   <minRewardCount>10</minRewardCount>
+			   <ingestible>
+			     <foodType>Processed</foodType>
+			     <joyKind>Chemical</joyKind>
+			     <joy>0.70</joy>
+			     <baseIngestTicks>650</baseIngestTicks>
+			     <nurseable>true</nurseable>
+			     <drugCategory>Hard</drugCategory>
+			     <ingestSound>Ingest_Smoke</ingestSound>
+			     <ingestEffect>Smoke_Flake</ingestEffect>
+			     <ingestHoldOffsetStanding>
+				<northDefault>
+				    <offset>(0.27,0,0.08)</offset>
+				    <behind>true</behind>
+				</northDefault>
+				<east>
+				    <offset>(0.45,0,0.08)</offset>
+				</east>
+				<south>
+				    <offset>(0.27,0,0.08)</offset>
+				</south>
+				<west>
+				    <offset>(-0.50,0,0.08)</offset>
+				    <flip>true</flip>
+				</west>
+			     </ingestHoldOffsetStanding>
+			     <ingestHoldUsesTable>false</ingestHoldUsesTable>
+			     <ingestCommandString>Smoke {0}</ingestCommandString>
+			     <ingestReportString>Smoking {0}.</ingestReportString>
+			     <useEatingSpeedStat>false</useEatingSpeedStat>
+			     <outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+				    <hediffDef>MethLacedHigh</hediffDef>
+				    <severity>0.50</severity>
+				    <toleranceChemical>Methamphetamine</toleranceChemical>
+				</li>
+				<li Class="IngestionOutcomeDoer_OffsetNeed">
+				    <need>Rest</need>
+				    <offset>0.75</offset>
+				    <toleranceChemical>Methamphetamine</toleranceChemical>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+				    <hediffDef>MethTolerance</hediffDef>
+				    <toleranceChemical>Methamphetamine</toleranceChemical>
+				    <severity>0.04</severity>
+				    <divideByBodySize>true</divideByBodySize>
+				    <multiplyByGeneToleranceFactors>true</multiplyByGeneToleranceFactors>
+				</li>
+      			     </outcomeDoers>
+			   </ingestible>
+			   <comps>
+			     <li>
+				<compClass>CompQuality</compClass>
+			     </li>
+				<li Class="RealMethGoFuckYourself.CompProperties_IngestedThoughtFromQuality">
+				<ingestedThought>RealMeth_SmokedLacedMeth</ingestedThought>
+			     </li>
+			     <li Class="CompProperties_Drug">
+				<chemical>Methamphetamine</chemical>
+				<addictiveness>0.05</addictiveness>
+				<existingAddictionSeverityOffset>0.15</existingAddictionSeverityOffset>
+				<needLevelOffset>0.4</needLevelOffset>
+				<listOrder>110</listOrder>
+				<overdoseSeverityOffset>0.28~0.45</overdoseSeverityOffset>
+				<largeOverdoseChance>0.15</largeOverdoseChance>
+			     </li>
+			   </comps>
+			 </ThingDef>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">		
+	  <xpath>Defs</xpath>
+	     <value>
+	       <HediffDef>
+		<defName>MethLacedHigh</defName>
+		<label>high on laced meth</label>
+		<labelNoun>a contaminated meth high</labelNoun>
+		<description>Another active chemical in the bloodstream alongside meth. The effects of the drug are altered by the added impurities, leading to more severe negative effects including a sharp decrease in mental stability.</description>
+		<hediffClass>Hediff_High</hediffClass>
+		<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+		<scenarioCanAdd>true</scenarioCanAdd>
+		<maxSeverity>1.0</maxSeverity>
+		<isBad>false</isBad>
+		<comps>
+      		 <li Class="HediffCompProperties_SeverityPerDay">
+      		  <severityPerDay>-4.00</severityPerDay>
+      		  <showHoursToRecover>true</showHoursToRecover>
+      		 </li>
+		</comps>
+      		<stages>
+      		<li>
+		   <label>high on laced meth</label>
+		   <painFactor>0.5</painFactor>
+		   <socialFightChanceFactor>5.0</socialFightChanceFactor>
+		   <restFallFactor>0.85</restFallFactor>
+      		<capMods>
+      		 <li>
+      		  <capacity>Consciousness</capacity>
+      		  <offset>0.15</offset>
+      		 </li>
+      		 <li>
+      		  <capacity>Talking</capacity>
+      		  <offset>-1.10</offset>
+      		 </li>
+      		 <li>
+      		  <capacity>Sight</capacity>
+      		  <offset>0.05</offset>
+      		 </li>
+      		 <li>
+      		  <capacity>Metabolism</capacity>
+      		  <offset>0.60</offset>
+      		 </li>
+      		 <li>
+      		  <capacity>Moving</capacity>
+      		  <offset>0.35</offset>
+      		 </li>
+      		 <li>
+      		  <capacity>Manipulation</capacity>
+      		  <offset>0.05</offset>
+      		 </li>
+		</capMods>		  
+		<statOffsets>
+      		  <MentalBreakThreshold>0.40</MentalBreakThreshold>
+      		  <WorkSpeedGlobal>-0.10</WorkSpeedGlobal>
+      		  <PawnBeauty>-1</PawnBeauty>			
+		</statOffsets>
+		<hediffGivers>
+      		 <li Class="HediffGiver_Random">
+      		  <hediff>Frail</hediff>
+      		  <mtbDays>30</mtbDays>
+      		  <partsToAffect>
+		    <li>Torso</li>
+      		  </partsToAffect>
+      		 </li>
+      		 <li Class="HediffGiver_Random">
+      		  <hediff>HeartAttack</hediff>
+      		  <mtbDays>40</mtbDays>
+      		  <partsToAffect>
+		    <li>Heart</li>
+      		  </partsToAffect>
+      		 </li>
+		</hediffGivers>
+		<mentalStateGivers>
+      		 <li>
+		  <mentalState>Berserk</mentalState>
+		  <mtbDays>4</mtbDays>
+      		 </li>
+      		 <li>
+		  <mentalState>Wander_Psychotic</mentalState>
+		  <mtbDays>2</mtbDays>
+      		 </li>
+		</mentalStateGivers>
+      	     </li>
+      	     </stages>
+	   </HediffDef>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">					
+		<xpath>Defs</xpath>
+		    <value>
+			 <RecipeDef>
+				<defName>RealMeth_MakeSmokeglassLaced</defName>
+				<label>lace smokeglass</label>
+				<description>Make Laced Smokeglass.</description>
+				<jobString>lacing smokeglass.</jobString>
+				<workSkill>Cooking</workSkill>
+				<workSpeedStat>CookSpeed</workSpeedStat>
+				<workAmount>1500</workAmount>
+				<targetCountAdjustment>10</targetCountAdjustment>
+				<effectWorking>Cook</effectWorking>
+				<soundWorking>Recipe_CookMeal</soundWorking>
+				<allowMixingIngredients>false</allowMixingIngredients>
+				<researchPrerequisite>MethProduction</researchPrerequisite>
+				<recipeUsers>
+				    <li>FueledStove</li>
+				    <li>ElectricStove</li>
+				    <li>DrugLab</li>		
+				</recipeUsers>
+				<ingredients>
+				    <li>
+				     <filter>
+					<thingDefs>
+					   <li>Smokeglass</li>
+					</thingDefs>
+				     </filter>
+				     <count>10</count>
+				    </li>
+				    <li>
+				     <filter>
+					<thingDefs>
+					    <li>LCB_Fent</li>
+					    <li>LCB_Zoom</li>
+					    <li>WakeUp</li>
+					    <li>GoJuice</li>
+					</thingDefs>
+				     </filter>
+				     <count>2</count>
+				    </li>
+				</ingredients>
+				   <fixedIngredientFilter>			
+					<thingDefs>
+					    <li>LCB_Fent</li>
+					    <li>LCB_Zoom</li>
+					    <li>WakeUp</li>
+					    <li>GoJuice</li>
+					</thingDefs>
+				   <categories>
+				
+				   </categories>
+				   </fixedIngredientFilter>
+				<products>
+					<SmokeglassLaced>20</SmokeglassLaced>
+				</products>
+			 </RecipeDef>
+            </value>
+        </li>
+        <li Class="PatchOperationAdd" MayRequire="zal.meth">					
+		<xpath>Defs</xpath>
+		    <value>
+			 <RecipeDef>
+				<defName>RealMeth_MakeSmokeglassLacedBulk</defName>
+				<label>lace smokeglass in bulk</label>
+				<description>Lacing Smokeglass in Bulk.</description>
+				<jobString>lacing smokeglass in bulk.</jobString>
+				<workSkill>Cooking</workSkill>
+				<workSpeedStat>CookSpeed</workSpeedStat>
+				<workAmount>1500</workAmount>
+				<targetCountAdjustment>10</targetCountAdjustment>
+				<effectWorking>Cook</effectWorking>
+				<soundWorking>Recipe_CookMeal</soundWorking>
+				<allowMixingIngredients>false</allowMixingIngredients>
+				<researchPrerequisite>MethProduction</researchPrerequisite>
+				<recipeUsers>
+				    <li>FueledStove</li>
+				    <li>ElectricStove</li>
+				    <li>DrugLab</li>		
+				</recipeUsers>
+				<ingredients>
+				    <li>
+				     <filter>
+					<thingDefs>
+					   <li>Smokeglass</li>
+					</thingDefs>
+				     </filter>
+				     <count>20</count>
+				    </li>
+				    <li>
+				     <filter>
+					<thingDefs>
+					    <li>LCB_Fent</li>
+					    <li>LCB_Zoom</li>
+					    <li>WakeUp</li>
+					    <li>GoJuice</li>
+					</thingDefs>
+				     </filter>
+				     <count>4</count>
+				    </li>
+				</ingredients>
+				   <fixedIngredientFilter>			
+					<thingDefs>
+					    <li>LCB_Fent</li>
+					    <li>LCB_Zoom</li>
+					    <li>WakeUp</li>
+					    <li>GoJuice</li>
+					</thingDefs>
+				   <categories>
+				
+				   </categories>
+				   </fixedIngredientFilter>
+				<products>
+					<SmokeglassLaced>40</SmokeglassLaced>
+				</products>
+			 </RecipeDef>
+            </value>
+        </li>
+    </operations>
+</Operation>
+
+</Patch>

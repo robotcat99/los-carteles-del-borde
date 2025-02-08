@@ -1,0 +1,979 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_Uzi_SMG</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>580</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>21</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_Uzi_SMG>6</RNGun_Uzi_SMG>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+
+
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_MAC11_SMG</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>580</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>21</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_MAC11_SMG>6</RNGun_MAC11_SMG>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_SkorpionVZ61_SMG</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>720</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>21</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_AK74U_SMG>6</RNGun_AK74U_SMG>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">			
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_MD97_Rifle</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>680</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>22.5</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_MD97_Rifle>5</RNGun_MD97_Rifle>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_AK74_Rifle</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>680</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>22.5</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_AK74_Rifle>5</RNGun_AK74_Rifle>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+			
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_Type56_Rifle</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>630</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>21</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_Type56_Rifle>5</RNGun_Type56_Rifle>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_TypeCQ_Rifle</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>630</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>21</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_TypeCQ_Rifle>5</RNGun_TypeCQ_Rifle>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_PKM_GPMG</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>720</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>21</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_PKM_GPMG>3</RNGun_PKM_GPMG>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_RPD_LMG</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>670</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>21</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_RPD_LMG>3</RNGun_RPD_LMG>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_RPK_LMG</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>680</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>21</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_RPK_LMG>3</RNGun_RPK_LMG>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_Type81_LMG</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>560</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>21</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_Type81_LMG>3</RNGun_Type81_LMG>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_RPG7_RocketLauncher</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>1256</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>21</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_RPG7_RocketLauncher>2</RNGun_RPG7_RocketLauncher>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_FGM148Javelin_RocketLauncher</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>4800</MarketValue>       <!--  2 Javelin w/ 20% Discount  -->
+					 <Mass>21</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_FGM148Javelin_RocketLauncher>2</RNGun_FGM148Javelin_RocketLauncher>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				 <!-- -->
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_ColtCobra_Revolver</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>670</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>21</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_ColtCobra_Revolver>15</RNGun_ColtCobra_Revolver>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_Model36_Revolver</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>670</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>21</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_Model36_Revolver>15</RNGun_Model36_Revolver>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_Glock17_Pistol</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>780</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>12.5</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_Glock17_Pistol>10</RNGun_Glock17_Pistol>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_RNGun_M82A1_AMR</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>670</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>22.5</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_M82A1_AMR>2</RNGun_M82A1_AMR>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				
+				
+				 <!--  special deal message and trade tag  -->
+				
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+			           <ThingDef ParentName="LCB_HookupGunsBase">
+				 <defName>LCB_Crate_WTHookupOne</defName>
+				   <label>homey hookup crate of guns</label>
+				     <description>The cartel is happy doing business with you and has offered you a super special deal on this crate.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>875</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>23.5</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_SKSModern_DMR>5</RNGun_SKSModern_DMR>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+			           <ThingDef ParentName="LCB_HookupGunsBase">
+				 <defName>LCB_Crate_WTHookupTwo</defName>
+				   <label>crate of guns</label>
+				     <description>The cartel is happy doing business with you and has offered you a super special deal on this crate.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>370</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>18.5</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_Remington870MCS_Shotgun>5</RNGun_Remington870MCS_Shotgun>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+			           <ThingDef ParentName="LCB_HookupGunsBase">
+				 <defName>LCB_Crate_WTHookupThree</defName>
+				   <label>crate of guns</label>
+				     <description>The cartel is happy doing business with you and has offered you a super special deal on this crate.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>1385</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>22.5</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_HK416_Rifle>5</RNGun_HK416_Rifle>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+			           <ThingDef ParentName="LCB_HookupGunsBase">
+				 <defName>LCB_Crate_WTHookupFour</defName>
+				   <label>crate of guns</label>
+				     <description>The cartel is happy doing business with you and has offered you a super special deal on this crate.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>1308</MarketValue>       <!--  5 Rifles, 40% Discount  -->
+					 <Mass>19.5</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_AK103_Rifle>5</RNGun_AK103_Rifle>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+			           <ThingDef ParentName="LCB_HookupGunsBase">
+				 <defName>LCB_Crate_WTHookupFive</defName>
+				   <label>crate of guns</label>
+				     <description>The cartel is happy doing business with you and has offered you a super special deal on this crate.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>2475</MarketValue>       <!--  1500  -->
+					 <Mass>10</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNGun_M82A1_AMR>2</RNGun_M82A1_AMR>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+			           <ThingDef ParentName="LCB_HookupGunsBase">
+				 <defName>LCB_Crate_WTHookupSix</defName>
+				   <label>crate of guns</label>
+				     <description>The cartel is happy doing business with you and has offered you a super special deal on this crate.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>3288</MarketValue>       <!--  2 Rifles 40% Discount  -->
+					 <Mass>32.4</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNSci_Longbow1S1K>2</RNSci_Longbow1S1K>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+				
+				
+				
+				 <!--  Bum Deals  -->
+				
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">			
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_WTBumOne</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>1800</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>26</Mass>	   
+				     </statBases>
+				     <costList>
+					 <RNMeleeWeapon_Baseball_Bat>3</RNMeleeWeapon_Baseball_Bat>
+					 <WoodLog>45</WoodLog>
+				     </costList>
+				     <killedLeavings>								
+					 <WoodLog>24</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">		
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_WTBumTwo</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>925</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>18</Mass>	   
+				     </statBases>
+				     <costList>
+					 <BlocksSandstone>17</BlocksSandstone>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>								
+					 <WoodLog>4</WoodLog>
+					 <BlocksSandstone>7</BlocksSandstone>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">	
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_WTBumThree</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>1300</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>10</Mass>	   
+				     </statBases>
+				     <costList>
+					 <Kibble>530</Kibble>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <Kibble>125</Kibble>							
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">			
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_WTBumFour</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>1300</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>26</Mass>	   
+				     </statBases>
+				     <costList>
+					 <Pila>6</Pila>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <Pila>2</Pila>							
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+
+
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">			
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_WTBumFive</defName>
+				   <label>crate of guns</label>
+				     <description>A crate packed with guns.</description>
+				     <graphicData>
+					 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+					 <graphicClass>Graphic_Single</graphicClass>
+					 <drawSize>1.50</drawSize>
+				     </graphicData>
+				     <statBases>
+					 <MarketValue>1300</MarketValue>       <!--  15 Revolvers  -->
+					 <Mass>27.2</Mass>	   
+				     </statBases>
+				     <costList>
+					 <LCB_SpawnPawnFertilizedChicken>10</LCB_SpawnPawnFertilizedChicken>
+					 <WoodLog>5</WoodLog>
+				     </costList>
+				     <killedLeavings>
+					 <LCB_SpawnPawnFertilizedChicken>2</LCB_SpawnPawnFertilizedChicken>							
+					 <WoodLog>4</WoodLog>
+				     </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+
+
+    <Operation Class="PatchOperationFindMod">
+        <success>Always</success>
+        <mods>
+          <li>[RH2] Rimmu-Nation² - Weapons</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+	            <xpath>Defs</xpath>
+	               <value>
+		           <ThingDef ParentName="LCB_BulkCratesGunsBase">
+				 <defName>LCB_Crate_WTBumFleshLight</defName>
+				   <label>crate of guns</label>
+					 <description>A crate packed with guns.</description>
+					 <graphicData>
+						 <texPath>Things/Item/Resource/LCB_Crate</texPath>  <!-- here  -->
+						 <graphicClass>Graphic_Single</graphicClass>
+						 <drawSize>1.50</drawSize>
+					 </graphicData>
+					 <statBases>
+						 <MarketValue>600</MarketValue>       <!--  15 Revolvers  -->
+						 <Mass>30</Mass>	   
+					 </statBases>
+					 <costList>
+						 <LCB_UsedFleshlight>75</LCB_UsedFleshlight>
+						 <WoodLog>5</WoodLog>
+					 </costList>
+					 <killedLeavings>
+						 <LCB_UsedFleshlight>25</LCB_UsedFleshlight>							
+						 <WoodLog>4</WoodLog>
+					 </killedLeavings>
+				 </ThingDef>
+	               </value>
+		 </match>
+    </Operation>
+
+</Patch>

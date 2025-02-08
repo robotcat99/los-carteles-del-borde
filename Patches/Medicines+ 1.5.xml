@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<!-- <Operation Class="PatchOperationSequence">
+    <success>Normal</success>
+    <operations>
+        <li Class="PatchOperationReplace" MayRequire="Ogliss.bishop.SmokeleafIndustryReborn">
+	  <xpath>/Defs/ThingDef[defName="LCB_DrugPackSL"]/costList</xpath>
+            <value>
+	      <costList>
+                <SmokeleafBuds>1200</SmokeleafBuds>
+                <Cloth>10</Cloth>
+	      </costList>
+            </value>
+         </li>
+    </operations>
+</Operation> -->
+
+</Patch>
